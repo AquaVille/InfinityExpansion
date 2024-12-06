@@ -9,6 +9,7 @@ import java.util.Map;
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
 
+import lombok.NonNull;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
@@ -20,6 +21,7 @@ import io.github.thebusybiscuit.slimefun4.core.attributes.NotPlaceable;
 import io.github.thebusybiscuit.slimefun4.core.attributes.RecipeDisplayItem;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.collections.RandomizedSet;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
+import org.checkerframework.checker.nullness.qual.RequiresNonNull;
 
 /**
  * A mob data card which will be able to be used in the {@link MobSimulationChamber}
@@ -61,7 +63,9 @@ public final class MobDataCard extends SlimefunItem implements RecipeDisplayItem
     }
 
     public MobDataCard addDrop(ItemStack drop, int amount, float chance) {
-        return addDrop(new CustomItemStack(drop, amount), chance);
+        SlimefunItemStack sfItem = new SlimefunItemStack("MOB_DATA_CARD",drop);
+        sfItem.setAmount(amount);
+        return addDrop(sfItem.item(), chance);
     }
 
     public MobDataCard addDrop(Material drop, float chance) {

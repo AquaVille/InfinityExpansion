@@ -9,8 +9,8 @@
     <version>MODIFIED</version>
 
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>16</maven.compiler.source>
+        <maven.compiler.target>16</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -29,26 +29,23 @@
         </repository>
     </repositories>
 
+
     <dependencies>
+
+
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.19-R0.1-SNAPSHOT</version>
+            <version>1.21.1-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>com.github.Slimefun</groupId>
             <artifactId>Slimefun4</artifactId>
-            <version>934ab822a6</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.24</version>
-            <scope>provided</scope>
+            <version>0a7fea8</version>
+            <scope>system</scope>
+            <systemPath>${pom.basedir}/libs/Slimefun v4.9-UNOFFICIAL.jar</systemPath>
         </dependency>
 
         <dependency>
@@ -56,13 +53,6 @@
             <artifactId>jsr305</artifactId>
             <version>3.0.2</version>
             <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>io.github.mooy1</groupId>
-            <artifactId>InfinityLib</artifactId>
-            <version>f784252486</version>
-            <scope>compile</scope>
         </dependency>
 
         <dependency>
@@ -78,7 +68,21 @@
             <version>2.29.0</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.36</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.34</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
+
 
     <build>
         <finalName>${project.name} v${project.version}</finalName>
@@ -99,11 +103,11 @@
         </resources>
 
         <plugins>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M7</version>
-
+                <version>3.3.1</version>
                 <configuration>
                     <junitArtifactName>org.junit.jupiter:junit-jupiter</junitArtifactName>
                     <trimStackTrace>false</trimStackTrace>
@@ -112,16 +116,28 @@
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>3.3.0</version>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
                 <configuration>
+                    <source>16</source>
+                    <target>16</target>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>1.18.36</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.6.0</version>
+                <configuration>
+
                     <minimizeJar>true</minimizeJar>
-                    <relocations>
-                        <relocation>
-                            <pattern>io.github.mooy1.infinitylib</pattern>
-                            <shadedPattern>io.github.mooy1.infinityexpansion.infinitylib</shadedPattern>
-                        </relocation>
-                    </relocations>
                     <filters>
                         <filter>
                             <artifact>*:*</artifact>

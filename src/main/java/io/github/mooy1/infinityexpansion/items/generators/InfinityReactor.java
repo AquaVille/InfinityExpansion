@@ -56,8 +56,8 @@ public final class InfinityReactor extends MenuBlock implements EnergyNetProvide
 
     @Override
     protected void setup(@Nonnull BlockMenuPreset blockMenuPreset) {
-        blockMenuPreset.drawBackground(new CustomItemStack(Material.WHITE_STAINED_GLASS_PANE,
-                "&fInfinity Ingot Input"), new int[] {
+        blockMenuPreset.drawBackground(new SlimefunItemStack("ITEM_BACKGROUND",Material.WHITE_STAINED_GLASS_PANE,
+                "&fInfinity Ingot Input").item(), new int[] {
                 0, 1, 2,
                 9, 11,
                 18, 19, 20
@@ -67,8 +67,8 @@ public final class InfinityReactor extends MenuBlock implements EnergyNetProvide
                 12, 13, 14,
                 21, 22, 23
         });
-        blockMenuPreset.drawBackground(new CustomItemStack(Material.BLACK_STAINED_GLASS_PANE,
-                "&8Void Ingot Input"), new int[] {
+        blockMenuPreset.drawBackground(new SlimefunItemStack("ITEM_BACKGROUND",Material.BLACK_STAINED_GLASS_PANE,
+                "&8Void Ingot Input").item(), new int[] {
                 6, 7, 8,
                 15, 17,
                 24, 25, 26
@@ -113,7 +113,7 @@ public final class InfinityReactor extends MenuBlock implements EnergyNetProvide
             if (infinityInput == null || !Materials.INFINITE_INGOT.getItemId().equals(StackUtils.getId(infinityInput))) { //wrong input
 
                 if (inv.hasViewer()) {
-                    inv.replaceExistingItem(STATUS_SLOT, new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&cInput more &fInfinity Ingots"));
+                    inv.replaceExistingItem(STATUS_SLOT, new SlimefunItemStack("STATUS_SLOT",Material.RED_STAINED_GLASS_PANE, "&cInput more &fInfinity Ingots").item());
                 }
                 return 0;
 
@@ -122,7 +122,7 @@ public final class InfinityReactor extends MenuBlock implements EnergyNetProvide
             if (voidInput == null || !Materials.VOID_INGOT.getItemId().equals(StackUtils.getId(voidInput))) { //wrong input
 
                 if (inv.hasViewer()) {
-                    inv.replaceExistingItem(STATUS_SLOT, new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&cInput more &8Void Ingots"));
+                    inv.replaceExistingItem(STATUS_SLOT, new SlimefunItemStack("STATUS_SLOT",Material.RED_STAINED_GLASS_PANE, "&cInput more &8Void Ingots").item());
                 }
                 return 0;
 
@@ -130,11 +130,11 @@ public final class InfinityReactor extends MenuBlock implements EnergyNetProvide
 
             //correct input
             if (inv.hasViewer()) {
-                inv.replaceExistingItem(STATUS_SLOT, new CustomItemStack(Material.LIME_STAINED_GLASS_PANE,
+                inv.replaceExistingItem(STATUS_SLOT, new SlimefunItemStack("STATUS_SLOT",Material.LIME_STAINED_GLASS_PANE,
                         "&aStarting Generation",
                         "&aTime until infinity ingot needed: " + INFINITY_INTERVAL,
                         "&aTime until void ingot needed: " + VOID_INTERVAL
-                ));
+                ).item());
             }
             inv.consumeItem(INPUT_SLOTS[0]);
             inv.consumeItem(INPUT_SLOTS[1]);
@@ -146,7 +146,7 @@ public final class InfinityReactor extends MenuBlock implements EnergyNetProvide
         if (progress >= INFINITY_INTERVAL) { //done
 
             if (inv.hasViewer()) {
-                inv.replaceExistingItem(STATUS_SLOT, new CustomItemStack(Material.LIME_STAINED_GLASS_PANE, "&aFinished Generation"));
+                inv.replaceExistingItem(STATUS_SLOT, new SlimefunItemStack("STATUS_SLOT",Material.LIME_STAINED_GLASS_PANE, "&aFinished Generation").item());
             }
             BlockStorage.addBlockInfo(l, "progress", "0");
             return this.gen;
@@ -158,7 +158,7 @@ public final class InfinityReactor extends MenuBlock implements EnergyNetProvide
             if (voidInput == null || !Materials.VOID_INGOT.getItemId().equals(StackUtils.getId(voidInput))) { //wrong input
 
                 if (inv.hasViewer()) {
-                    inv.replaceExistingItem(STATUS_SLOT, new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&cInput more &8Void Ingots"));
+                    inv.replaceExistingItem(STATUS_SLOT, new SlimefunItemStack("STATUS_SLOT",Material.RED_STAINED_GLASS_PANE, "&cInput more &8Void Ingots").item());
                 }
                 return 0;
 
@@ -166,11 +166,11 @@ public final class InfinityReactor extends MenuBlock implements EnergyNetProvide
 
             //right input
             if (inv.hasViewer()) {
-                inv.replaceExistingItem(STATUS_SLOT, new CustomItemStack(Material.LIME_STAINED_GLASS_PANE,
+                inv.replaceExistingItem(STATUS_SLOT, new SlimefunItemStack("STATUS_SLOT",Material.LIME_STAINED_GLASS_PANE,
                         "&aGenerating...",
                         "&aTime until infinity ingot needed: " + (INFINITY_INTERVAL - progress),
                         "&aTime until void ingot needed: " + (VOID_INTERVAL - Math.floorMod(progress, VOID_INTERVAL))
-                ));
+                ).item());
             }
             BlockStorage.addBlockInfo(l, "progress", String.valueOf(progress + 1));
             inv.consumeItem(INPUT_SLOTS[1]);
@@ -181,11 +181,11 @@ public final class InfinityReactor extends MenuBlock implements EnergyNetProvide
         //generate
 
         if (inv.hasViewer()) {
-            inv.replaceExistingItem(STATUS_SLOT, new CustomItemStack(Material.LIME_STAINED_GLASS_PANE,
+            inv.replaceExistingItem(STATUS_SLOT, new SlimefunItemStack("STATUS_SLOT",Material.LIME_STAINED_GLASS_PANE,
                             "&aGenerating...",
                             "&aTime until infinity ingot needed: " + (INFINITY_INTERVAL - progress),
                             "&aTime until void ingot needed: " + (VOID_INTERVAL - Math.floorMod(progress, VOID_INTERVAL))
-                    )
+                    ).item()
             );
         }
         BlockStorage.addBlockInfo(l, "progress", String.valueOf(progress + 1));
@@ -202,13 +202,13 @@ public final class InfinityReactor extends MenuBlock implements EnergyNetProvide
     public List<ItemStack> getDisplayRecipes() {
         List<ItemStack> items = new ArrayList<>();
 
-        ItemStack item = new CustomItemStack(Materials.INFINITE_INGOT, Materials.INFINITE_INGOT.getDisplayName(),
-                "", ChatColor.GOLD + "Lasts for 1 day");
+        ItemStack item = new SlimefunItemStack("DISPLAY_RECIPES",Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.getDisplayName(),
+                "", ChatColor.GOLD + "Lasts for 1 day").item();
         items.add(item);
         items.add(null);
 
-        item = new CustomItemStack(Materials.VOID_INGOT, Materials.VOID_INGOT.getDisplayName(),
-                ChatColor.GOLD + "Lasts for 4 hours");
+        item = new SlimefunItemStack("DISPLAY_RECIPES",Materials.VOID_INGOT.item(), Materials.VOID_INGOT.getDisplayName(),
+                ChatColor.GOLD + "Lasts for 4 hours").item();
         items.add(item);
         items.add(null);
 

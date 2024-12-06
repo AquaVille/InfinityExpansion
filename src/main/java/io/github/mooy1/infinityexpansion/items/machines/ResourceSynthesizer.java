@@ -17,7 +17,6 @@ import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.RecipeDisplayItem;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
 
@@ -36,8 +35,11 @@ public final class ResourceSynthesizer extends AbstractMachineBlock implements R
     };
     private static final int STATUS_SLOT = 13;
 
-    @Setter
     private SlimefunItemStack[] recipes;
+
+    public void setRecipes(SlimefunItemStack[] recipes) {
+        this.recipes = recipes;
+    }
 
     public ResourceSynthesizer(ItemGroup category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
@@ -87,10 +89,10 @@ public final class ResourceSynthesizer extends AbstractMachineBlock implements R
         final List<ItemStack> items = new ArrayList<>();
 
         for (int i = 0 ; i < this.recipes.length ; i += 3) {
-            items.add(this.recipes[i]);
-            items.add(this.recipes[i + 2]);
-            items.add(this.recipes[i + 1]);
-            items.add(this.recipes[i + 2]);
+            items.add(this.recipes[i].item());
+            items.add(this.recipes[i + 2].item());
+            items.add(this.recipes[i + 1].item());
+            items.add(this.recipes[i + 2].item());
         }
 
         return items;
@@ -127,7 +129,7 @@ public final class ResourceSynthesizer extends AbstractMachineBlock implements R
 
         for (int i = 0 ; i < this.recipes.length ; i += 3) {
             if ((id1.equals(this.recipes[i].getItemId()) && id2.equals(this.recipes[i + 1].getItemId()) || (id2.equals(this.recipes[i].getItemId()) && id1.equals(this.recipes[i + 1].getItemId())))) {
-                recipe = this.recipes[i + 2];
+                recipe = this.recipes[i + 2].item();
             }
         }
 
@@ -149,7 +151,7 @@ public final class ResourceSynthesizer extends AbstractMachineBlock implements R
             inv.consumeItem(INPUT_SLOTS[1], 1);
 
             if (inv.hasViewer()) {
-                inv.replaceExistingItem(STATUS_SLOT, new CustomItemStack(Material.LIME_STAINED_GLASS_PANE, "&aResource Synthesized!"));
+                inv.replaceExistingItem(STATUS_SLOT, new SlimefunItemStack("STATUS_SLOT",Material.LIME_STAINED_GLASS_PANE, "&aResource Synthesized!").item());
             }
             return true;
 

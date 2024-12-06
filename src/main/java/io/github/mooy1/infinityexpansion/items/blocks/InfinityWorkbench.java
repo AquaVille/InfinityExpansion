@@ -35,8 +35,8 @@ public final class InfinityWorkbench extends io.github.mooy1.infinitylib.machine
     };
     private static final int RECIPE_SLOT = 7;
     public static final MachineRecipeType TYPE = new MachineRecipeType("infinity_forge",
-            new CustomItemStack(Blocks.INFINITY_FORGE, Blocks.INFINITY_FORGE.getDisplayName(),
-                    "", "&cUse the infinity recipes category to see the correct recipe!"));
+            new SlimefunItemStack("INFINITY_FORGE",Blocks.INFINITY_FORGE.item(), Blocks.INFINITY_FORGE.getDisplayName(),
+                    "", "&cUse the infinity recipes category to see the correct recipe!").item());
 
     private final int energy;
 
@@ -62,7 +62,7 @@ public final class InfinityWorkbench extends io.github.mooy1.infinitylib.machine
     @Override
     protected void setup(BlockMenuPreset preset) {
         super.setup(preset);
-        preset.addItem(RECIPE_SLOT, new CustomItemStack(Material.BOOK, "&6Recipes"), ChestMenuUtils.getEmptyClickHandler());
+        preset.addItem(RECIPE_SLOT, new SlimefunItemStack("RECIPE_SLOT",Material.BOOK, "&6Recipes").item(), ChestMenuUtils.getEmptyClickHandler());
     }
 
     @Override
