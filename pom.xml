@@ -49,6 +49,14 @@
         </dependency>
 
         <dependency>
+            <groupId>io.github.mooy1.infinitylib</groupId>
+            <artifactId>InfinityLib</artifactId>
+            <version>0a7fea8</version>
+            <scope>system</scope>
+            <systemPath>${pom.basedir}/libs/Slimefun v4.9-UNOFFICIAL.jar</systemPath>
+        </dependency>
+
+        <dependency>
             <groupId>com.google.code.findbugs</groupId>
             <artifactId>jsr305</artifactId>
             <version>3.0.2</version>
