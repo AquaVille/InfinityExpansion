@@ -19,6 +19,7 @@ import org.checkerframework.checker.units.qual.A;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
 
 @UtilityClass
 public final class Researches {
@@ -142,8 +143,8 @@ public final class Researches {
 
     private static void create(int id, String key, String name, int cost, SlimefunItemStack... items) {
         Research research = new Research(InfinityExpansion.createKey(key), FIRST_RESEARCH_ID + id, name, cost);
-        for (int i =0; i <= items.length; i++){
-            research.addItems(items[i].item());
+        for (SlimefunItemStack item : items){
+            research.addItems(item.item());
         }
         research.register();
     }
