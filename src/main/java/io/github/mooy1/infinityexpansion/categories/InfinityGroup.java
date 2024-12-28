@@ -172,7 +172,7 @@ public final class InfinityGroup extends FlexItemGroup {
             Research research = sfItem.getResearch();
             if (research != null && !entry.profile.hasUnlocked(research)) {
                 ItemStack resItem = new SlimefunItemStack(
-                        ChatColor.WHITE + ItemUtils.getItemName(sfItem.getItem()),
+                        "LOCKED_ITEM",
                         ChestMenuUtils.getNotResearchedItem(),
                         "&4&l" + Slimefun.getLocalization().getMessage(player, "guide.locked"),
                         "",

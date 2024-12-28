@@ -43,7 +43,7 @@
         <dependency>
             <groupId>com.github.Slimefun</groupId>
             <artifactId>Slimefun4</artifactId>
-            <version>0a7fea8</version>
+            <version>UNOFFICIAL</version>
             <scope>system</scope>
             <systemPath>${pom.basedir}/libs/Slimefun v4.9-UNOFFICIAL.jar</systemPath>
         </dependency>
@@ -51,7 +51,7 @@
         <dependency>
             <groupId>io.github.mooy1.infinitylib</groupId>
             <artifactId>InfinityLib</artifactId>
-            <version>0a7fea8</version>
+            <version>UNOFFICIAL</version>
             <scope>system</scope>
             <systemPath>${pom.basedir}/libs/Slimefun v4.9-UNOFFICIAL.jar</systemPath>
         </dependency>
