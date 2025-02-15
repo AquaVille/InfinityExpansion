@@ -429,6 +429,15 @@ public final class Machines {
         trees.put(Material.JUNGLE_SAPLING, new ItemStack[] {
                 new ItemStack(Material.JUNGLE_LEAVES, 8), new ItemStack(Material.JUNGLE_LOG, 6), new ItemStack(Material.COCOA_BEANS)
         });
+        trees.put(Material.CHERRY_SAPLING, new ItemStack[] {
+                new ItemStack(Material.CHERRY_LEAVES, 8), new ItemStack(Material.CHERRY_LOG, 6)
+        });
+        trees.put(Material.PALE_OAK_SAPLING, new ItemStack[] {
+                new ItemStack(Material.PALE_OAK_LEAVES, 8), new ItemStack(Material.PALE_OAK_LOG, 6)
+        });
+        trees.put(Material.JUNGLE_SAPLING, new ItemStack[] {
+                new ItemStack(Material.JUNGLE_LEAVES, 8), new ItemStack(Material.JUNGLE_LOG, 6), new ItemStack(Material.COCOA_BEANS)
+        });
         trees.put(Material.WARPED_FUNGUS, new ItemStack[] {
                 new ItemStack(Material.WARPED_HYPHAE, 8), new ItemStack(Material.WARPED_STEM, 6), new ItemStack(Material.SHROOMLIGHT)
         });
