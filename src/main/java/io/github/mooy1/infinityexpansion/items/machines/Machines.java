@@ -435,16 +435,15 @@ public final class Machines {
         trees.put(Material.PALE_OAK_SAPLING, new ItemStack[] {
                 new ItemStack(Material.PALE_OAK_LEAVES, 8), new ItemStack(Material.PALE_OAK_LOG, 6)
         });
-        trees.put(Material.JUNGLE_SAPLING, new ItemStack[] {
-                new ItemStack(Material.JUNGLE_LEAVES, 8), new ItemStack(Material.JUNGLE_LOG, 6), new ItemStack(Material.COCOA_BEANS)
-        });
         trees.put(Material.WARPED_FUNGUS, new ItemStack[] {
                 new ItemStack(Material.WARPED_HYPHAE, 8), new ItemStack(Material.WARPED_STEM, 6), new ItemStack(Material.SHROOMLIGHT)
         });
         trees.put(Material.CRIMSON_FUNGUS, new ItemStack[] {
                 new ItemStack(Material.CRIMSON_HYPHAE, 8), new ItemStack(Material.CRIMSON_STEM, 6), new ItemStack(Material.WEEPING_VINES)
         });
-
+        trees.put(Material.MANGROVE_PROPAGULE, new ItemStack[] {
+                new ItemStack(Material.MANGROVE_LEAVES, 8), new ItemStack(Material.MANGROVE_LOG, 6)
+        });
         GrowingMachine gm4 = new GrowingMachine(Groups.BASIC_MACHINES, BASIC_TREE, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
                 new ItemStack(Material.GLASS), new ItemStack(Material.GLASS), new ItemStack(Material.GLASS),
                 Materials.MAGSTEEL.item(), new ItemStack(Material.PODZOL), Materials.MAGSTEEL.item(),
