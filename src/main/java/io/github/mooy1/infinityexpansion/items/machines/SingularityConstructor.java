@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -49,8 +50,7 @@ public final class SingularityConstructor extends AbstractMachineBlock implement
             }
         }
         String id = StackUtils.getIdOrType(stacks[0]);
-        SlimefunItemStack sfItem = new SlimefunItemStack("SLIMEFUN_SINGULARITY_META", itemStack);
-        Recipe recipe = new Recipe(sfItem, stacks[0], id, amt);
+        Recipe recipe = new Recipe(itemStack, stacks[0], id, amt);
         RECIPE_LIST.add(recipe);
         RECIPE_MAP.put(id, new Pair<>(RECIPE_LIST.size() - 1, recipe));
     });
@@ -81,9 +81,8 @@ public final class SingularityConstructor extends AbstractMachineBlock implement
             Recipe triplet = RECIPE_LIST.get(progressID);
 
             if (triplet != null) {
-                SlimefunItemStack sfItem = new SlimefunItemStack("SLIMEFUN_TRIPLET_META",triplet.input);
-                sfItem.setAmount(64);
-                ItemStack drop = sfItem.item();
+                ItemStack drop = triplet.input;
+                drop.setAmount(64);
 
                 int stacks = progress / 64;
 
@@ -162,8 +161,8 @@ public final class SingularityConstructor extends AbstractMachineBlock implement
 
         // show status and output if done
         if (triplet != null) {
-            if (progress >= triplet.amount && menu.fits(triplet.output.item(), OUTPUT_SLOT)) {
-                menu.pushItem(triplet.output.item(), OUTPUT_SLOT);
+            if (progress >= triplet.amount && menu.fits(triplet.output, OUTPUT_SLOT)) {
+                menu.pushItem(triplet.output, OUTPUT_SLOT);
                 progress = 0;
                 progressID = null;
 
@@ -171,7 +170,7 @@ public final class SingularityConstructor extends AbstractMachineBlock implement
                     menu.replaceExistingItem(STATUS_SLOT, new SlimefunItemStack(
                             "STATUS_SLOT",
                             Material.LIME_STAINED_GLASS_PANE,
-                            "&aConstructing " + triplet.output.getDisplayName() + "...",
+                            "&aConstructing " + triplet.output.getItemMeta().getDisplayName() + "...",
                             "&7Complete"
                     ).item());
                 }
@@ -180,7 +179,7 @@ public final class SingularityConstructor extends AbstractMachineBlock implement
                 menu.replaceExistingItem(STATUS_SLOT, new SlimefunItemStack(
                         "STATUS_SLOT",
                         Material.LIME_STAINED_GLASS_PANE,
-                        "&aConstructing " + triplet.output.getDisplayName() + "...",
+                        "&aConstructing " + triplet.output.getItemMeta().getDisplayName() + "...",
                         "&7" + progress + " / " + triplet.amount
                 ).item());
             }
@@ -280,7 +279,7 @@ public final class SingularityConstructor extends AbstractMachineBlock implement
 
         for (Recipe recipe : RECIPE_LIST) {
             items.add(recipe.input);
-            items.add(recipe.output.item());
+            items.add(recipe.output);
         }
 
         return items;
@@ -289,7 +288,7 @@ public final class SingularityConstructor extends AbstractMachineBlock implement
     @AllArgsConstructor
     private static final class Recipe {
 
-        private final SlimefunItemStack output;
+        private final ItemStack output;
         private final ItemStack input;
         private final String id;
         private final int amount;
