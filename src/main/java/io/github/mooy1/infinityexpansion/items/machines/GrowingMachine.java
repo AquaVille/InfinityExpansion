@@ -33,8 +33,8 @@ public final class GrowingMachine extends AbstractMachineBlock implements Recipe
     };
     private static final int[] INPUT_SLOTS = { 37 };
     private static final int STATUS_SLOT = 10;
-    private static final ItemStack GROWING = new SlimefunItemStack("GROWING",Material.LIME_STAINED_GLASS_PANE, "&aGrowing...").item();
-    private static final ItemStack INPUT_PLANT = new SlimefunItemStack("INPUT_PLANT",Material.BLUE_STAINED_GLASS_PANE, "&9Input a plant!").item();
+    private static final ItemStack GROWING = CustomItemStack.create(Material.LIME_STAINED_GLASS_PANE, "&aGrowing...");
+    private static final ItemStack INPUT_PLANT = CustomItemStack.create(Material.BLUE_STAINED_GLASS_PANE, "&9Input a plant!");
 
     private EnumMap<Material, ItemStack[]> recipes;
 

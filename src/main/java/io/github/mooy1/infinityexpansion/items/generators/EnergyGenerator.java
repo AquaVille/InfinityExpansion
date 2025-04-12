@@ -71,22 +71,20 @@ public final class EnergyGenerator extends MenuBlock implements EnergyNetProvide
         BlockMenu inv = BlockStorage.getInventory(l);
         if (inv != null && inv.hasViewer()) {
             if (gen == 0) {
-                inv.replaceExistingItem(4, new SlimefunItemStack(
-                        "ITEM_GENERATOR",
+                inv.replaceExistingItem(4, CustomItemStack.create(
                         Material.GREEN_STAINED_GLASS_PANE,
                         "&cNot generating",
                         "&7Stored: &6" + MachineLore.format(getCharge(l)) + " J"
-                ).item());
+                ));
             }
             else {
-                inv.replaceExistingItem(4, new SlimefunItemStack(
-                        "ITEM_GENERATOR",
+                inv.replaceExistingItem(4, CustomItemStack.create(
                         Material.GREEN_STAINED_GLASS_PANE,
                         "&aGeneration",
                         "&7Type: &6" + this.type,
                         "&7Generating: &6" + MachineLore.formatEnergy(gen) + " J/s ",
                         "&7Stored: &6" + MachineLore.format(getCharge(l)) + " J"
-                ).item());
+                ));
             }
         }
 

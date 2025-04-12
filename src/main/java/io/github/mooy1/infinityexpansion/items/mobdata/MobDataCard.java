@@ -63,9 +63,7 @@ public final class MobDataCard extends SlimefunItem implements RecipeDisplayItem
     }
 
     public MobDataCard addDrop(ItemStack drop, int amount, float chance) {
-        SlimefunItemStack sfItem = new SlimefunItemStack("MOB_DATA_CARD",drop);
-        sfItem.setAmount(amount);
-        return addDrop(sfItem.item(), chance);
+        return addDrop(CustomItemStack.create(drop, amount), chance);
     }
 
     public MobDataCard addDrop(Material drop, float chance) {

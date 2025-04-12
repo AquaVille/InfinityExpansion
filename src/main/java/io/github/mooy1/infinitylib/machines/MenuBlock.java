@@ -29,12 +29,12 @@ import me.mrCookieSlime.Slimefun.api.item_transport.ItemTransportFlow;
 @ParametersAreNonnullByDefault
 public abstract class MenuBlock extends SlimefunItem {
 
-    public static final ItemStack PROCESSING_ITEM = new SlimefunItemStack("PROCESSING_ITEM",Material.LIME_STAINED_GLASS_PANE, "&aProcessing...").item();
-    public static final ItemStack NO_ENERGY_ITEM = new SlimefunItemStack("NO_ENERGY_ITEM",Material.RED_STAINED_GLASS_PANE, "&cNot enough energy!").item();
-    public static final ItemStack IDLE_ITEM = new SlimefunItemStack("IDLE_ITEM",Material.BLACK_STAINED_GLASS_PANE, "&8Idle").item();
-    public static final ItemStack NO_ROOM_ITEM = new SlimefunItemStack("NO_ROOM_ITEM",Material.ORANGE_STAINED_GLASS_PANE, "&6Not enough room!").item();
-    public static final ItemStack OUTPUT_BORDER = new SlimefunItemStack("OUTPUT_BORDER",ChestMenuUtils.getOutputSlotTexture(), "&6Output").item();
-    public static final ItemStack INPUT_BORDER = new SlimefunItemStack("INPUT_BORDER",ChestMenuUtils.getInputSlotTexture(), "&9Input").item();
+    public static final ItemStack PROCESSING_ITEM = CustomItemStack.create(Material.LIME_STAINED_GLASS_PANE, "&aProcessing...");
+    public static final ItemStack NO_ENERGY_ITEM = CustomItemStack.create(Material.RED_STAINED_GLASS_PANE, "&cNot enough energy!");
+    public static final ItemStack IDLE_ITEM = CustomItemStack.create(Material.BLACK_STAINED_GLASS_PANE, "&8Idle");
+    public static final ItemStack NO_ROOM_ITEM = CustomItemStack.create(Material.ORANGE_STAINED_GLASS_PANE, "&6Not enough room!");
+    public static final ItemStack OUTPUT_BORDER = CustomItemStack.create(ChestMenuUtils.getOutputSlotTexture(), "&6Output");
+    public static final ItemStack INPUT_BORDER = CustomItemStack.create(ChestMenuUtils.getInputSlotTexture(), "&9Input");
     public static final ItemStack BACKGROUND_ITEM = ChestMenuUtils.getBackground();
 
     public MenuBlock(ItemGroup category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {

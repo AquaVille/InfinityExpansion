@@ -12,6 +12,7 @@ import java.util.UUID;
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
 
+import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import lombok.AllArgsConstructor;
 
 import org.bukkit.ChatColor;
@@ -28,7 +29,6 @@ import io.github.mooy1.infinitylib.common.Scheduler;
 import io.github.mooy1.infinitylib.common.StackUtils;
 import io.github.mooy1.infinitylib.machines.MenuBlock;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
-import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.items.groups.FlexItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.player.PlayerProfile;
 import io.github.thebusybiscuit.slimefun4.api.researches.Research;
@@ -81,12 +81,12 @@ public final class InfinityGroup extends FlexItemGroup {
     private static final int[] WORKBENCH_BORDER = {
             7, 16, 17
     };
-    private static final ItemStack BENCH = new SlimefunItemStack("BENCH",Material.NETHER_STAR,
+    private static final ItemStack BENCH = CustomItemStack.create(Material.NETHER_STAR,
             "&bCreate the recipe from items in your inventory: ",
             "&aLeft-Click to move 1 set",
             "&aRight-Click to move as many sets as possible"
-    ).item();
-    private static final ItemStack INFO = new SlimefunItemStack("INFO",Material.CYAN_STAINED_GLASS_PANE, "&3Info").item();
+    );
+    private static final ItemStack INFO = CustomItemStack.create(Material.CYAN_STAINED_GLASS_PANE, "&3Info");
     private static final SlimefunGuideImplementation GUIDE = Slimefun.getRegistry().getSlimefunGuide(SlimefunGuideMode.SURVIVAL_MODE);
     private static final Map<UUID, String> HISTORY = new HashMap<>();
     private static final LinkedHashMap<String, Pair<SlimefunItem, ItemStack[]>> ITEMS = new LinkedHashMap<>();
@@ -155,8 +155,8 @@ public final class InfinityGroup extends FlexItemGroup {
         menu.addItem(52, ChestMenuUtils.getNextButton(player, 1, 1), ChestMenuUtils.getEmptyClickHandler());
         menu.addItem(53, ChestMenuUtils.getBackground(), ChestMenuUtils.getEmptyClickHandler());
 
-        menu.addItem(1, new SlimefunItemStack("BACK_BUTTON",ChestMenuUtils.getBackButton(
-                player, "", ChatColor.GRAY + Slimefun.getLocalization().getMessage(player, "guide.back.guide"))).item());
+        menu.addItem(1, ChestMenuUtils.getBackButton(
+                player, "", ChatColor.GRAY + Slimefun.getLocalization().getMessage(player, "guide.back.guide")));
 
         int i = 9;
         for (Pair<SlimefunItem, ItemStack[]> item : ITEMS.values()) {
@@ -171,15 +171,14 @@ public final class InfinityGroup extends FlexItemGroup {
 
             Research research = sfItem.getResearch();
             if (research != null && !entry.profile.hasUnlocked(research)) {
-                ItemStack resItem = new SlimefunItemStack(
-                        "LOCKED_ITEM",
+                ItemStack resItem = CustomItemStack.create(
                         ChestMenuUtils.getNotResearchedItem(),
                         "&4&l" + Slimefun.getLocalization().getMessage(player, "guide.locked"),
                         "",
                         "&a> Click to unlock",
                         "",
                         "&7Cost: &b" + research.getCost() + " Level(s)"
-                ).item();
+                );
                 menu.addItem(i, resItem, (p, slot, item1, action) -> {
                     research.unlockFromGuide(GUIDE, p, entry.profile, sfItem, Groups.INFINITY, 0);
                     return false;

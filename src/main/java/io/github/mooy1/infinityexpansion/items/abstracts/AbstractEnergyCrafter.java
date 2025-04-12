@@ -3,13 +3,13 @@ package io.github.mooy1.infinityexpansion.items.abstracts;
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
 
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.inventory.ItemStack;
 
 import io.github.mooy1.infinitylib.machines.TickingMenuBlock;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
-import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.EnergyNetComponent;
 import io.github.thebusybiscuit.slimefun4.core.networks.energy.EnergyNetComponentType;
@@ -34,14 +34,13 @@ public abstract class AbstractEnergyCrafter extends TickingMenuBlock implements 
         if (blockMenu.hasViewer()) {
             int charge = getCharge(block.getLocation());
             if (charge < this.energy) { //not enough energy
-                blockMenu.replaceExistingItem(this.statusSlot, new SlimefunItemStack(
-                        "BLOCK_MENU",
+                blockMenu.replaceExistingItem(this.statusSlot, CustomItemStack.create(
                         Material.RED_STAINED_GLASS_PANE,
                         "&cNot enough energy!",
                         "",
                         "&aCharge: " + charge + "/" + this.energy + " J",
                         ""
-                ).item());
+                ));
             }
             else {
                 update(blockMenu);

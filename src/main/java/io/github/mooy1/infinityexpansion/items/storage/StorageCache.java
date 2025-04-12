@@ -55,10 +55,10 @@ public final class StorageCache {
     private static final String VOID_EXCESS = "void_excess"; // void excess true or null key
 
     /* Menu Items */
-    private static final ItemStack EMPTY_ITEM = new SlimefunItemStack("EMPTY_ITEM",Material.BARRIER, meta -> {
+    private static final ItemStack EMPTY_ITEM = CustomItemStack.create(Material.BARRIER, meta -> {
         meta.setDisplayName(ChatColor.WHITE + "Empty");
         meta.getPersistentDataContainer().set(EMPTY_KEY, PersistentDataType.BYTE, (byte) 1);
-    }).item();
+    });
 
     /* Space Pattern for Sign Display Names */
     private static final Pattern SPACE = Pattern.compile(" ");
@@ -368,7 +368,7 @@ public final class StorageCache {
     }
 
     private void updateStatus() {
-        this.menu.replaceExistingItem(STATUS_SLOT, new SlimefunItemStack("STATUS_SLOT",Material.CYAN_STAINED_GLASS_PANE, meta -> {
+        this.menu.replaceExistingItem(STATUS_SLOT, CustomItemStack.create(Material.CYAN_STAINED_GLASS_PANE, meta -> {
             meta.setDisplayName(ChatColor.AQUA + "Status");
             List<String> lore = new ArrayList<>();
             if (this.amount == 0) {
@@ -383,7 +383,7 @@ public final class StorageCache {
             lore.add(this.voidExcess ? VOID_EXCESS_TRUE : VOID_EXCESS_FALSE);
             lore.add(ChatColor.GRAY + "(Click to toggle)");
             meta.setLore(lore);
-        }).item(), false);
+        }), false);
     }
 
     private static boolean checkWallSign(Block sign, Block block) {

@@ -167,21 +167,19 @@ public final class SingularityConstructor extends AbstractMachineBlock implement
                 progressID = null;
 
                 if (menu.hasViewer()) {
-                    menu.replaceExistingItem(STATUS_SLOT, new SlimefunItemStack(
-                            "STATUS_SLOT",
+                    menu.replaceExistingItem(STATUS_SLOT, CustomItemStack.create(
                             Material.LIME_STAINED_GLASS_PANE,
                             "&aConstructing " + triplet.output.getItemMeta().getDisplayName() + "...",
                             "&7Complete"
-                    ).item());
+                    ));
                 }
             }
             else if (menu.hasViewer()) {
-                menu.replaceExistingItem(STATUS_SLOT, new SlimefunItemStack(
-                        "STATUS_SLOT",
+                menu.replaceExistingItem(STATUS_SLOT, CustomItemStack.create(
                         Material.LIME_STAINED_GLASS_PANE,
                         "&aConstructing " + triplet.output.getItemMeta().getDisplayName() + "...",
                         "&7" + progress + " / " + triplet.amount
-                ).item());
+                ));
             }
         }
         else if (menu.hasViewer()) {
@@ -236,11 +234,10 @@ public final class SingularityConstructor extends AbstractMachineBlock implement
     }
 
     private static void invalidInput(BlockMenu menu) {
-        menu.replaceExistingItem(STATUS_SLOT, new SlimefunItemStack(
-                "STATUS_SLOT",
+        menu.replaceExistingItem(STATUS_SLOT, CustomItemStack.create(
                 Material.RED_STAINED_GLASS_PANE,
                 "&cInput a valid material to start"
-        ).item());
+        ));
     }
 
     private static void setProgress(Location l, int progress) {

@@ -42,19 +42,11 @@ public final class Singularity extends UnplaceableBlock {
         int stacks = (int) Math.floor(amount / 64D);
         int extra = amount % 64;
 
-        // Clone item to stack object
-        ItemStack cloneStack = item.clone();
-        cloneStack.setAmount(64);
-
         for (int i = 0 ; i < stacks ; i++) {
-            recipe.add(cloneStack);
+            recipe.add(CustomItemStack.create(item, 64));
         }
 
-        // Clone item to extra amount object
-        ItemStack cloneExtra = item.clone();
-        cloneExtra.setAmount(extra);
-
-        recipe.add(cloneExtra);
+        recipe.add(CustomItemStack.create(item, extra));
 
         while (recipe.size() < 9) {
             recipe.add(null);
