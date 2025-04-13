@@ -1,6 +1,7 @@
 package io.github.mooy1.infinityexpansion.items.materials;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Nonnull;
@@ -25,14 +26,16 @@ public final class Singularity extends UnplaceableBlock {
     private static final double COST_MULTIPLIER =
             InfinityExpansion.config().getDouble("balance-options.singularity-cost-multiplier", 0.1, 100);
 
-    public Singularity(SlimefunItemStack item, SlimefunItemStack recipe, int amount) {
+    public Singularity(SlimefunItemStack item, ItemStack recipe, int amount) {
         super(Groups.INFINITY_MATERIALS, item, SingularityConstructor.TYPE,
-                makeRecipe(recipe.item(), (int) (amount * COST_MULTIPLIER)));
+                makeRecipe(recipe, (int) (amount * COST_MULTIPLIER)));
+        SingularityConstructor.ALLOWED_ITEMS.add(recipe);
     }
 
     public Singularity(SlimefunItemStack item, Material recipe, int amount) {
         super(Groups.INFINITY_MATERIALS, item, SingularityConstructor.TYPE,
                 makeRecipe(new ItemStack(recipe), (int) (amount * COST_MULTIPLIER)));
+        SingularityConstructor.ALLOWED_ITEMS.add(new ItemStack(recipe));
     }
 
     @Nonnull

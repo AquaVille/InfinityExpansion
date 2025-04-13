@@ -378,13 +378,13 @@ public final class Materials {
                 MACHINE_CORE.item(), MACHINE_PLATE.item(), MACHINE_CIRCUIT.item(), MACHINE_CIRCUIT.item(), MACHINE_PLATE.item(), MACHINE_CORE.item(),
                 MACHINE_PLATE.item(), MACHINE_CORE.item(), INFINITE_INGOT.item(), INFINITE_INGOT.item(), MACHINE_CORE.item(), MACHINE_PLATE.item()
         });
-        new Singularity(COPPER_SINGULARITY, SlimefunItems.COPPER_INGOT, 3000).register(plugin);
-        new Singularity(ZINC_SINGULARITY, SlimefunItems.ZINC_INGOT, 3000).register(plugin);
-        new Singularity(TIN_SINGULARITY, SlimefunItems.TIN_INGOT, 3000).register(plugin);
-        new Singularity(ALUMINUM_SINGULARITY, SlimefunItems.ALUMINUM_INGOT, 3000).register(plugin);
-        new Singularity(SILVER_SINGULARITY, SlimefunItems.SILVER_INGOT, 3000).register(plugin);
-        new Singularity(MAGNESIUM_SINGULARITY, SlimefunItems.MAGNESIUM_INGOT, 3000).register(plugin);
-        new Singularity(LEAD_SINGULARITY, SlimefunItems.LEAD_INGOT, 3000).register(plugin);
+        new Singularity(COPPER_SINGULARITY, SlimefunItems.COPPER_INGOT.item(), 3000).register(plugin);
+        new Singularity(ZINC_SINGULARITY, SlimefunItems.ZINC_INGOT.item(), 3000).register(plugin);
+        new Singularity(TIN_SINGULARITY, SlimefunItems.TIN_INGOT.item(), 3000).register(plugin);
+        new Singularity(ALUMINUM_SINGULARITY, SlimefunItems.ALUMINUM_INGOT.item(), 3000).register(plugin);
+        new Singularity(SILVER_SINGULARITY, SlimefunItems.SILVER_INGOT.item(), 3000).register(plugin);
+        new Singularity(MAGNESIUM_SINGULARITY, SlimefunItems.MAGNESIUM_INGOT.item(), 3000).register(plugin);
+        new Singularity(LEAD_SINGULARITY, SlimefunItems.LEAD_INGOT.item(), 3000).register(plugin);
         new Singularity(GOLD_SINGULARITY, Material.GOLD_INGOT, 2000).register(plugin);
         new Singularity(IRON_SINGULARITY, Material.IRON_INGOT, 2000).register(plugin);
         new Singularity(DIAMOND_SINGULARITY, Material.DIAMOND, 500).register(plugin);
@@ -394,7 +394,7 @@ public final class Materials {
         new Singularity(REDSTONE_SINGULARITY, Material.REDSTONE, 1500).register(plugin);
         new Singularity(LAPIS_SINGULARITY, Material.LAPIS_LAZULI, 1500).register(plugin);
         new Singularity(QUARTZ_SINGULARITY, Material.QUARTZ, 1500).register(plugin);
-        new Singularity(INFINITY_SINGULARITY, INFINITE_INGOT, 100).register(plugin);
+        new Singularity(INFINITY_SINGULARITY, INFINITE_INGOT.item(), 100).register(plugin);
     }
 
     private static void registerEnhanced(SlimefunItemStack item, ItemStack[] recipe) {

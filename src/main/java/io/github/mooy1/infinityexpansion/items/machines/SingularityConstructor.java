@@ -9,6 +9,7 @@ import java.util.logging.Level;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import io.github.mooy1.infinityexpansion.items.materials.Materials;
 import lombok.AllArgsConstructor;
 import lombok.Setter;
 
@@ -39,6 +40,8 @@ import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
  */
 public final class SingularityConstructor extends AbstractMachineBlock implements RecipeDisplayItem {
 
+    public static List<ItemStack> ALLOWED_ITEMS = new ArrayList<>(List.of());
+
     private static final List<Recipe> RECIPE_LIST = new ArrayList<>();
     private static final Map<String, Pair<Integer, Recipe>> RECIPE_MAP = new HashMap<>();
     public static final RecipeType TYPE = new RecipeType(InfinityExpansion.createKey("singularity_constructor"),
@@ -49,6 +52,7 @@ public final class SingularityConstructor extends AbstractMachineBlock implement
                 amt += item.getAmount();
             }
         }
+
         String id = StackUtils.getIdOrType(stacks[0]);
         Recipe recipe = new Recipe(itemStack, stacks[0], id, amt);
         RECIPE_LIST.add(recipe);
@@ -81,8 +85,7 @@ public final class SingularityConstructor extends AbstractMachineBlock implement
             Recipe triplet = RECIPE_LIST.get(progressID);
 
             if (triplet != null) {
-                ItemStack drop = triplet.input;
-                drop.setAmount(64);
+                ItemStack drop = CustomItemStack.create(triplet.input, 64);
 
                 int stacks = progress / 64;
 
@@ -108,6 +111,15 @@ public final class SingularityConstructor extends AbstractMachineBlock implement
     @Override
     protected boolean process(@Nonnull Block b, @Nonnull BlockMenu menu) {
         ItemStack input = menu.getItemInSlot(INPUT_SLOT[0]);
+
+        ArrayList<ItemStack> matches = new ArrayList<>();
+        for (ItemStack item : ALLOWED_ITEMS) {
+            if (item.isSimilar(input))
+                matches.add(item);
+        }
+        if (matches.isEmpty())
+            return false;
+
         String inputID;
         if (input == null) {
             inputID = null;
@@ -162,7 +174,7 @@ public final class SingularityConstructor extends AbstractMachineBlock implement
         // show status and output if done
         if (triplet != null) {
             if (progress >= triplet.amount && menu.fits(triplet.output, OUTPUT_SLOT)) {
-                menu.pushItem(triplet.output, OUTPUT_SLOT);
+                menu.pushItem(triplet.output.clone(), OUTPUT_SLOT);
                 progress = 0;
                 progressID = null;
 

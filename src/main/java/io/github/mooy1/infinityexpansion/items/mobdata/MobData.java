@@ -92,11 +92,6 @@ public final class MobData {
                 SlimefunItems.MAGNESIUM_INGOT.item(), Materials.MACHINE_CIRCUIT.item(), SlimefunItems.MAGNESIUM_INGOT.item()
         }).register(plugin);
 
-        if (InfinityExpansion.environment() == Environment.TESTING) {
-            // There is some issues with player skull items in randomized sets when testing
-            return;
-        }
-
         new MobDataCard(ZOMBIE, MobDataTier.HOSTILE, new ItemStack[] {
                 new ItemStack(Material.IRON_SWORD, 1), new ItemStack(Material.ROTTEN_FLESH, 16), new ItemStack(Material.IRON_SHOVEL, 1),
                 new ItemStack(Material.IRON_INGOT, 64), EMPTY_DATA_CARD.item(), new ItemStack(Material.IRON_INGOT, 64),
