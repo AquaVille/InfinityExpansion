@@ -16,7 +16,7 @@ import io.github.mooy1.infinityexpansion.items.SlimefunExtension;
 import io.github.mooy1.infinityexpansion.items.blocks.InfinityWorkbench;
 import io.github.mooy1.infinityexpansion.items.gear.Gear;
 import io.github.mooy1.infinityexpansion.items.materials.Materials;
-import io.github.mooy1.infinitylib.machines.MachineLore;
+import io.github.mooy1.infinityexpansion.machines.MachineLore;
 import io.github.thebusybiscuit.slimefun4.api.MinecraftVersion;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
@@ -62,11 +62,19 @@ public final class Quarries {
             MachineLore.speed(64),
             MachineLore.energyPerSecond(36000)
     );
+
+    public static final double IRON_CHANCE = getOscillatorChance("iron");
+    public static final double COAL_CHANCE = getOscillatorChance("coal");
+    public static final double GOLD_CHANCE = getOscillatorChance("gold");
     public static final double DIAMOND_CHANCE = getOscillatorChance("diamond");
     public static final double REDSTONE_CHANCE = getOscillatorChance("redstone");
     public static final double LAPIS_CHANCE = getOscillatorChance("lapis");
     public static final double EMERALD_CHANCE = getOscillatorChance("emerald");
     public static final double QUARTZ_CHANCE = getOscillatorChance("quartz");
+
+    public static final SlimefunItemStack IRON_OSCILLATOR = Oscillator.create(Material.IRON_INGOT, IRON_CHANCE);
+    public static final SlimefunItemStack COAL_OSCILLATOR = Oscillator.create(Material.COAL, COAL_CHANCE);
+    public static final SlimefunItemStack GOLD_OSCILLATOR = Oscillator.create(Material.GOLD_INGOT, GOLD_CHANCE);
     public static final SlimefunItemStack DIAMOND_OSCILLATOR = Oscillator.create(Material.DIAMOND, DIAMOND_CHANCE);
     public static final SlimefunItemStack REDSTONE_OSCILLATOR = Oscillator.create(Material.REDSTONE, REDSTONE_CHANCE);
     public static final SlimefunItemStack LAPIS_OSCILLATOR = Oscillator.create(Material.LAPIS_LAZULI, LAPIS_CHANCE);
@@ -85,15 +93,17 @@ public final class Quarries {
         boolean coal = section.getBoolean("coal");
 
         if (coal) {
-            outputs.add(Material.COAL);
+            new Oscillator(COAL_OSCILLATOR, COAL_CHANCE).register(InfinityExpansion.instance());
             outputs.add(Material.COAL);
         }
 
         if (section.getBoolean("iron")) {
+            new Oscillator(IRON_OSCILLATOR, IRON_CHANCE).register(InfinityExpansion.instance());
             outputs.add(Material.IRON_INGOT);
         }
 
         if (section.getBoolean("gold")) {
+            new Oscillator(GOLD_OSCILLATOR, GOLD_CHANCE).register(InfinityExpansion.instance());
             outputs.add(Material.GOLD_INGOT);
         }
 

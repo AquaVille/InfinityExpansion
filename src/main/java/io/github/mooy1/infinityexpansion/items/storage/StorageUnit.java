@@ -24,9 +24,9 @@ import org.bukkit.persistence.PersistentDataType;
 
 import io.github.mooy1.infinityexpansion.InfinityExpansion;
 import io.github.mooy1.infinityexpansion.categories.Groups;
-import io.github.mooy1.infinitylib.common.PersistentType;
-import io.github.mooy1.infinitylib.common.Scheduler;
-import io.github.mooy1.infinitylib.machines.MenuBlock;
+import io.github.mooy1.infinityexpansion.common.PersistentType;
+import io.github.mooy1.infinityexpansion.common.Scheduler;
+import io.github.mooy1.infinityexpansion.machines.MenuBlock;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.core.attributes.DistinctiveItem;

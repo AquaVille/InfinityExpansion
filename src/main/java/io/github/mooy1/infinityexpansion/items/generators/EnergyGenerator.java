@@ -7,8 +7,8 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
-import io.github.mooy1.infinitylib.machines.MachineLore;
-import io.github.mooy1.infinitylib.machines.MenuBlock;
+import io.github.mooy1.infinityexpansion.machines.MachineLore;
+import io.github.mooy1.infinityexpansion.machines.MenuBlock;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;

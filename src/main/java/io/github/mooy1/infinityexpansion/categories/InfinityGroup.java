@@ -25,9 +25,9 @@ import org.bukkit.inventory.PlayerInventory;
 
 import io.github.mooy1.infinityexpansion.items.blocks.Blocks;
 import io.github.mooy1.infinityexpansion.items.blocks.InfinityWorkbench;
-import io.github.mooy1.infinitylib.common.Scheduler;
-import io.github.mooy1.infinitylib.common.StackUtils;
-import io.github.mooy1.infinitylib.machines.MenuBlock;
+import io.github.mooy1.infinityexpansion.common.Scheduler;
+import io.github.mooy1.infinityexpansion.common.StackUtils;
+import io.github.mooy1.infinityexpansion.machines.MenuBlock;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.groups.FlexItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.player.PlayerProfile;

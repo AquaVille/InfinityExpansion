@@ -8,8 +8,8 @@ import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import io.github.mooy1.infinitylib.machines.CraftingBlock;
-import io.github.mooy1.infinitylib.machines.MachineRecipeType;
+import io.github.mooy1.infinityexpansion.machines.CraftingBlock;
+import io.github.mooy1.infinityexpansion.machines.MachineRecipeType;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;

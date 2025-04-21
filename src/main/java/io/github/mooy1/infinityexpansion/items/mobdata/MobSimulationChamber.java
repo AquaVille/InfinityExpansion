@@ -11,10 +11,10 @@ import org.bukkit.inventory.ItemStack;
 
 import io.github.mooy1.infinityexpansion.InfinityExpansion;
 import io.github.mooy1.infinityexpansion.utils.Util;
-import io.github.mooy1.infinitylib.common.StackUtils;
-import io.github.mooy1.infinitylib.machines.AbstractMachineBlock;
-import io.github.mooy1.infinitylib.machines.MachineLore;
-import io.github.mooy1.infinitylib.machines.TickingMenuBlock;
+import io.github.mooy1.infinityexpansion.common.StackUtils;
+import io.github.mooy1.infinityexpansion.machines.AbstractMachineBlock;
+import io.github.mooy1.infinityexpansion.machines.MachineLore;
+import io.github.mooy1.infinityexpansion.machines.TickingMenuBlock;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;

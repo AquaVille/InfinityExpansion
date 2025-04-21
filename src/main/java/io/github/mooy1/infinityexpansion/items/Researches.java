@@ -13,13 +13,6 @@ import io.github.mooy1.infinityexpansion.items.quarries.Quarries;
 import io.github.mooy1.infinityexpansion.items.storage.Storage;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.researches.Research;
-import org.bukkit.inventory.ItemStack;
-import org.checkerframework.checker.units.qual.A;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.logging.Level;
 
 @UtilityClass
 public final class Researches {
@@ -66,6 +59,7 @@ public final class Researches {
                 MobData.COW, MobData.SHEEP, MobData.CHICKEN
         );
         create(6, "oscillators", "Improving Quarries", 30,
+                Quarries.COAL_OSCILLATOR, Quarries.IRON_OSCILLATOR, Quarries.GOLD_OSCILLATOR,
                 Quarries.DIAMOND_OSCILLATOR, Quarries.EMERALD_OSCILLATOR, Quarries.LAPIS_OSCILLATOR,
                 Quarries.REDSTONE_OSCILLATOR, Quarries.QUARTZ_OSCILLATOR
         );

@@ -26,6 +26,9 @@ quarry-options:
 
   # The chance (0 to 1) of an oscillator activating each time a material would be produced
   oscillators:
+    coal: .5
+    iron: .5
+    gold: .5
     lapis: .5
     diamond: .5
     redstone: .5
