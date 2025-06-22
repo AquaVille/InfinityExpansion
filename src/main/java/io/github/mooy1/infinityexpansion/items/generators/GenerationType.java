@@ -2,13 +2,12 @@ package io.github.mooy1.infinityexpansion.items.generators;
 
 import javax.annotation.Nonnull;
 
+import io.github.mooy1.infinityexpansion.utils.BlockUtils;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import org.bukkit.World;
 import org.bukkit.block.Block;
-
-import io.github.mooy1.infinityexpansion.utils.Util;
 
 @AllArgsConstructor
 public enum GenerationType {
@@ -16,7 +15,7 @@ public enum GenerationType {
     HYDROELECTRIC("Hydroelectric") {
         @Override
         protected int generate(@Nonnull World world, @Nonnull Block block, int def) {
-            return Util.isWaterLogged(block) ? def : 0;
+            return BlockUtils.isWaterLogged(block) ? def : 0;
         }
     },
     GEOTHERMAL("Geothermal") {

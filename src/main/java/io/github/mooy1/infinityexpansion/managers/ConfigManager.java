@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 import io.github.mooy1.infinityexpansion.InfinityExpansion;
-import io.github.mooy1.infinityexpansion.common.StringUtils;
+import io.github.mooy1.infinityexpansion.utils.StringUtils;
 
 
 import io.github.mooy1.infinityexpansion.utils.PathBuilder;

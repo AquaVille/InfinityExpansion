@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import io.github.mooy1.infinityexpansion.utils.BlockUtils;
 import lombok.AllArgsConstructor;
 import lombok.Setter;
 
@@ -18,8 +19,7 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 
 import io.github.mooy1.infinityexpansion.InfinityExpansion;
-import io.github.mooy1.infinityexpansion.utils.Util;
-import io.github.mooy1.infinityexpansion.common.StackUtils;
+import io.github.mooy1.infinityexpansion.utils.StackUtils;
 import io.github.mooy1.infinityexpansion.machines.AbstractMachineBlock;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
@@ -75,7 +75,7 @@ public final class SingularityConstructor extends AbstractMachineBlock implement
     protected void onBreak(@Nonnull BlockBreakEvent e, @Nonnull BlockMenu menu) {
         super.onBreak(e, menu);
         Location l = menu.getLocation();
-        int progress = Util.getIntData(PROGRESS, l);
+        int progress = BlockUtils.getIntData(PROGRESS, l);
         Integer progressID = getProgressID(l);
 
         if (progress > 0 && progressID != null) {
@@ -128,7 +128,7 @@ public final class SingularityConstructor extends AbstractMachineBlock implement
 
         // load data
         Integer progressID = getProgressID(b.getLocation());
-        int progress = Util.getIntData(PROGRESS, b.getLocation());
+        int progress = BlockUtils.getIntData(PROGRESS, b.getLocation());
 
         Recipe triplet;
         boolean takeCharge = false;

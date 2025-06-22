@@ -8,6 +8,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
 
+import io.github.mooy1.infinityexpansion.utils.BlockUtils;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.enchantments.Enchantment;
@@ -18,7 +19,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import io.github.mooy1.infinityexpansion.items.materials.Materials;
 import io.github.mooy1.infinityexpansion.items.materials.Strainer;
-import io.github.mooy1.infinityexpansion.utils.Util;
 import io.github.mooy1.infinityexpansion.machines.TickingMenuBlock;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
@@ -141,7 +141,7 @@ public final class StrainerBase extends TickingMenuBlock implements RecipeDispla
     protected void tick(Block b, BlockMenu inv) {
 
         //check water
-        if (!Util.isWaterLogged(b)) {
+        if (!BlockUtils.isWaterLogged(b)) {
             return;
         }
 

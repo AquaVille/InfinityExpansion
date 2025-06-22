@@ -1,4 +1,4 @@
-package io.github.mooy1.infinityexpansion.common;
+package io.github.mooy1.infinityexpansion.utils;
 
 import lombok.experimental.UtilityClass;
 

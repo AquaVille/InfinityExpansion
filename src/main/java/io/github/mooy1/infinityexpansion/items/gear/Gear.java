@@ -22,7 +22,7 @@ import io.github.mooy1.infinityexpansion.InfinityExpansion;
 import io.github.mooy1.infinityexpansion.categories.Groups;
 import io.github.mooy1.infinityexpansion.items.blocks.InfinityWorkbench;
 import io.github.mooy1.infinityexpansion.items.materials.Materials;
-import io.github.mooy1.infinityexpansion.utils.Util;
+import io.github.mooy1.infinityexpansion.utils.EnchantUtils;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
@@ -266,7 +266,7 @@ public final class Gear {
 
             // unbreakable and enchants
             meta.setUnbreakable(Objects.requireNonNull(itemSection).getBoolean("unbreakable"));
-            for (Map.Entry<Enchantment, Integer> entry : Util.getEnchants(itemSection).entrySet()) {
+            for (Map.Entry<Enchantment, Integer> entry : EnchantUtils.getEnchants(itemSection).entrySet()) {
                 meta.addEnchant(entry.getKey(), entry.getValue(), true);
             }
 

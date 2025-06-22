@@ -1,8 +1,6 @@
 package io.github.mooy1.infinityexpansion.utils;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 
@@ -11,39 +9,12 @@ import javax.annotation.Nullable;
 
 import lombok.experimental.UtilityClass;
 
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.block.Block;
-import org.bukkit.block.data.BlockData;
-import org.bukkit.block.data.Waterlogged;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-
 import io.github.mooy1.infinityexpansion.InfinityExpansion;
-import me.mrCookieSlime.Slimefun.api.BlockStorage;
 
 @UtilityClass
-public final class Util {
-
-    @Nonnull
-    public static ItemStack getDisplayItem(@Nonnull ItemStack output) {
-        ItemMeta meta = output.getItemMeta();
-        List<String> lore;
-        if (meta.hasLore()) {
-            lore = meta.getLore();
-        }
-        else {
-            lore = new ArrayList<>();
-        }
-        lore.add("");
-        lore.add(ChatColor.GREEN + "-------------------");
-        lore.add(ChatColor.GREEN + "\u21E8 Click to craft");
-        lore.add(ChatColor.GREEN + "-------------------");
-        output.setItemMeta(meta);
-        return output;
-    }
+public final class EnchantUtils {
 
     @Nonnull
     public static Map<Enchantment, Integer> getEnchants(@Nonnull ConfigurationSection section) {
@@ -109,44 +80,4 @@ public final class Util {
                 return null;
         }
     }
-
-    public static boolean isWaterLogged(@Nonnull Block b) {
-        if (InfinityExpansion.slimefunTickCount() % 63 == 0) {
-            BlockData blockData = b.getBlockData();
-
-            if (blockData instanceof Waterlogged) {
-                Waterlogged waterLogged = (Waterlogged) blockData;
-                if (waterLogged.isWaterlogged()) {
-                    BlockStorage.addBlockInfo(b.getLocation(), "water_logged", "true");
-                    return true;
-                }
-                else {
-                    BlockStorage.addBlockInfo(b.getLocation(), "water_logged", "false");
-                    return false;
-                }
-            }
-            else {
-                return false;
-            }
-
-        }
-        else {
-            return "true".equals(BlockStorage.getLocationInfo(b.getLocation(), "water_logged"));
-        }
-    }
-
-    public static int getIntData(String key, Location block) {
-        String val = BlockStorage.getLocationInfo(block, key);
-        if (val == null) {
-            BlockStorage.addBlockInfo(block, key, "0");
-            return 0;
-        }
-        try {
-            return Integer.parseInt(val);
-        } catch (NumberFormatException x) {
-            BlockStorage.addBlockInfo(block, key, "0");
-            return 0;
-        }
-    }
-
 }

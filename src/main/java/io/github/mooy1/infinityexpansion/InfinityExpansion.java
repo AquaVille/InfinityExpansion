@@ -112,15 +112,11 @@ public final class InfinityExpansion extends JavaPlugin implements SlimefunAddon
         // Set static instance
         instance = this;
 
-        // This is used to mark when the config is broken, so we should always auto update
-        boolean brokenConfig = false;
-
         // Create Config
         try {
             config = new ConfigManager("config.yml", instance);
         }
         catch (RuntimeException e) {
-            brokenConfig = true;
             e.printStackTrace();
         }
 

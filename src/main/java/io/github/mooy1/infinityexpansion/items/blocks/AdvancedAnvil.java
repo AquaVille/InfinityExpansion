@@ -7,6 +7,7 @@ import java.util.Objects;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import io.github.mooy1.infinityexpansion.utils.StackUtils;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import org.bukkit.ChatColor;
@@ -24,7 +25,7 @@ import com.google.common.collect.MapDifference;
 import com.google.common.collect.Maps;
 import io.github.mooy1.infinityexpansion.InfinityExpansion;
 import io.github.mooy1.infinityexpansion.items.abstracts.AbstractEnergyCrafter;
-import io.github.mooy1.infinityexpansion.utils.Util;
+import io.github.mooy1.infinityexpansion.utils.EnchantUtils;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
@@ -39,7 +40,7 @@ import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
  */
 public final class AdvancedAnvil extends AbstractEnergyCrafter {
 
-    private static final Map<Enchantment, Integer> MAX_LEVELS = Util.getEnchants(Objects.requireNonNull(
+    private static final Map<Enchantment, Integer> MAX_LEVELS = EnchantUtils.getEnchants(Objects.requireNonNull(
             InfinityExpansion.config().getConfigurationSection("advanced-anvil-max-levels")
     ));
     private static final ItemStack ANVIL_SLOT = CustomItemStack.create(Material.BLACK_STAINED_GLASS_PANE, " ");
@@ -252,7 +253,7 @@ public final class AdvancedAnvil extends AbstractEnergyCrafter {
             return;
         }
 
-        inv.replaceExistingItem(STATUS_SLOT, Util.getDisplayItem(output));
+        inv.replaceExistingItem(STATUS_SLOT, StackUtils.getDisplayItem(output));
 
     }
 

@@ -2,6 +2,7 @@ package io.github.mooy1.infinityexpansion.items.mobdata;
 
 import javax.annotation.Nonnull;
 
+import io.github.mooy1.infinityexpansion.utils.BlockUtils;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -10,8 +11,7 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 
 import io.github.mooy1.infinityexpansion.InfinityExpansion;
-import io.github.mooy1.infinityexpansion.utils.Util;
-import io.github.mooy1.infinityexpansion.common.StackUtils;
+import io.github.mooy1.infinityexpansion.utils.StackUtils;
 import io.github.mooy1.infinityexpansion.machines.AbstractMachineBlock;
 import io.github.mooy1.infinityexpansion.machines.MachineLore;
 import io.github.mooy1.infinityexpansion.machines.TickingMenuBlock;
@@ -53,7 +53,7 @@ public final class MobSimulationChamber extends TickingMenuBlock implements Ener
     @Override
     protected void onBreak(@Nonnull BlockBreakEvent e, @Nonnull BlockMenu menu) {
         super.onBreak(e, menu);
-        e.getPlayer().giveExp(Util.getIntData("xp", menu.getLocation()));
+        e.getPlayer().giveExp(BlockUtils.getIntData("xp", menu.getLocation()));
         BlockStorage.addBlockInfo(menu.getLocation(), "xp", "0");
     }
 
@@ -115,7 +115,7 @@ public final class MobSimulationChamber extends TickingMenuBlock implements Ener
         }
         menu.replaceExistingItem(XP_SLOT, makeXpItem(0));
         menu.addMenuClickHandler(XP_SLOT, (p, slot, item, action) -> {
-            int xp = Util.getIntData("xp", l);
+            int xp = BlockUtils.getIntData("xp", l);
             if (xp > 0) {
                 p.giveExp(xp);
                 p.playSound(l, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
@@ -158,7 +158,7 @@ public final class MobSimulationChamber extends TickingMenuBlock implements Ener
 
         removeCharge(b.getLocation(), energy);
 
-        int xp = Util.getIntData("xp", b.getLocation());
+        int xp = BlockUtils.getIntData("xp", b.getLocation());
 
         if (inv.hasViewer()) {
             inv.replaceExistingItem(STATUS_SLOT, CustomItemStack.create(Material.LIME_STAINED_GLASS_PANE,

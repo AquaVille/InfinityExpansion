@@ -1,4 +1,4 @@
-package io.github.mooy1.infinityexpansion.common;
+package io.github.mooy1.infinityexpansion.utils;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -8,6 +8,7 @@ import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
 
 import lombok.experimental.UtilityClass;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
@@ -17,6 +18,9 @@ import org.bukkit.persistence.PersistentDataType;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @UtilityClass
 @ParametersAreNonnullByDefault
@@ -110,6 +114,24 @@ public final class StackUtils {
         } else {
             return first.getType() == second.getType();
         }
+    }
+
+    @Nonnull
+    public static ItemStack getDisplayItem(@Nonnull ItemStack output) {
+        ItemMeta meta = output.getItemMeta();
+        List<String> lore;
+        if (meta.hasLore()) {
+            lore = meta.getLore();
+        }
+        else {
+            lore = new ArrayList<>();
+        }
+        lore.add("");
+        lore.add(ChatColor.GREEN + "-------------------");
+        lore.add(ChatColor.GREEN + "\u21E8 Click to craft");
+        lore.add(ChatColor.GREEN + "-------------------");
+        output.setItemMeta(meta);
+        return output;
     }
 
 }
