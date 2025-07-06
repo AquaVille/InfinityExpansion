@@ -36,7 +36,7 @@ public final class Events implements Listener {
      * Registers the given listener class
      */
     public static void registerListener(Listener listener) {
-        Bukkit.getPluginManager().registerEvents(listener, InfinityExpansion.instance());
+        Bukkit.getPluginManager().registerEvents(listener, InfinityExpansion.getInstance());
     }
 
     /**
@@ -46,7 +46,7 @@ public final class Events implements Listener {
     public static <T extends Event> void addHandler(Class<T> eventClass, EventPriority priority,
                                                     boolean ignoreCancelled, Consumer<T> handler) {
         Bukkit.getPluginManager().registerEvent(eventClass, LISTENER, priority,
-                (listener, event) -> handler.accept((T) event), InfinityExpansion.instance(), ignoreCancelled);
+                (listener, event) -> handler.accept((T) event), InfinityExpansion.getInstance(), ignoreCancelled);
     }
 
 }

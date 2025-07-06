@@ -17,8 +17,16 @@ repositories {
 }
 
 dependencies {
+    // Spigot
     compileOnly 'org.spigotmc:spigot-api:1.21.4-R0.1-SNAPSHOT'
+
+    // Slimefun
     compileOnly files('libs/Slimefun v4.9-UNOFFICIAL.jar')
+
+    // Cloud command framework
+    implementation 'org.incendo:cloud-paper:2.0.0-beta.10'
+
+    // IDE extras
     compileOnly 'com.google.code.findbugs:jsr305:3.0.2'
     compileOnly 'org.projectlombok:lombok:1.18.36'
     annotationProcessor 'org.projectlombok:lombok:1.18.36'

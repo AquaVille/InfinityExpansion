@@ -10,7 +10,7 @@ import org.bukkit.command.CommandSender;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.common.ChatColors;
 
 @ParametersAreNonnullByDefault
-final class HelpCommand extends SubCommand {
+public final class HelpCommand extends SubCommand {
 
     private final ParentCommand command;
 

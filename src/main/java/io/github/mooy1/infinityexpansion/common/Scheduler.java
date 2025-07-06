@@ -17,19 +17,19 @@ import org.bukkit.Bukkit;
 public final class Scheduler {
 
     public static void run(Runnable runnable) {
-        Bukkit.getScheduler().runTask(InfinityExpansion.instance(), runnable);
+        Bukkit.getScheduler().runTask(InfinityExpansion.getInstance(), runnable);
     }
 
     public static void runAsync(Runnable runnable) {
-        Bukkit.getScheduler().runTaskAsynchronously(InfinityExpansion.instance(), runnable);
+        Bukkit.getScheduler().runTaskAsynchronously(InfinityExpansion.getInstance(), runnable);
     }
 
     public static void run(int delayTicks, Runnable runnable) {
-        Bukkit.getScheduler().runTaskLater(InfinityExpansion.instance(), runnable, delayTicks);
+        Bukkit.getScheduler().runTaskLater(InfinityExpansion.getInstance(), runnable, delayTicks);
     }
 
     public static void runAsync(int delayTicks, Runnable runnable) {
-        Bukkit.getScheduler().runTaskLaterAsynchronously(InfinityExpansion.instance(), runnable, delayTicks);
+        Bukkit.getScheduler().runTaskLaterAsynchronously(InfinityExpansion.getInstance(), runnable, delayTicks);
     }
 
     public static void repeat(int intervalTicks, Runnable runnable) {
@@ -41,11 +41,11 @@ public final class Scheduler {
     }
 
     public static void repeat(int intervalTicks, int delayTicks, Runnable runnable) {
-        Bukkit.getScheduler().runTaskTimer(InfinityExpansion.instance(), runnable, delayTicks, Math.max(1, intervalTicks));
+        Bukkit.getScheduler().runTaskTimer(InfinityExpansion.getInstance(), runnable, delayTicks, Math.max(1, intervalTicks));
     }
 
     public static void repeatAsync(int intervalTicks, int delayTicks, Runnable runnable) {
-        Bukkit.getScheduler().runTaskTimerAsynchronously(InfinityExpansion.instance(), runnable, delayTicks, Math.max(1, intervalTicks));
+        Bukkit.getScheduler().runTaskTimerAsynchronously(InfinityExpansion.getInstance(), runnable, delayTicks, Math.max(1, intervalTicks));
     }
 
 }

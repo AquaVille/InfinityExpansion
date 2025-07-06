@@ -1,23 +1,10 @@
 package io.github.mooy1.infinityexpansion;
 
-import java.util.Objects;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import io.github.mooy1.infinityexpansion.managers.CommandManager;
-import io.github.mooy1.infinityexpansion.managers.ConfigManager;
-import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
-import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
-import org.bukkit.NamespacedKey;
-import org.bukkit.command.PluginCommand;
-import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.java.JavaPlugin;
-
-
 import io.github.mooy1.infinityexpansion.categories.Groups;
 import io.github.mooy1.infinityexpansion.commands.GiveRecipe;
 import io.github.mooy1.infinityexpansion.commands.PrintItem;
 import io.github.mooy1.infinityexpansion.commands.SetData;
+import io.github.mooy1.infinityexpansion.common.Scheduler;
 import io.github.mooy1.infinityexpansion.items.Researches;
 import io.github.mooy1.infinityexpansion.items.SlimefunExtension;
 import io.github.mooy1.infinityexpansion.items.blocks.Blocks;
@@ -28,15 +15,38 @@ import io.github.mooy1.infinityexpansion.items.materials.Materials;
 import io.github.mooy1.infinityexpansion.items.mobdata.MobData;
 import io.github.mooy1.infinityexpansion.items.quarries.Quarries;
 import io.github.mooy1.infinityexpansion.items.storage.Storage;
-import io.github.mooy1.infinityexpansion.common.Scheduler;
+import io.github.mooy1.infinityexpansion.managers.CommandManager;
+import io.github.mooy1.infinityexpansion.managers.ConfigManager;
+import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
+import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import org.bukkit.NamespacedKey;
+import org.bukkit.command.CommandSender;
+import org.bukkit.command.PluginCommand;
+import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.java.JavaPlugin;
+import org.incendo.cloud.SenderMapper;
+import org.incendo.cloud.bukkit.CloudBukkitCapabilities;
+import org.incendo.cloud.execution.ExecutionCoordinator;
+import org.incendo.cloud.paper.LegacyPaperCommandManager;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
+import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+@RequiredArgsConstructor
 public final class InfinityExpansion extends JavaPlugin implements SlimefunAddon {
 
+    @Getter
     private static InfinityExpansion instance;
     private CommandManager command;
+    @Getter
+    private LegacyPaperCommandManager<CommandSender> commandManager;
+
+    @Getter
     private ConfigManager config;
     private int slimefunTickCount;
 
@@ -44,10 +54,16 @@ public final class InfinityExpansion extends JavaPlugin implements SlimefunAddon
      * Gets the command of the same name as this addon
      */
     @Nonnull
-    public CommandManager getAddonCommand() {
-        return Objects.requireNonNull(instance().command, "Command '" + getName() + "' missing from plugin.yml!");
+    public CommandManager getOriginCommand() {
+        return Objects.requireNonNull(getInstance().command, "Command '" + getName() + "' missing from plugin.yml!");
     }
 
+
+    @NotNull
+    @Override
+    public JavaPlugin getJavaPlugin() {
+        return instance;
+    }
 
     @Nonnull
     @Override
@@ -55,48 +71,20 @@ public final class InfinityExpansion extends JavaPlugin implements SlimefunAddon
         return "";
     }
 
-    @Nonnull
-    public ConfigManager getConfig() {
-        return instance.config;
-    }
-
-    public void reloadConfig() {
-        instance.config.reload();
-    }
-
-    public void saveConfig() {
-        instance.config.save();
-    }
-
-    @Nonnull
-    @SuppressWarnings("unchecked")
-    public static <T extends InfinityExpansion> T instance() {
-        return (T) Objects.requireNonNull(instance, "Addon is not enabled!");
-    }
-
-    @Nonnull
-    public static ConfigManager config() {
-        return instance.getConfig();
-    }
 
     @SuppressWarnings("unused")
     public static void log(Level level, String... messages) {
-        Logger logger = instance().getLogger();
+        Logger logger = getInstance().getLogger();
         for (String msg : messages) {
             logger.log(level, msg);
         }
-    }
-
-    @NotNull
-    public JavaPlugin getJavaPlugin() {
-        return instance;
     }
 
     /**
      * Returns the total number of Slimefun ticks that have occurred
      */
     public static int slimefunTickCount() {
-        return instance().slimefunTickCount;
+        return getInstance().slimefunTickCount;
     }
 
     /**
@@ -104,19 +92,28 @@ public final class InfinityExpansion extends JavaPlugin implements SlimefunAddon
      */
     @Nonnull
     public static NamespacedKey createKey(String s) {
-        return new NamespacedKey(instance(), s);
+        return new NamespacedKey(getInstance(), s);
     }
 
-      @Override
+    @Override
     public void onEnable() {
-        // Set static instance
+        // Set static getInstance
         instance = this;
+
+        commandManager = new LegacyPaperCommandManager<>(
+                this, ExecutionCoordinator.simpleCoordinator(), SenderMapper.identity()
+        );
+
+        if (commandManager.hasCapability(CloudBukkitCapabilities.NATIVE_BRIGADIER)) {
+            commandManager.registerBrigadier();
+        } else if (commandManager.hasCapability(CloudBukkitCapabilities.ASYNCHRONOUS_COMPLETION)) {
+            commandManager.registerAsynchronousCompletions();
+        }
 
         // Create Config
         try {
             config = new ConfigManager("config.yml", instance);
-        }
-        catch (RuntimeException e) {
+        } catch (RuntimeException e) {
             e.printStackTrace();
         }
 
@@ -140,7 +137,7 @@ public final class InfinityExpansion extends JavaPlugin implements SlimefunAddon
             ));
         }
 
-        getAddonCommand()
+        getOriginCommand()
                 .addSub(new GiveRecipe())
                 .addSub(new SetData())
                 .addSub(new PrintItem());

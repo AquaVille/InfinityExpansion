@@ -36,7 +36,7 @@ public final class CommandManager extends ParentCommand implements TabExecutor, 
     private final String slashHelp;
 
     public CommandManager(String command) {
-        this(Objects.requireNonNull(InfinityExpansion.instance().getCommand(command),
+        this(Objects.requireNonNull(InfinityExpansion.getInstance().getCommand(command),
                 "No such command '" + command + "'! Add it it to your plugin.yml!"));
     }
 
@@ -51,7 +51,7 @@ public final class CommandManager extends ParentCommand implements TabExecutor, 
         help = "help " + command.getName();
         slashHelp = "/" + help;
 
-        addSub(new InfoCommand(InfinityExpansion.instance()));
+        addSub(new InfoCommand(InfinityExpansion.getInstance()));
         addSub(new AliasesCommand(command));
     }
 
@@ -96,7 +96,7 @@ public final class CommandManager extends ParentCommand implements TabExecutor, 
     }
 
     @Override
-    protected String fullName() {
+    public String fullName() {
         return name();
     }
 }

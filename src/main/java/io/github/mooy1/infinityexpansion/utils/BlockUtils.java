@@ -15,8 +15,7 @@ public class BlockUtils {
         if (InfinityExpansion.slimefunTickCount() % 63 == 0) {
             BlockData blockData = b.getBlockData();
 
-            if (blockData instanceof Waterlogged) {
-                Waterlogged waterLogged = (Waterlogged) blockData;
+            if (blockData instanceof Waterlogged waterLogged) {
                 if (waterLogged.isWaterlogged()) {
                     BlockStorage.addBlockInfo(b.getLocation(), "water_logged", "true");
                     return true;

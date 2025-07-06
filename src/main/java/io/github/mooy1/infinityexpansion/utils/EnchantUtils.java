@@ -30,7 +30,7 @@ public final class EnchantUtils {
                     section.set(path, 0);
                     InfinityExpansion.log(Level.WARNING,
                             "Enchantment level " + level
-                                    + " is out of bounds for " + e.getKey()
+                                    + " is out of bounds for " + e.getKeyOrNull()
                                     + ", resetting to default!"
                     );
                 }
@@ -41,43 +41,25 @@ public final class EnchantUtils {
 
     @Nullable
     private static Enchantment enchantmentByPath(@Nonnull String path) {
-        switch (path) {
-            case "sharpness":
-                return Enchantment.SHARPNESS;
-            case "smite":
-                return Enchantment.SMITE;
-            case "bane-of-arthropods":
-                return Enchantment.BANE_OF_ARTHROPODS;
-            case "efficiency":
-                return Enchantment.EFFICIENCY;
-            case "protection":
-                return Enchantment.PROTECTION;
-            case "fire-aspect":
-                return Enchantment.FIRE_ASPECT;
-            case "fortune":
-                return Enchantment.FORTUNE;
-            case "looting":
-                return Enchantment.LOOTING;
-            case "silk-touch":
-                return Enchantment.SILK_TOUCH;
-            case "thorns":
-                return Enchantment.THORNS;
-            case "aqua-affinity":
-                return Enchantment.AQUA_AFFINITY;
-            case "power":
-                return Enchantment.POWER;
-            case "flame":
-                return Enchantment.FLAME;
-            case "infinity":
-                return Enchantment.INFINITY;
-            case "punch":
-                return Enchantment.PUNCH;
-            case "feather-falling":
-                return Enchantment.FEATHER_FALLING;
-            case "unbreaking":
-                return Enchantment.UNBREAKING;
-            default:
-                return null;
-        }
+        return switch (path) {
+            case "sharpness" -> Enchantment.SHARPNESS;
+            case "smite" -> Enchantment.SMITE;
+            case "bane-of-arthropods" -> Enchantment.BANE_OF_ARTHROPODS;
+            case "efficiency" -> Enchantment.EFFICIENCY;
+            case "protection" -> Enchantment.PROTECTION;
+            case "fire-aspect" -> Enchantment.FIRE_ASPECT;
+            case "fortune" -> Enchantment.FORTUNE;
+            case "looting" -> Enchantment.LOOTING;
+            case "silk-touch" -> Enchantment.SILK_TOUCH;
+            case "thorns" -> Enchantment.THORNS;
+            case "aqua-affinity" -> Enchantment.AQUA_AFFINITY;
+            case "power" -> Enchantment.POWER;
+            case "flame" -> Enchantment.FLAME;
+            case "infinity" -> Enchantment.INFINITY;
+            case "punch" -> Enchantment.PUNCH;
+            case "feather-falling" -> Enchantment.FEATHER_FALLING;
+            case "unbreaking" -> Enchantment.UNBREAKING;
+            default -> null;
+        };
     }
 }

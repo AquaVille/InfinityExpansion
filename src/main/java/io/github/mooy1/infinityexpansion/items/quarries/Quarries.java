@@ -82,7 +82,7 @@ public final class Quarries {
     public static final SlimefunItemStack EMERALD_OSCILLATOR = Oscillator.create(Material.EMERALD, EMERALD_CHANCE);
 
     private static double getOscillatorChance(String type) {
-        return InfinityExpansion.config().getDouble("quarry-options.oscillators." + type, 0, 1);
+        return InfinityExpansion.getInstance().getConfig().getDouble("quarry-options.oscillators." + type, 0, 1);
     }
 
     public static void setup(InfinityExpansion plugin) {
@@ -93,17 +93,17 @@ public final class Quarries {
         boolean coal = section.getBoolean("coal");
 
         if (coal) {
-            new Oscillator(COAL_OSCILLATOR, COAL_CHANCE).register(InfinityExpansion.instance());
+            new Oscillator(COAL_OSCILLATOR, COAL_CHANCE).register(InfinityExpansion.getInstance());
             outputs.add(Material.COAL);
         }
 
         if (section.getBoolean("iron")) {
-            new Oscillator(IRON_OSCILLATOR, IRON_CHANCE).register(InfinityExpansion.instance());
+            new Oscillator(IRON_OSCILLATOR, IRON_CHANCE).register(InfinityExpansion.getInstance());
             outputs.add(Material.IRON_INGOT);
         }
 
         if (section.getBoolean("gold")) {
-            new Oscillator(GOLD_OSCILLATOR, GOLD_CHANCE).register(InfinityExpansion.instance());
+            new Oscillator(GOLD_OSCILLATOR, GOLD_CHANCE).register(InfinityExpansion.getInstance());
             outputs.add(Material.GOLD_INGOT);
         }
 
@@ -136,7 +136,7 @@ public final class Quarries {
                 Materials.MAGSTEEL_PLATE.item(), SlimefunItems.CARBONADO_EDGED_CAPACITOR.item(), Materials.MAGSTEEL_PLATE.item(),
                 new ItemStack(Material.IRON_PICKAXE), SlimefunItems.GEO_MINER.item(), new ItemStack(Material.IRON_PICKAXE),
                 Materials.MACHINE_CIRCUIT.item(), Materials.MACHINE_CORE.item(), Materials.MACHINE_CIRCUIT.item()
-        }, 1, 6, outputs.toArray(new Material[0])).energyPerTick(300).register(plugin);
+        }, 1, 6, outputs.toArray(new Material[0])).setEnergyPerTick(300).register(plugin);
 
         if (section.getBoolean("quartz")) {
             new Oscillator(QUARTZ_OSCILLATOR, QUARTZ_CHANCE).register(plugin);
@@ -157,7 +157,7 @@ public final class Quarries {
                 Materials.MACHINE_PLATE.item(), SlimefunItems.ENERGIZED_CAPACITOR.item(), Materials.MACHINE_PLATE.item(),
                 new ItemStack(Material.DIAMOND_PICKAXE), BASIC_QUARRY.item(), new ItemStack(Material.DIAMOND_PICKAXE),
                 Materials.MACHINE_CIRCUIT.item(), Materials.MACHINE_CORE.item(), Materials.MACHINE_CIRCUIT.item()
-        }, 2, 4, outputs.toArray(new Material[0])).energyPerTick(900).register(plugin);
+        }, 2, 4, outputs.toArray(new Material[0])).setEnergyPerTick(900).register(plugin);
 
         if (coal) {
             outputs.add(Material.COAL);
@@ -167,7 +167,7 @@ public final class Quarries {
                 Materials.VOID_INGOT.item(), SlimefunExtension.VOID_CAPACITOR.item(), Materials.VOID_INGOT.item(),
                 new ItemStack(Material.NETHERITE_PICKAXE), ADVANCED_QUARRY.item(), new ItemStack(Material.NETHERITE_PICKAXE),
                 Materials.MACHINE_CIRCUIT.item(), Materials.MACHINE_CORE.item(), Materials.MACHINE_CIRCUIT.item()
-        }, 6, 2, outputs.toArray(new Material[0])).energyPerTick(3600).register(plugin);
+        }, 6, 2, outputs.toArray(new Material[0])).setEnergyPerTick(3600).register(plugin);
 
         if (coal) {
             outputs.add(Material.COAL);
@@ -180,7 +180,7 @@ public final class Quarries {
                 Materials.VOID_INGOT.item(), null, Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), null, Materials.VOID_INGOT.item(),
                 Materials.VOID_INGOT.item(), null, Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), null, Materials.VOID_INGOT.item(),
                 Materials.VOID_INGOT.item(), null, Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), null, Materials.VOID_INGOT.item()
-        }, 64, 1, outputs.toArray(new Material[0])).energyPerTick(36000).register(plugin);
+        }, 64, 1, outputs.toArray(new Material[0])).setEnergyPerTick(36000).register(plugin);
     }
 
 }
