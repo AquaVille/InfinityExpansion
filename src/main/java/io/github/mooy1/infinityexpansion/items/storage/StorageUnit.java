@@ -24,16 +24,15 @@ import org.bukkit.persistence.PersistentDataType;
 
 import io.github.mooy1.infinityexpansion.InfinityExpansion;
 import io.github.mooy1.infinityexpansion.categories.Groups;
-import io.github.mooy1.infinityexpansion.common.PersistentType;
-import io.github.mooy1.infinityexpansion.common.Scheduler;
-import io.github.mooy1.infinityexpansion.machines.MenuBlock;
+import io.github.mooy1.infinitylib.common.PersistentType;
+import io.github.mooy1.infinitylib.common.Scheduler;
+import io.github.mooy1.infinitylib.machines.MenuBlock;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.core.attributes.DistinctiveItem;
 import io.github.thebusybiscuit.slimefun4.core.handlers.BlockBreakHandler;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.collections.Pair;
-import io.github.bakedlibs.dough.items.CustomItemStack;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.items.ItemUtils;
+import io.github.bakedlibs.dough.items.CustomItemStack;import io.github.thebusybiscuit.slimefun4.libraries.dough.items.ItemUtils;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import me.mrCookieSlime.CSCoreLibPlugin.Configuration.Config;
 import me.mrCookieSlime.Slimefun.Objects.handlers.BlockTicker;
@@ -139,7 +138,7 @@ public final class StorageUnit extends MenuBlock implements DistinctiveItem {
             Scheduler.run(() -> {
                 StorageCache cache = this.caches.get(b.getLocation());
                 cache.load(data.getFirstValue(), data.getFirstValue().getItemMeta());
-                cache.setAmount(data.getSecondValue());
+                cache.amount(data.getSecondValue());
             });
         }
     }
@@ -206,7 +205,7 @@ public final class StorageUnit extends MenuBlock implements DistinctiveItem {
             lore.add(ChatColor.GOLD + "Stored: " + displayName + ChatColor.YELLOW + " x " + amount);
             meta.setLore(lore);
         }
-        meta.getPersistentDataContainer().set(ITEM_KEY, PersistentType.ITEM_STACK_OLD, displayItem);
+        meta.getPersistentDataContainer().set(ITEM_KEY, PersistentType.ITEM_STACK, displayItem);
         meta.getPersistentDataContainer().set(AMOUNT_KEY, PersistentDataType.INTEGER, amount);
         return meta;
     }
@@ -217,7 +216,7 @@ public final class StorageUnit extends MenuBlock implements DistinctiveItem {
             PersistentDataContainer con = source.getItemMeta().getPersistentDataContainer();
             Integer amount = con.get(AMOUNT_KEY, PersistentDataType.INTEGER);
             if (amount != null) {
-                ItemStack item = con.get(ITEM_KEY, PersistentType.ITEM_STACK_OLD);
+                ItemStack item = con.get(ITEM_KEY, PersistentType.ITEM_STACK);
                 if (item != null) {
                     return new Pair<>(item, amount);
                 }

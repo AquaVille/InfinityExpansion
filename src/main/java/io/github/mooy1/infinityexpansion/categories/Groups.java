@@ -3,11 +3,10 @@ package io.github.mooy1.infinityexpansion.categories;
 import org.bukkit.Material;
 
 import io.github.mooy1.infinityexpansion.InfinityExpansion;
-import io.github.mooy1.infinityexpansion.groups.MultiGroup;
-import io.github.mooy1.infinityexpansion.groups.SubGroup;
+import io.github.mooy1.infinitylib.groups.MultiGroup;
+import io.github.mooy1.infinitylib.groups.SubGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.bakedlibs.dough.items.CustomItemStack;
-
 /**
  * Categories for this addon
  *

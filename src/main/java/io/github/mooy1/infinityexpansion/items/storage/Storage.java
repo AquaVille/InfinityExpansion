@@ -8,7 +8,7 @@ import org.bukkit.inventory.ItemStack;
 import io.github.mooy1.infinityexpansion.InfinityExpansion;
 import io.github.mooy1.infinityexpansion.categories.Groups;
 import io.github.mooy1.infinityexpansion.items.materials.Materials;
-import io.github.mooy1.infinityexpansion.machines.MachineLore;
+import io.github.mooy1.infinitylib.machines.MachineLore;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 
@@ -62,34 +62,34 @@ public final class Storage {
 
     public static void setup(InfinityExpansion plugin) {
         new StorageForge(Groups.STORAGE, STORAGE_FORGE, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
-                Materials.MAGSTEEL.item(), new ItemStack(Material.ANVIL), Materials.MAGSTEEL.item(),
-                Materials.MAGSTEEL.item(), new ItemStack(Material.CRAFTING_TABLE), Materials.MAGSTEEL.item(),
-                Materials.MAGSTEEL.item(), new ItemStack(Material.BARREL), Materials.MAGSTEEL.item(),
+                Materials.MAGSTEEL.item().clone(), new ItemStack(Material.ANVIL), Materials.MAGSTEEL.item().clone(),
+                Materials.MAGSTEEL.item().clone(), new ItemStack(Material.CRAFTING_TABLE), Materials.MAGSTEEL.item().clone(),
+                Materials.MAGSTEEL.item().clone(), new ItemStack(Material.BARREL), Materials.MAGSTEEL.item().clone(),
         }).register(plugin);
         new StorageUnit(BASIC_STORAGE, BASIC_AMOUNT, new ItemStack[] {
-                new ItemStack(Material.OAK_LOG), Materials.MAGSTEEL.item(), new ItemStack(Material.OAK_LOG),
+                new ItemStack(Material.OAK_LOG), Materials.MAGSTEEL.item().clone(), new ItemStack(Material.OAK_LOG),
                 new ItemStack(Material.OAK_LOG), new ItemStack(Material.BARREL), new ItemStack(Material.OAK_LOG),
-                new ItemStack(Material.OAK_LOG), Materials.MAGSTEEL.item(), new ItemStack(Material.OAK_LOG)
+                new ItemStack(Material.OAK_LOG), Materials.MAGSTEEL.item().clone(), new ItemStack(Material.OAK_LOG)
         }).register(plugin);
         new StorageUnit(ADVANCED_STORAGE, ADVANCED_AMOUNT, new ItemStack[] {
-                Materials.MAGSTEEL.item(), Materials.MACHINE_CIRCUIT.item(), Materials.MAGSTEEL.item(),
-                Materials.MAGSTEEL.item(), BASIC_STORAGE.item(), Materials.MAGSTEEL.item(),
-                Materials.MAGSTEEL.item(), Materials.MACHINE_CIRCUIT.item(), Materials.MAGSTEEL.item()
+                Materials.MAGSTEEL.item().clone(), Materials.MACHINE_CIRCUIT.item().clone(), Materials.MAGSTEEL.item().clone(),
+                Materials.MAGSTEEL.item().clone(), BASIC_STORAGE.item().clone(), Materials.MAGSTEEL.item().clone(),
+                Materials.MAGSTEEL.item().clone(), Materials.MACHINE_CIRCUIT.item().clone(), Materials.MAGSTEEL.item().clone()
         }).register(plugin);
         new StorageUnit(REINFORCED_STORAGE, REINFORCED_AMOUNT, new ItemStack[] {
-                Materials.MAGSTEEL_PLATE.item(), Materials.MACHINE_CIRCUIT.item(), Materials.MAGSTEEL_PLATE.item(),
-                Materials.MAGSTEEL_PLATE.item(), ADVANCED_STORAGE.item(), Materials.MAGSTEEL_PLATE.item(),
-                Materials.MAGSTEEL_PLATE.item(), Materials.MACHINE_PLATE.item(), Materials.MAGSTEEL_PLATE.item()
+                Materials.MAGSTEEL_PLATE.item().clone(), Materials.MACHINE_CIRCUIT.item().clone(), Materials.MAGSTEEL_PLATE.item().clone(),
+                Materials.MAGSTEEL_PLATE.item().clone(), ADVANCED_STORAGE.item().clone(), Materials.MAGSTEEL_PLATE.item().clone(),
+                Materials.MAGSTEEL_PLATE.item().clone(), Materials.MACHINE_PLATE.item().clone(), Materials.MAGSTEEL_PLATE.item().clone()
         }).register(plugin);
         new StorageUnit(VOID_STORAGE, VOID_AMOUNT, new ItemStack[] {
-                Materials.VOID_INGOT.item(), Materials.MACHINE_PLATE.item(), Materials.VOID_INGOT.item(),
-                Materials.MAGNONIUM.item(), REINFORCED_STORAGE.item(), Materials.MAGNONIUM.item(),
-                Materials.VOID_INGOT.item(), Materials.MACHINE_CORE.item(), Materials.VOID_INGOT.item()
+                Materials.VOID_INGOT.item().clone(), Materials.MACHINE_PLATE.item().clone(), Materials.VOID_INGOT.item().clone(),
+                Materials.MAGNONIUM.item().clone(), REINFORCED_STORAGE.item().clone(), Materials.MAGNONIUM.item().clone(),
+                Materials.VOID_INGOT.item().clone(), Materials.MACHINE_CORE.item().clone(), Materials.VOID_INGOT.item().clone()
         }).register(plugin);
         new StorageUnit(INFINITY_STORAGE, INFINITY_AMOUNT, new ItemStack[] {
-                Materials.INFINITE_INGOT.item(), Materials.VOID_INGOT.item(), Materials.INFINITE_INGOT.item(),
-                Materials.INFINITE_INGOT.item(), VOID_STORAGE.item(), Materials.INFINITE_INGOT.item(),
-                Materials.INFINITE_INGOT.item(), Materials.VOID_INGOT.item(), Materials.INFINITE_INGOT.item()
+                Materials.INFINITE_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(),
+                Materials.INFINITE_INGOT.item().clone(), VOID_STORAGE.item().clone(), Materials.INFINITE_INGOT.item().clone(),
+                Materials.INFINITE_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone()
         }).register(plugin);
     }
 

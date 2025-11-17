@@ -16,7 +16,7 @@ import io.github.mooy1.infinityexpansion.items.SlimefunExtension;
 import io.github.mooy1.infinityexpansion.items.blocks.InfinityWorkbench;
 import io.github.mooy1.infinityexpansion.items.gear.Gear;
 import io.github.mooy1.infinityexpansion.items.materials.Materials;
-import io.github.mooy1.infinityexpansion.machines.MachineLore;
+import io.github.mooy1.infinitylib.machines.MachineLore;
 import io.github.thebusybiscuit.slimefun4.api.MinecraftVersion;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
@@ -62,27 +62,31 @@ public final class Quarries {
             MachineLore.speed(64),
             MachineLore.energyPerSecond(36000)
     );
-
-    public static final double IRON_CHANCE = getOscillatorChance("iron");
-    public static final double COAL_CHANCE = getOscillatorChance("coal");
-    public static final double GOLD_CHANCE = getOscillatorChance("gold");
     public static final double DIAMOND_CHANCE = getOscillatorChance("diamond");
     public static final double REDSTONE_CHANCE = getOscillatorChance("redstone");
     public static final double LAPIS_CHANCE = getOscillatorChance("lapis");
     public static final double EMERALD_CHANCE = getOscillatorChance("emerald");
     public static final double QUARTZ_CHANCE = getOscillatorChance("quartz");
 
-    public static final SlimefunItemStack IRON_OSCILLATOR = Oscillator.create(Material.IRON_INGOT, IRON_CHANCE);
-    public static final SlimefunItemStack COAL_OSCILLATOR = Oscillator.create(Material.COAL, COAL_CHANCE);
-    public static final SlimefunItemStack GOLD_OSCILLATOR = Oscillator.create(Material.GOLD_INGOT, GOLD_CHANCE);
+    public static final double COPPER_CHANCE = getOscillatorChance("copper");
+    public static final double IRON_CHANCE = getOscillatorChance("iron");
+    public static final double GOLD_CHANCE = getOscillatorChance("gold");
+    public static final double NETHERITE_CHANCE = getOscillatorChance("netherite");
+    public static final double COAL_CHANCE = getOscillatorChance("coal");
+
     public static final SlimefunItemStack DIAMOND_OSCILLATOR = Oscillator.create(Material.DIAMOND, DIAMOND_CHANCE);
     public static final SlimefunItemStack REDSTONE_OSCILLATOR = Oscillator.create(Material.REDSTONE, REDSTONE_CHANCE);
     public static final SlimefunItemStack LAPIS_OSCILLATOR = Oscillator.create(Material.LAPIS_LAZULI, LAPIS_CHANCE);
     public static final SlimefunItemStack QUARTZ_OSCILLATOR = Oscillator.create(Material.QUARTZ, QUARTZ_CHANCE);
     public static final SlimefunItemStack EMERALD_OSCILLATOR = Oscillator.create(Material.EMERALD, EMERALD_CHANCE);
 
+    public static final SlimefunItemStack IRON_OSCILLATOR = Oscillator.create(Material.IRON_INGOT, IRON_CHANCE);
+    public static final SlimefunItemStack GOLD_OSCILLATOR = Oscillator.create(Material.GOLD_INGOT, GOLD_CHANCE);
+    public static final SlimefunItemStack NETHERITE_OSCILLATOR = Oscillator.create(Material.NETHERITE_INGOT, NETHERITE_CHANCE);
+    public static final SlimefunItemStack COAL_OSCILLATOR = Oscillator.create(Material.COAL, COAL_CHANCE);
+
     private static double getOscillatorChance(String type) {
-        return InfinityExpansion.getInstance().getConfig().getDouble("quarry-options.oscillators." + type, 0, 1);
+        return InfinityExpansion.config().getDouble("quarry-options.oscillators." + type, 0, 1);
     }
 
     public static void setup(InfinityExpansion plugin) {
@@ -93,22 +97,28 @@ public final class Quarries {
         boolean coal = section.getBoolean("coal");
 
         if (coal) {
-            new Oscillator(COAL_OSCILLATOR, COAL_CHANCE).register(InfinityExpansion.getInstance());
+            new Oscillator(COAL_OSCILLATOR, COAL_CHANCE).register(plugin);
+
             outputs.add(Material.COAL);
         }
 
         if (section.getBoolean("iron")) {
-            new Oscillator(IRON_OSCILLATOR, IRON_CHANCE).register(InfinityExpansion.getInstance());
+            new Oscillator(IRON_OSCILLATOR, IRON_CHANCE).register(plugin);
             outputs.add(Material.IRON_INGOT);
         }
 
         if (section.getBoolean("gold")) {
-            new Oscillator(GOLD_OSCILLATOR, GOLD_CHANCE).register(InfinityExpansion.getInstance());
+            new Oscillator(GOLD_OSCILLATOR, GOLD_CHANCE).register(plugin);
             outputs.add(Material.GOLD_INGOT);
         }
 
-        if (Slimefun.getMinecraftVersion().isAtLeast(MinecraftVersion.MINECRAFT_1_17) && section.getBoolean("copper")) {
-            outputs.add(Material.COPPER_INGOT);
+        if (Slimefun.getMinecraftVersion().isAtLeast(MinecraftVersion.MINECRAFT_1_17)
+                && section.getBoolean("copper")) {
+
+            SlimefunItemStack COPPER_OSCILLATOR =
+                    Oscillator.create(Material.COPPER_INGOT, COPPER_CHANCE);
+
+            new Oscillator(COPPER_OSCILLATOR, COPPER_CHANCE).register(plugin);
             outputs.add(Material.COPPER_INGOT);
         }
 
@@ -133,10 +143,10 @@ public final class Quarries {
         }
 
         new Quarry(Groups.ADVANCED_MACHINES, BASIC_QUARRY, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
-                Materials.MAGSTEEL_PLATE.item(), SlimefunItems.CARBONADO_EDGED_CAPACITOR.item(), Materials.MAGSTEEL_PLATE.item(),
-                new ItemStack(Material.IRON_PICKAXE), SlimefunItems.GEO_MINER.item(), new ItemStack(Material.IRON_PICKAXE),
-                Materials.MACHINE_CIRCUIT.item(), Materials.MACHINE_CORE.item(), Materials.MACHINE_CIRCUIT.item()
-        }, 1, 6, outputs.toArray(new Material[0])).setEnergyPerTick(300).register(plugin);
+                Materials.MAGSTEEL_PLATE.item().clone(), SlimefunItems.CARBONADO_EDGED_CAPACITOR.item().clone(), Materials.MAGSTEEL_PLATE.item().clone(),
+                new ItemStack(Material.IRON_PICKAXE), SlimefunItems.GEO_MINER.item().clone(), new ItemStack(Material.IRON_PICKAXE),
+                Materials.MACHINE_CIRCUIT.item().clone(), Materials.MACHINE_CORE.item().clone(), Materials.MACHINE_CIRCUIT.item().clone()
+        }, 1, 6, outputs.toArray(new Material[0])).energyPerTick(300).register(plugin);
 
         if (section.getBoolean("quartz")) {
             new Oscillator(QUARTZ_OSCILLATOR, QUARTZ_CHANCE).register(plugin);
@@ -145,6 +155,7 @@ public final class Quarries {
         }
 
         if (section.getBoolean("netherite")) {
+            new Oscillator(NETHERITE_OSCILLATOR, NETHERITE_CHANCE).register(plugin);
             outputs.add(Material.NETHERITE_INGOT);
         }
 
@@ -154,33 +165,33 @@ public final class Quarries {
         }
 
         new Quarry(Groups.ADVANCED_MACHINES, ADVANCED_QUARRY, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
-                Materials.MACHINE_PLATE.item(), SlimefunItems.ENERGIZED_CAPACITOR.item(), Materials.MACHINE_PLATE.item(),
-                new ItemStack(Material.DIAMOND_PICKAXE), BASIC_QUARRY.item(), new ItemStack(Material.DIAMOND_PICKAXE),
-                Materials.MACHINE_CIRCUIT.item(), Materials.MACHINE_CORE.item(), Materials.MACHINE_CIRCUIT.item()
-        }, 2, 4, outputs.toArray(new Material[0])).setEnergyPerTick(900).register(plugin);
+                Materials.MACHINE_PLATE.item().clone(), SlimefunItems.ENERGIZED_CAPACITOR.item().clone(), Materials.MACHINE_PLATE.item().clone(),
+                new ItemStack(Material.DIAMOND_PICKAXE), BASIC_QUARRY.item().clone(), new ItemStack(Material.DIAMOND_PICKAXE),
+                Materials.MACHINE_CIRCUIT.item().clone(), Materials.MACHINE_CORE.item().clone(), Materials.MACHINE_CIRCUIT.item().clone()
+        }, 2, 4, outputs.toArray(new Material[0])).energyPerTick(900).register(plugin);
 
         if (coal) {
             outputs.add(Material.COAL);
         }
 
         new Quarry(Groups.ADVANCED_MACHINES, VOID_QUARRY, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
-                Materials.VOID_INGOT.item(), SlimefunExtension.VOID_CAPACITOR.item(), Materials.VOID_INGOT.item(),
-                new ItemStack(Material.NETHERITE_PICKAXE), ADVANCED_QUARRY.item(), new ItemStack(Material.NETHERITE_PICKAXE),
-                Materials.MACHINE_CIRCUIT.item(), Materials.MACHINE_CORE.item(), Materials.MACHINE_CIRCUIT.item()
-        }, 6, 2, outputs.toArray(new Material[0])).setEnergyPerTick(3600).register(plugin);
+                Materials.VOID_INGOT.item().clone(), SlimefunExtension.VOID_CAPACITOR.item().clone(), Materials.VOID_INGOT.item().clone(),
+                new ItemStack(Material.NETHERITE_PICKAXE), ADVANCED_QUARRY.item().clone(), new ItemStack(Material.NETHERITE_PICKAXE),
+                Materials.MACHINE_CIRCUIT.item().clone(), Materials.MACHINE_CORE.item().clone(), Materials.MACHINE_CIRCUIT.item().clone()
+        }, 6, 2, outputs.toArray(new Material[0])).energyPerTick(3600).register(plugin);
 
         if (coal) {
             outputs.add(Material.COAL);
         }
 
         new Quarry(Groups.INFINITY_CHEAT, INFINITY_QUARRY, InfinityWorkbench.TYPE, new ItemStack[] {
-                null, Materials.MACHINE_PLATE.item(), Materials.MACHINE_PLATE.item(), Materials.MACHINE_PLATE.item(), Materials.MACHINE_PLATE.item(), null,
-                Materials.MACHINE_PLATE.item(), Gear.PICKAXE.item(), Materials.INFINITE_CIRCUIT.item(), Materials.INFINITE_CIRCUIT.item(), Gear.PICKAXE.item(), Materials.MACHINE_PLATE.item(),
-                Materials.MACHINE_PLATE.item(), VOID_QUARRY.item(), Materials.INFINITE_CORE.item(), Materials.INFINITE_CORE.item(), VOID_QUARRY.item(), Materials.MACHINE_PLATE.item(),
-                Materials.VOID_INGOT.item(), null, Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), null, Materials.VOID_INGOT.item(),
-                Materials.VOID_INGOT.item(), null, Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), null, Materials.VOID_INGOT.item(),
-                Materials.VOID_INGOT.item(), null, Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), null, Materials.VOID_INGOT.item()
-        }, 64, 1, outputs.toArray(new Material[0])).setEnergyPerTick(36000).register(plugin);
+                null, Materials.MACHINE_PLATE.item().clone(), Materials.MACHINE_PLATE.item().clone(), Materials.MACHINE_PLATE.item().clone(), Materials.MACHINE_PLATE.item().clone(), null,
+                Materials.MACHINE_PLATE.item().clone(), Gear.PICKAXE.item().clone(), Materials.INFINITE_CIRCUIT.item().clone(), Materials.INFINITE_CIRCUIT.item().clone(), Gear.PICKAXE.item().clone(), Materials.MACHINE_PLATE.item().clone(),
+                Materials.MACHINE_PLATE.item().clone(), VOID_QUARRY.item().clone(), Materials.INFINITE_CORE.item().clone(), Materials.INFINITE_CORE.item().clone(), VOID_QUARRY.item().clone(), Materials.MACHINE_PLATE.item().clone(),
+                Materials.VOID_INGOT.item().clone(), null, Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), null, Materials.VOID_INGOT.item().clone(),
+                Materials.VOID_INGOT.item().clone(), null, Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), null, Materials.VOID_INGOT.item().clone(),
+                Materials.VOID_INGOT.item().clone(), null, Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), null, Materials.VOID_INGOT.item().clone()
+        }, 64, 1, outputs.toArray(new Material[0])).energyPerTick(36000).register(plugin);
     }
 
 }

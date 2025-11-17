@@ -10,6 +10,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+import io.github.mooy1.infinitylib.commands.SubCommand;
+
 public final class PrintItem extends SubCommand {
 
     public PrintItem() {

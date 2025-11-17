@@ -8,9 +8,7 @@ import java.util.Map;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import io.github.mooy1.infinityexpansion.utils.BlockUtils;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.Setter;
 
 import org.bukkit.Location;
@@ -20,15 +18,15 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 
 import io.github.mooy1.infinityexpansion.InfinityExpansion;
-import io.github.mooy1.infinityexpansion.utils.StackUtils;
-import io.github.mooy1.infinityexpansion.machines.AbstractMachineBlock;
+import io.github.mooy1.infinityexpansion.utils.Util;
+import io.github.mooy1.infinitylib.common.StackUtils;
+import io.github.mooy1.infinitylib.machines.AbstractMachineBlock;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.RecipeDisplayItem;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.collections.Pair;
-import io.github.bakedlibs.dough.items.CustomItemStack;
-import me.mrCookieSlime.Slimefun.api.BlockStorage;
+import io.github.bakedlibs.dough.items.CustomItemStack;import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
 
@@ -39,19 +37,16 @@ import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
  */
 public final class SingularityConstructor extends AbstractMachineBlock implements RecipeDisplayItem {
 
-    public static List<ItemStack> ALLOWED_ITEMS = new ArrayList<>(List.of());
-
     private static final List<Recipe> RECIPE_LIST = new ArrayList<>();
     private static final Map<String, Pair<Integer, Recipe>> RECIPE_MAP = new HashMap<>();
     public static final RecipeType TYPE = new RecipeType(InfinityExpansion.createKey("singularity_constructor"),
-            Machines.SINGULARITY_CONSTRUCTOR.item(), (stacks, itemStack) -> {
+            Machines.SINGULARITY_CONSTRUCTOR.item().clone(), (stacks, itemStack) -> {
         int amt = 0;
         for (ItemStack item : stacks) {
             if (item != null) {
                 amt += item.getAmount();
             }
         }
-
         String id = StackUtils.getIdOrType(stacks[0]);
         Recipe recipe = new Recipe(itemStack, stacks[0], id, amt);
         RECIPE_LIST.add(recipe);
@@ -66,7 +61,6 @@ public final class SingularityConstructor extends AbstractMachineBlock implement
     @Setter
     private int speed;
 
-
     public SingularityConstructor(ItemGroup category, SlimefunItemStack item, RecipeType type, ItemStack[] recipe) {
         super(category, item, type, recipe);
     }
@@ -75,7 +69,7 @@ public final class SingularityConstructor extends AbstractMachineBlock implement
     protected void onBreak(@Nonnull BlockBreakEvent e, @Nonnull BlockMenu menu) {
         super.onBreak(e, menu);
         Location l = menu.getLocation();
-        int progress = BlockUtils.getIntData(PROGRESS, l);
+        int progress = Util.getIntData(PROGRESS, l);
         Integer progressID = getProgressID(l);
 
         if (progress > 0 && progressID != null) {
@@ -109,15 +103,6 @@ public final class SingularityConstructor extends AbstractMachineBlock implement
     @Override
     protected boolean process(@Nonnull Block b, @Nonnull BlockMenu menu) {
         ItemStack input = menu.getItemInSlot(INPUT_SLOT[0]);
-
-        ArrayList<ItemStack> matches = new ArrayList<>();
-        for (ItemStack item : ALLOWED_ITEMS) {
-            if (item.isSimilar(input))
-                matches.add(item);
-        }
-        if (matches.isEmpty())
-            return false;
-
         String inputID;
         if (input == null) {
             inputID = null;
@@ -128,7 +113,7 @@ public final class SingularityConstructor extends AbstractMachineBlock implement
 
         // load data
         Integer progressID = getProgressID(b.getLocation());
-        int progress = BlockUtils.getIntData(PROGRESS, b.getLocation());
+        int progress = Util.getIntData(PROGRESS, b.getLocation());
 
         Recipe triplet;
         boolean takeCharge = false;
@@ -177,17 +162,25 @@ public final class SingularityConstructor extends AbstractMachineBlock implement
                 progressID = null;
 
                 if (menu.hasViewer()) {
+                    String outName = (triplet.output.hasItemMeta() && triplet.output.getItemMeta().hasDisplayName())
+                            ? triplet.output.getItemMeta().getDisplayName()
+                            : triplet.output.getType().name();
+
                     menu.replaceExistingItem(STATUS_SLOT, new CustomItemStack(
                             Material.LIME_STAINED_GLASS_PANE,
-                            "&aConstructing " + triplet.output.getItemMeta().getDisplayName() + "...",
+                            "&aConstructing " + outName + "...",
                             "&7Complete"
                     ));
                 }
             }
             else if (menu.hasViewer()) {
+                String outName = (triplet.output.hasItemMeta() && triplet.output.getItemMeta().hasDisplayName())
+                        ? triplet.output.getItemMeta().getDisplayName()
+                        : triplet.output.getType().name();
+
                 menu.replaceExistingItem(STATUS_SLOT, new CustomItemStack(
                         Material.LIME_STAINED_GLASS_PANE,
-                        "&aConstructing " + triplet.output.getItemMeta().getDisplayName() + "...",
+                        "&aConstructing " + outName + "...",
                         "&7" + progress + " / " + triplet.amount
                 ));
             }
@@ -221,7 +214,6 @@ public final class SingularityConstructor extends AbstractMachineBlock implement
                 24, 25, 26
         });
     }
-
 
     @Override
     protected int getStatusSlot() {
@@ -299,6 +291,7 @@ public final class SingularityConstructor extends AbstractMachineBlock implement
         private final ItemStack input;
         private final String id;
         private final int amount;
+
     }
 
 }

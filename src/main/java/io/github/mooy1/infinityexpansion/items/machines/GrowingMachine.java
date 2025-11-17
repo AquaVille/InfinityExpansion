@@ -7,18 +7,19 @@ import java.util.Map;
 
 import javax.annotation.Nonnull;
 
+import lombok.Setter;
+
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.inventory.ItemStack;
 
 import io.github.mooy1.infinityexpansion.InfinityExpansion;
-import io.github.mooy1.infinityexpansion.machines.AbstractMachineBlock;
+import io.github.mooy1.infinitylib.machines.AbstractMachineBlock;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.RecipeDisplayItem;
-import io.github.bakedlibs.dough.items.CustomItemStack;
-import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
+import io.github.bakedlibs.dough.items.CustomItemStack;import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
 
 public final class GrowingMachine extends AbstractMachineBlock implements RecipeDisplayItem {
@@ -34,17 +35,10 @@ public final class GrowingMachine extends AbstractMachineBlock implements Recipe
     private static final ItemStack GROWING = new CustomItemStack(Material.LIME_STAINED_GLASS_PANE, "&aGrowing...");
     private static final ItemStack INPUT_PLANT = new CustomItemStack(Material.BLUE_STAINED_GLASS_PANE, "&9Input a plant!");
 
+    @Setter
     private EnumMap<Material, ItemStack[]> recipes;
-
-    public void setRecipes(EnumMap<Material, ItemStack[]> recipes) {
-        this.recipes = recipes;
-    }
-
+    @Setter
     private int ticksPerOutput;
-
-    public void setTicksPerOutput(int ticks) {
-        this.ticksPerOutput = ticks;
-    }
 
     public GrowingMachine(ItemGroup category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);

@@ -12,13 +12,12 @@ import org.bukkit.inventory.ItemStack;
 
 import io.github.mooy1.infinityexpansion.InfinityExpansion;
 import io.github.mooy1.infinityexpansion.items.materials.Materials;
-import io.github.mooy1.infinityexpansion.machines.AbstractMachineBlock;
+import io.github.mooy1.infinitylib.machines.AbstractMachineBlock;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.RecipeDisplayItem;
-import io.github.bakedlibs.dough.items.CustomItemStack;
-import me.mrCookieSlime.Slimefun.api.BlockStorage;
+import io.github.bakedlibs.dough.items.CustomItemStack;import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
 
@@ -29,7 +28,7 @@ import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
  */
 public final class VoidHarvester extends AbstractMachineBlock implements RecipeDisplayItem {
 
-    public static final RecipeType TYPE = new RecipeType(InfinityExpansion.createKey("VOID_HARVESTER"), Machines.VOID_HARVESTER);
+    public static final RecipeType TYPE = new RecipeType(InfinityExpansion.createKey("void_harvester"), Machines.VOID_HARVESTER);
 
     private static final int[] OUTPUT_SLOTS = { 13 };
     private static final int TIME = 1024;
@@ -47,7 +46,7 @@ public final class VoidHarvester extends AbstractMachineBlock implements RecipeD
 
         if (progress >= TIME) { //reached full progress
 
-            ItemStack output = Materials.VOID_BIT.item();
+            ItemStack output = Materials.VOID_BIT.item().clone();
 
             if (inv.fits(output, OUTPUT_SLOTS)) {
 

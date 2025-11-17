@@ -1,7 +1,6 @@
 package io.github.mooy1.infinityexpansion.items.materials;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Nonnull;
@@ -15,7 +14,6 @@ import io.github.mooy1.infinityexpansion.items.machines.SingularityConstructor;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.implementation.items.blocks.UnplaceableBlock;
 import io.github.bakedlibs.dough.items.CustomItemStack;
-
 /**
  * Singularities and there recipe displays
  *
@@ -24,18 +22,16 @@ import io.github.bakedlibs.dough.items.CustomItemStack;
 public final class Singularity extends UnplaceableBlock {
 
     private static final double COST_MULTIPLIER =
-            InfinityExpansion.getInstance().getConfig().getDouble("balance-options.singularity-cost-multiplier", 0.1, 100);
+            InfinityExpansion.config().getDouble("balance-options.singularity-cost-multiplier", 0.1, 100);
 
-    public Singularity(SlimefunItemStack item, ItemStack recipe, int amount) {
+    public Singularity(SlimefunItemStack item, SlimefunItemStack recipe, int amount) {
         super(Groups.INFINITY_MATERIALS, item, SingularityConstructor.TYPE,
-                makeRecipe(recipe, (int) (amount * COST_MULTIPLIER)));
-        SingularityConstructor.ALLOWED_ITEMS.add(recipe);
+                makeRecipe(recipe.item().clone(), (int) (amount * COST_MULTIPLIER)));
     }
 
     public Singularity(SlimefunItemStack item, Material recipe, int amount) {
         super(Groups.INFINITY_MATERIALS, item, SingularityConstructor.TYPE,
                 makeRecipe(new ItemStack(recipe), (int) (amount * COST_MULTIPLIER)));
-        SingularityConstructor.ALLOWED_ITEMS.add(new ItemStack(recipe));
     }
 
     @Nonnull

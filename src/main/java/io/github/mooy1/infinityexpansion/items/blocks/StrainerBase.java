@@ -8,7 +8,6 @@ import java.util.concurrent.ThreadLocalRandom;
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
 
-import io.github.mooy1.infinityexpansion.utils.BlockUtils;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.enchantments.Enchantment;
@@ -19,14 +18,14 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import io.github.mooy1.infinityexpansion.items.materials.Materials;
 import io.github.mooy1.infinityexpansion.items.materials.Strainer;
-import io.github.mooy1.infinityexpansion.machines.TickingMenuBlock;
+import io.github.mooy1.infinityexpansion.utils.Util;
+import io.github.mooy1.infinitylib.machines.TickingMenuBlock;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.RecipeDisplayItem;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
-import io.github.bakedlibs.dough.items.CustomItemStack;
-import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
+import io.github.bakedlibs.dough.items.CustomItemStack;import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
 import me.mrCookieSlime.Slimefun.api.inventory.DirtyChestMenu;
@@ -59,16 +58,16 @@ public final class StrainerBase extends TickingMenuBlock implements RecipeDispla
             new ItemStack(Material.QUARTZ),
             new ItemStack(Material.REDSTONE),
             new ItemStack(Material.EMERALD),
-            new SlimefunItemStack(SlimefunItems.MAGNESIUM_DUST, 1).item(),
-            new SlimefunItemStack(SlimefunItems.COPPER_DUST, 1).item(),
-            new SlimefunItemStack(SlimefunItems.COPPER_DUST, 1).item(),
-            new SlimefunItemStack(SlimefunItems.SILVER_DUST, 1).item(),
-            new SlimefunItemStack(SlimefunItems.ALUMINUM_DUST, 1).item(),
-            new SlimefunItemStack(SlimefunItems.LEAD_DUST, 1).item(),
-            new SlimefunItemStack(SlimefunItems.IRON_DUST, 1).item(),
-            new SlimefunItemStack(SlimefunItems.GOLD_DUST, 1).item(),
-            new SlimefunItemStack(SlimefunItems.TIN_DUST, 1).item(),
-            new SlimefunItemStack(SlimefunItems.ZINC_DUST, 1).item(),
+            SlimefunItems.MAGNESIUM_DUST.item().clone(),
+            SlimefunItems.COPPER_DUST.item().clone(),
+            SlimefunItems.COPPER_DUST.item().clone(),
+            SlimefunItems.SILVER_DUST.item().clone(),
+            SlimefunItems.ALUMINUM_DUST.item().clone(),
+            SlimefunItems.LEAD_DUST.item().clone(),
+            SlimefunItems.IRON_DUST.item().clone(),
+            SlimefunItems.GOLD_DUST.item().clone(),
+            SlimefunItems.TIN_DUST.item().clone(),
+            SlimefunItems.ZINC_DUST.item().clone(),
     };
 
     private final int time;
@@ -124,8 +123,8 @@ public final class StrainerBase extends TickingMenuBlock implements RecipeDispla
         List<ItemStack> items = new ArrayList<>();
 
         for (ItemStack output : OUTPUTS) {
-            items.add(Materials.BASIC_STRAINER.item());
-            items.add(output);
+            items.add(Materials.BASIC_STRAINER.item().clone());
+            items.add(output.clone());
         }
 
         return items;
@@ -141,7 +140,7 @@ public final class StrainerBase extends TickingMenuBlock implements RecipeDispla
     protected void tick(Block b, BlockMenu inv) {
 
         //check water
-        if (!BlockUtils.isWaterLogged(b)) {
+        if (!Util.isWaterLogged(b)) {
             return;
         }
 
@@ -201,7 +200,7 @@ public final class StrainerBase extends TickingMenuBlock implements RecipeDispla
 
         //reduce durability
 
-        if (random.nextInt(strainer.getEnchantmentLevel(Enchantment.DENSITY) + 3 * strainer.getEnchantmentLevel(Enchantment.MENDING) + 1) == 0) {
+        if (random.nextInt(strainer.getEnchantmentLevel(Enchantment.UNBREAKING) + 3 * strainer.getEnchantmentLevel(Enchantment.MENDING) + 1) == 0) {
             ItemMeta itemMeta = strainer.getItemMeta();
             Damageable durability = (Damageable) itemMeta;
 

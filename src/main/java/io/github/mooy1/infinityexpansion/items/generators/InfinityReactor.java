@@ -13,15 +13,14 @@ import org.bukkit.block.Block;
 import org.bukkit.inventory.ItemStack;
 
 import io.github.mooy1.infinityexpansion.items.materials.Materials;
-import io.github.mooy1.infinityexpansion.utils.StackUtils;
-import io.github.mooy1.infinityexpansion.machines.MenuBlock;
+import io.github.mooy1.infinitylib.common.StackUtils;
+import io.github.mooy1.infinitylib.machines.MenuBlock;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.EnergyNetProvider;
 import io.github.thebusybiscuit.slimefun4.core.attributes.RecipeDisplayItem;
-import io.github.bakedlibs.dough.items.CustomItemStack;
-import me.mrCookieSlime.CSCoreLibPlugin.Configuration.Config;
+import io.github.bakedlibs.dough.items.CustomItemStack;import me.mrCookieSlime.CSCoreLibPlugin.Configuration.Config;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
@@ -122,7 +121,7 @@ public final class InfinityReactor extends MenuBlock implements EnergyNetProvide
             if (voidInput == null || !Materials.VOID_INGOT.getItemId().equals(StackUtils.getId(voidInput))) { //wrong input
 
                 if (inv.hasViewer()) {
-                    inv.replaceExistingItem(STATUS_SLOT,new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&cInput more &8Void Ingots"));
+                    inv.replaceExistingItem(STATUS_SLOT, new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&cInput more &8Void Ingots"));
                 }
                 return 0;
 

@@ -11,7 +11,7 @@ import org.bukkit.inventory.ItemStack;
 
 import io.github.mooy1.infinityexpansion.categories.Groups;
 import io.github.mooy1.infinityexpansion.items.materials.Materials;
-import io.github.mooy1.infinityexpansion.utils.StackUtils;
+import io.github.mooy1.infinitylib.common.StackUtils;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
@@ -45,9 +45,9 @@ public final class Oscillator extends SlimefunItem {
 
     public Oscillator(SlimefunItemStack item, double chance) {
         super(Groups.MAIN_MATERIALS, item, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
-                Materials.MACHINE_PLATE.item(), SlimefunItems.BLISTERING_INGOT_3.item(), Materials.MACHINE_PLATE.item(),
-                SlimefunItems.BLISTERING_INGOT_3.item(), new ItemStack(item.getType()), SlimefunItems.BLISTERING_INGOT_3.item(),
-                Materials.MACHINE_PLATE.item(), SlimefunItems.BLISTERING_INGOT_3.item(), Materials.MACHINE_PLATE.item()
+                Materials.MACHINE_PLATE.item().clone(), SlimefunItems.BLISTERING_INGOT_3.item().clone(), Materials.MACHINE_PLATE.item().clone(),
+                SlimefunItems.BLISTERING_INGOT_3.item().clone(), new ItemStack(item.getType()), SlimefunItems.BLISTERING_INGOT_3.item().clone(),
+                Materials.MACHINE_PLATE.item().clone(), SlimefunItems.BLISTERING_INGOT_3.item().clone(), Materials.MACHINE_PLATE.item().clone()
         });
         OSCILLATORS.put(getId(), this);
         this.chance = chance;

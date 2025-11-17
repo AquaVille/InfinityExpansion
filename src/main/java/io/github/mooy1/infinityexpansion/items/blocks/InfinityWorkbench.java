@@ -10,20 +10,19 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import io.github.mooy1.infinityexpansion.categories.InfinityGroup;
-import io.github.mooy1.infinityexpansion.machines.MachineLayout;
-import io.github.mooy1.infinityexpansion.machines.MachineRecipeType;
+import io.github.mooy1.infinitylib.machines.MachineLayout;
+import io.github.mooy1.infinitylib.machines.MachineRecipeType;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.EnergyNetComponent;
 import io.github.thebusybiscuit.slimefun4.core.networks.energy.EnergyNetComponentType;
-import io.github.bakedlibs.dough.items.CustomItemStack;
-import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
+import io.github.bakedlibs.dough.items.CustomItemStack;import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
 
 @ParametersAreNonnullByDefault
-public final class InfinityWorkbench extends io.github.mooy1.infinityexpansion.machines.CraftingBlock implements EnergyNetComponent {
+public final class InfinityWorkbench extends io.github.mooy1.infinitylib.machines.CraftingBlock implements EnergyNetComponent {
 
     public static final int[] INPUT_SLOTS = {
             0, 1, 2, 3, 4, 5,
@@ -43,16 +42,16 @@ public final class InfinityWorkbench extends io.github.mooy1.infinityexpansion.m
     public InfinityWorkbench(ItemGroup category, SlimefunItemStack item, RecipeType type, ItemStack[] recipe, int energy) {
         super(category, item, type, recipe);
         addRecipesFrom(TYPE);
-        setLayout(new MachineLayout()
-                .setInputSlots(INPUT_SLOTS)
-                .setOutputSlots(new int[] { 43 })
-                .setStatusSlot(16)
-                .setInputBorder(new int[0])
-                .setOutputBorder(new int[] {
+        layout(new MachineLayout()
+                .inputSlots(INPUT_SLOTS)
+                .outputSlots(new int[] { 43 })
+                .statusSlot(16)
+                .inputBorder(new int[0])
+                .outputBorder(new int[] {
                         33, 34, 35,
                         42, 44,
                         51, 52, 53
-                }).setBackground(new int[] {
+                }).background(new int[] {
                         6, 8, 15, 17, 24, 25, 26
                 })
         );

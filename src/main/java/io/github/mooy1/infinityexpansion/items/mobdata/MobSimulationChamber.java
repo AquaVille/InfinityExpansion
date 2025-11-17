@@ -2,7 +2,6 @@ package io.github.mooy1.infinityexpansion.items.mobdata;
 
 import javax.annotation.Nonnull;
 
-import io.github.mooy1.infinityexpansion.utils.BlockUtils;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -11,24 +10,24 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 
 import io.github.mooy1.infinityexpansion.InfinityExpansion;
-import io.github.mooy1.infinityexpansion.utils.StackUtils;
-import io.github.mooy1.infinityexpansion.machines.AbstractMachineBlock;
-import io.github.mooy1.infinityexpansion.machines.MachineLore;
-import io.github.mooy1.infinityexpansion.machines.TickingMenuBlock;
+import io.github.mooy1.infinityexpansion.utils.Util;
+import io.github.mooy1.infinitylib.common.StackUtils;
+import io.github.mooy1.infinitylib.machines.AbstractMachineBlock;
+import io.github.mooy1.infinitylib.machines.MachineLore;
+import io.github.mooy1.infinitylib.machines.TickingMenuBlock;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.EnergyNetComponent;
 import io.github.thebusybiscuit.slimefun4.core.networks.energy.EnergyNetComponentType;
-import io.github.bakedlibs.dough.items.CustomItemStack;
-import me.mrCookieSlime.Slimefun.api.BlockStorage;
+import io.github.bakedlibs.dough.items.CustomItemStack;import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
 import me.mrCookieSlime.Slimefun.api.inventory.DirtyChestMenu;
 
 public final class MobSimulationChamber extends TickingMenuBlock implements EnergyNetComponent {
 
-    static final double XP_MULTIPLIER = InfinityExpansion.getInstance().getConfig().getDouble("mob-simulation-options.xp-multiplier", 0, 1000);
+    static final double XP_MULTIPLIER = InfinityExpansion.config().getDouble("mob-simulation-options.xp-multiplier", 0, 1000);
 
     private static final ItemStack NO_CARD = new CustomItemStack(Material.BARRIER, "&cInput a Mob Data Card!");
     private static final int CARD_SLOT = 37;
@@ -53,7 +52,7 @@ public final class MobSimulationChamber extends TickingMenuBlock implements Ener
     @Override
     protected void onBreak(@Nonnull BlockBreakEvent e, @Nonnull BlockMenu menu) {
         super.onBreak(e, menu);
-        e.getPlayer().giveExp(BlockUtils.getIntData("xp", menu.getLocation()));
+        e.getPlayer().giveExp(Util.getIntData("xp", menu.getLocation()));
         BlockStorage.addBlockInfo(menu.getLocation(), "xp", "0");
     }
 
@@ -115,7 +114,7 @@ public final class MobSimulationChamber extends TickingMenuBlock implements Ener
         }
         menu.replaceExistingItem(XP_SLOT, makeXpItem(0));
         menu.addMenuClickHandler(XP_SLOT, (p, slot, item, action) -> {
-            int xp = BlockUtils.getIntData("xp", l);
+            int xp = Util.getIntData("xp", l);
             if (xp > 0) {
                 p.giveExp(xp);
                 p.playSound(l, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
@@ -158,7 +157,7 @@ public final class MobSimulationChamber extends TickingMenuBlock implements Ener
 
         removeCharge(b.getLocation(), energy);
 
-        int xp = BlockUtils.getIntData("xp", b.getLocation());
+        int xp = Util.getIntData("xp", b.getLocation());
 
         if (inv.hasViewer()) {
             inv.replaceExistingItem(STATUS_SLOT, new CustomItemStack(Material.LIME_STAINED_GLASS_PANE,

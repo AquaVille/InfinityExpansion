@@ -22,7 +22,7 @@ import io.github.mooy1.infinityexpansion.InfinityExpansion;
 import io.github.mooy1.infinityexpansion.categories.Groups;
 import io.github.mooy1.infinityexpansion.items.blocks.InfinityWorkbench;
 import io.github.mooy1.infinityexpansion.items.materials.Materials;
-import io.github.mooy1.infinityexpansion.utils.EnchantUtils;
+import io.github.mooy1.infinityexpansion.utils.Util;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
@@ -125,18 +125,18 @@ public final class Gear {
         Objects.requireNonNull(storageMeta).addStoredEnchant(Enchantment.FIRE_ASPECT, 10, true);
         ENDER_FLAME.setItemMeta(storageMeta);
         new SlimefunItem(Groups.MAIN_MATERIALS, ENDER_FLAME, RecipeType.MAGIC_WORKBENCH, new ItemStack[] {
-                Materials.ENDER_ESSENCE.item(), Materials.ENDER_ESSENCE.item(), Materials.ENDER_ESSENCE.item(),
-                Materials.ENDER_ESSENCE.item(), new ItemStack(Material.BOOK), Materials.ENDER_ESSENCE.item(),
-                Materials.ENDER_ESSENCE.item(), Materials.ENDER_ESSENCE.item(), Materials.ENDER_ESSENCE.item()
+                Materials.ENDER_ESSENCE.item().clone(), Materials.ENDER_ESSENCE.item().clone(), Materials.ENDER_ESSENCE.item().clone(),
+                Materials.ENDER_ESSENCE.item().clone(), new ItemStack(Material.BOOK), Materials.ENDER_ESSENCE.item().clone(),
+                Materials.ENDER_ESSENCE.item().clone(), Materials.ENDER_ESSENCE.item().clone(), Materials.ENDER_ESSENCE.item().clone()
         }).register(plugin);
         new InfinityArmor(CROWN, new PotionEffect[] {
                 new PotionEffect(PotionEffectType.NIGHT_VISION, 600, 0, false, false, false),
                 new PotionEffect(PotionEffectType.CONDUIT_POWER, 600, 0, false, false, false),
         }, new ItemStack[] {
-                null, Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), null,
-                Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(),
-                Materials.INFINITE_INGOT.item(), Materials.VOID_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.VOID_INGOT.item(), Materials.INFINITE_INGOT.item(),
-                null, Materials.INFINITE_INGOT.item(), null, null, Materials.INFINITE_INGOT.item(), null,
+                null, Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), null,
+                Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(),
+                Materials.INFINITE_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(),
+                null, Materials.INFINITE_INGOT.item().clone(), null, null, Materials.INFINITE_INGOT.item().clone(), null,
                 null, null, null, null, null, null,
                 null, null, null, null, null, null
         }).register(plugin);
@@ -145,96 +145,96 @@ public final class Gear {
                 new PotionEffect(PotionEffectType.STRENGTH, 600, 1, false, false, false),
                 new PotionEffect(PotionEffectType.FIRE_RESISTANCE, 600, 0, false, false, false)
         }, new ItemStack[] {
-                null, Materials.INFINITE_INGOT.item(), null, null, Materials.INFINITE_INGOT.item(), null,
-                Materials.INFINITE_INGOT.item(), Materials.VOID_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.VOID_INGOT.item(), Materials.INFINITE_INGOT.item(),
-                Materials.VOID_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.VOID_INGOT.item(),
-                Materials.VOID_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.VOID_INGOT.item(), Materials.VOID_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.VOID_INGOT.item(),
-                null, Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), null,
-                null, Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), null
+                null, Materials.INFINITE_INGOT.item().clone(), null, null, Materials.INFINITE_INGOT.item().clone(), null,
+                Materials.INFINITE_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(),
+                Materials.VOID_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(),
+                Materials.VOID_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(),
+                null, Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), null,
+                null, Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), null
         }).register(plugin);
         new InfinityArmor(LEGGINGS, new PotionEffect[] {
                 new PotionEffect(PotionEffectType.HASTE, 600, 2, false, false, false),
                 new PotionEffect(PotionEffectType.REGENERATION, 600, 0, false, false, false),
                 new PotionEffect(PotionEffectType.SATURATION, 600, 0, false, false, false),
         }, new ItemStack[] {
-                null, Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), null,
-                Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(),
-                Materials.VOID_INGOT.item(), Materials.INFINITE_INGOT.item(), null, null, Materials.INFINITE_INGOT.item(), Materials.VOID_INGOT.item(),
-                Materials.VOID_INGOT.item(), Materials.INFINITE_INGOT.item(), null, null, Materials.INFINITE_INGOT.item(), Materials.VOID_INGOT.item(),
-                Materials.VOID_INGOT.item(), Materials.INFINITE_INGOT.item(), null, null, Materials.INFINITE_INGOT.item(), Materials.VOID_INGOT.item(),
-                null, Materials.INFINITE_INGOT.item(), null, null, Materials.INFINITE_INGOT.item(), null
+                null, Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), null,
+                Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(),
+                Materials.VOID_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), null, null, Materials.INFINITE_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(),
+                Materials.VOID_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), null, null, Materials.INFINITE_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(),
+                Materials.VOID_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), null, null, Materials.INFINITE_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(),
+                null, Materials.INFINITE_INGOT.item().clone(), null, null, Materials.INFINITE_INGOT.item().clone(), null
         }).register(plugin);
         new InfinityArmor(BOOTS, new PotionEffect[] {
                 new PotionEffect(PotionEffectType.SPEED, 600, 2, false, false, false),
                 new PotionEffect(PotionEffectType.DOLPHINS_GRACE, 600, 0, false, false, false),
         }, new ItemStack[] {
                 null, null, null, null, null, null,
-                Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), null, null, Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(),
-                Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), null, null, Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(),
-                Materials.VOID_INGOT.item(), Materials.VOID_INGOT.item(), null, null, Materials.VOID_INGOT.item(), Materials.VOID_INGOT.item(),
-                Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), null, null, Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(),
-                Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), null, null, Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item()
+                Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), null, null, Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(),
+                Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), null, null, Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(),
+                Materials.VOID_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(), null, null, Materials.VOID_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(),
+                Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), null, null, Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(),
+                Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), null, null, Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone()
         }).register(plugin);
         new InfinityTool(SHIELD, new ItemStack[] {
-                Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), null, null, Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(),
-                Materials.INFINITE_INGOT.item(), Materials.VOID_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.VOID_INGOT.item(), Materials.INFINITE_INGOT.item(),
-                Materials.INFINITE_INGOT.item(), Materials.VOID_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.VOID_INGOT.item(), Materials.INFINITE_INGOT.item(),
-                Materials.INFINITE_INGOT.item(), Materials.VOID_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.VOID_INGOT.item(), Materials.INFINITE_INGOT.item(),
-                null, Materials.INFINITE_INGOT.item(), Materials.VOID_INGOT.item(), Materials.VOID_INGOT.item(), Materials.INFINITE_INGOT.item(), null,
-                null, Materials.INFINITE_INGOT.item(), Materials.VOID_INGOT.item(), Materials.VOID_INGOT.item(), Materials.INFINITE_INGOT.item(), null
+                Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), null, null, Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(),
+                Materials.INFINITE_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(),
+                Materials.INFINITE_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(),
+                Materials.INFINITE_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(),
+                null, Materials.INFINITE_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), null,
+                null, Materials.INFINITE_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), null
         }).register(plugin);
         new InfinityBow(Groups.INFINITY_CHEAT, BOW, InfinityWorkbench.TYPE, new ItemStack[] {
-                null, Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.VOID_INGOT.item(), null, null,
-                Materials.INFINITE_INGOT.item(), null, Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.VOID_INGOT.item(), null,
-                Materials.VOID_INGOT.item(), null, null, ENDER_FLAME.item(), Materials.INFINITE_INGOT.item(), Materials.VOID_INGOT.item(),
-                null, Materials.VOID_INGOT.item(), null, null, Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(),
-                null, null, Materials.VOID_INGOT.item(), null, null, Materials.INFINITE_INGOT.item(),
-                null, null, null, Materials.VOID_INGOT.item(), Materials.INFINITE_INGOT.item(), null
+                null, Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(), null, null,
+                Materials.INFINITE_INGOT.item().clone(), null, Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(), null,
+                Materials.VOID_INGOT.item().clone(), null, null, ENDER_FLAME.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(),
+                null, Materials.VOID_INGOT.item().clone(), null, null, Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(),
+                null, null, Materials.VOID_INGOT.item().clone(), null, null, Materials.INFINITE_INGOT.item().clone(),
+                null, null, null, Materials.VOID_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), null
         }).register(plugin);
         new InfinityTool(AXE, new ItemStack[] {
-                null, Materials.VOID_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), null, null,
-                Materials.VOID_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.VOID_INGOT.item(), null,
-                null, Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.VOID_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(),
-                null, null, Materials.VOID_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(),
-                null, Materials.VOID_INGOT.item(), null, Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.VOID_INGOT.item(),
-                Materials.VOID_INGOT.item(), null, null, null, Materials.VOID_INGOT.item(), null
+                null, Materials.VOID_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), null, null,
+                Materials.VOID_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(), null,
+                null, Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(),
+                null, null, Materials.VOID_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(),
+                null, Materials.VOID_INGOT.item().clone(), null, Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(),
+                Materials.VOID_INGOT.item().clone(), null, null, null, Materials.VOID_INGOT.item().clone(), null
         }).register(plugin);
         new InfinityTool(BLADE, new ItemStack[] {
-                null, null, null, null, Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(),
-                null, null, null, Materials.INFINITE_INGOT.item(), Materials.VOID_INGOT.item(), Materials.INFINITE_INGOT.item(),
-                null, null, Materials.INFINITE_INGOT.item(), Materials.VOID_INGOT.item(), Materials.INFINITE_INGOT.item(), null,
-                Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.VOID_INGOT.item(), Materials.INFINITE_INGOT.item(), null, null,
-                null, Materials.VOID_INGOT.item(), Materials.INFINITE_INGOT.item(), null, null, null,
-                Materials.VOID_INGOT.item(), null, Materials.INFINITE_INGOT.item(), null, null, null
+                null, null, null, null, Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(),
+                null, null, null, Materials.INFINITE_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(),
+                null, null, Materials.INFINITE_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), null,
+                Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), null, null,
+                null, Materials.VOID_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), null, null, null,
+                Materials.VOID_INGOT.item().clone(), null, Materials.INFINITE_INGOT.item().clone(), null, null, null
         }).register(plugin);
         new InfinityTool(SHOVEL, new ItemStack[] {
-                null, null, null, Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(),
-                null, null, Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(),
-                null, null, Materials.INFINITE_INGOT.item(), Materials.VOID_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(),
-                null, null, Materials.VOID_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), null,
-                null, Materials.VOID_INGOT.item(), null, null, null, null,
-                Materials.VOID_INGOT.item(), null, null, null, null, null
+                null, null, null, Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(),
+                null, null, Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(),
+                null, null, Materials.INFINITE_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(),
+                null, null, Materials.VOID_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), null,
+                null, Materials.VOID_INGOT.item().clone(), null, null, null, null,
+                Materials.VOID_INGOT.item().clone(), null, null, null, null, null
         }).register(plugin);
         new InfinityTool(PICKAXE, new ItemStack[] {
-                null, Materials.VOID_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), null,
-                null, null, null, Materials.INFINITE_INGOT.item(), Materials.VOID_INGOT.item(), Materials.INFINITE_INGOT.item(),
-                null, null, null, Materials.VOID_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(),
-                null, null, Materials.VOID_INGOT.item(), null, null, Materials.INFINITE_INGOT.item(),
-                null, Materials.VOID_INGOT.item(), null, null, null, Materials.VOID_INGOT.item(),
-                Materials.VOID_INGOT.item(), null, null, null, null, null
+                null, Materials.VOID_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), null,
+                null, null, null, Materials.INFINITE_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(),
+                null, null, null, Materials.VOID_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(),
+                null, null, Materials.VOID_INGOT.item().clone(), null, null, Materials.INFINITE_INGOT.item().clone(),
+                null, Materials.VOID_INGOT.item().clone(), null, null, null, Materials.VOID_INGOT.item().clone(),
+                Materials.VOID_INGOT.item().clone(), null, null, null, null, null
         }).register(plugin);
         new InfinityMatrix(Groups.INFINITY_CHEAT, INFINITY_MATRIX, InfinityWorkbench.TYPE, new ItemStack[] {
-                Materials.INFINITE_INGOT.item(), null, Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), null, Materials.INFINITE_INGOT.item(),
-                Materials.INFINITE_INGOT.item(), Materials.VOID_INGOT.item(), Materials.VOID_INGOT.item(), Materials.VOID_INGOT.item(), Materials.VOID_INGOT.item(), Materials.INFINITE_INGOT.item(),
-                Materials.VOID_INGOT.item(), Materials.VOID_INGOT.item(), new ItemStack(Material.ELYTRA), new ItemStack(Material.ELYTRA), Materials.VOID_INGOT.item(), Materials.VOID_INGOT.item(),
-                Materials.VOID_INGOT.item(), Materials.VOID_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.VOID_INGOT.item(), Materials.VOID_INGOT.item(),
-                Materials.INFINITE_INGOT.item(), Materials.VOID_INGOT.item(), Materials.VOID_INGOT.item(), Materials.VOID_INGOT.item(), Materials.VOID_INGOT.item(), Materials.INFINITE_INGOT.item(),
-                Materials.INFINITE_INGOT.item(), null, Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), null, Materials.INFINITE_INGOT.item()
+                Materials.INFINITE_INGOT.item().clone(), null, Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), null, Materials.INFINITE_INGOT.item().clone(),
+                Materials.INFINITE_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(),
+                Materials.VOID_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(), new ItemStack(Material.ELYTRA), new ItemStack(Material.ELYTRA), Materials.VOID_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(),
+                Materials.VOID_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(),
+                Materials.INFINITE_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(), Materials.VOID_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(),
+                Materials.INFINITE_INGOT.item().clone(), null, Materials.INFINITE_INGOT.item().clone(), Materials.INFINITE_INGOT.item().clone(), null, Materials.INFINITE_INGOT.item().clone()
         }).register(plugin);
         new VeinMinerRune(Groups.MAIN_MATERIALS, VEIN_MINER_RUNE, RecipeType.MAGIC_WORKBENCH, new ItemStack[] {
-                Materials.MAGSTEEL_PLATE.item(), SlimefunItems.PICKAXE_OF_VEIN_MINING.item(), Materials.MAGSTEEL_PLATE.item(),
-                Materials.ENDER_ESSENCE.item(), SlimefunItems.BLANK_RUNE.item(), Materials.ENDER_ESSENCE.item(),
-                Materials.MAGSTEEL_PLATE.item(), SlimefunItems.PICKAXE_OF_VEIN_MINING.item(), Materials.MAGSTEEL_PLATE.item(),
+                Materials.MAGSTEEL_PLATE.item().clone(), SlimefunItems.PICKAXE_OF_VEIN_MINING.item().clone(), Materials.MAGSTEEL_PLATE.item().clone(),
+                Materials.ENDER_ESSENCE.item().clone(), SlimefunItems.BLANK_RUNE.item().clone(), Materials.ENDER_ESSENCE.item().clone(),
+                Materials.MAGSTEEL_PLATE.item().clone(), SlimefunItems.PICKAXE_OF_VEIN_MINING.item().clone(), Materials.MAGSTEEL_PLATE.item().clone(),
         }).register(plugin);
     }
 
@@ -266,7 +266,7 @@ public final class Gear {
 
             // unbreakable and enchants
             meta.setUnbreakable(Objects.requireNonNull(itemSection).getBoolean("unbreakable"));
-            for (Map.Entry<Enchantment, Integer> entry : EnchantUtils.getEnchants(itemSection).entrySet()) {
+            for (Map.Entry<Enchantment, Integer> entry : Util.getEnchants(itemSection).entrySet()) {
                 meta.addEnchant(entry.getKey(), entry.getValue(), true);
             }
 

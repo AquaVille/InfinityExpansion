@@ -12,14 +12,13 @@ import org.bukkit.inventory.ItemStack;
 
 import io.github.mooy1.infinityexpansion.InfinityExpansion;
 import io.github.mooy1.infinityexpansion.items.abstracts.AbstractEnergyCrafter;
-import io.github.mooy1.infinityexpansion.utils.StackUtils;
+import io.github.mooy1.infinitylib.common.StackUtils;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.RecipeDisplayItem;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.collections.Pair;
-import io.github.bakedlibs.dough.items.CustomItemStack;
-import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
+import io.github.bakedlibs.dough.items.CustomItemStack;import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
 
 /**
@@ -30,7 +29,7 @@ import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
 @ParametersAreNonnullByDefault
 public final class GearTransformer extends AbstractEnergyCrafter implements RecipeDisplayItem {
 
-    private static final boolean SF = InfinityExpansion.getInstance().getConfig().getBoolean("balance-options.allow-sf-item-transform");
+    private static final boolean SF = InfinityExpansion.config().getBoolean("balance-options.allow-sf-item-transform");
     private static final int[] OUTPUT_SLOTS = { 40 };
     private static final int[] INPUT_SLOTS = { 10, 16 };
     private static final int STATUS_SLOT = 13;
@@ -44,7 +43,7 @@ public final class GearTransformer extends AbstractEnergyCrafter implements Reci
     };
     private static final ItemStack[] ARMOR_RECIPE = {
             new ItemStack(Material.LEATHER, 9),
-            new ItemStack(Material.CHAIN, 9),
+            new ItemStack(Material.IRON_CHAIN, 9),
             new ItemStack(Material.IRON_INGOT, 9),
             new ItemStack(Material.GOLD_INGOT, 9),
             new ItemStack(Material.DIAMOND, 9),

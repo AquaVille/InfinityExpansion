@@ -1,5 +1,6 @@
 package io.github.mooy1.infinityexpansion.items;
 
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import lombok.experimental.UtilityClass;
 
 import io.github.mooy1.infinityexpansion.InfinityExpansion;
@@ -13,6 +14,9 @@ import io.github.mooy1.infinityexpansion.items.quarries.Quarries;
 import io.github.mooy1.infinityexpansion.items.storage.Storage;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.researches.Research;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @UtilityClass
 public final class Researches {
@@ -56,12 +60,12 @@ public final class Researches {
         );
         create(5, "mob_data", "Virtual Mob Farms", 30,
                 MobData.CHAMBER, MobData.EMPTY_DATA_CARD, MobData.INFUSER,
-                MobData.COW, MobData.SHEEP, MobData.CHICKEN
+                MobData.COW, MobData.PIG, MobData.SHEEP, MobData.CHICKEN
         );
         create(6, "oscillators", "Improving Quarries", 30,
-                Quarries.COAL_OSCILLATOR, Quarries.IRON_OSCILLATOR, Quarries.GOLD_OSCILLATOR,
                 Quarries.DIAMOND_OSCILLATOR, Quarries.EMERALD_OSCILLATOR, Quarries.LAPIS_OSCILLATOR,
-                Quarries.REDSTONE_OSCILLATOR, Quarries.QUARTZ_OSCILLATOR
+                Quarries.REDSTONE_OSCILLATOR, Quarries.QUARTZ_OSCILLATOR, Quarries.IRON_OSCILLATOR,
+                Quarries.GOLD_OSCILLATOR, Quarries.NETHERITE_OSCILLATOR, Quarries.COAL_OSCILLATOR
         );
         create(7, "machine_materials", "Machine Materials", 20,
                 Materials.MAGSTEEL, Materials.MAGSTEEL_PLATE, Materials.MACHINE_CIRCUIT,
@@ -135,12 +139,17 @@ public final class Researches {
         );
     }
 
-    private static void create(int id, String key, String name, int cost, SlimefunItemStack... items) {
-        Research research = new Research(InfinityExpansion.createKey(key), FIRST_RESEARCH_ID + id, name, cost);
-        for (SlimefunItemStack item : items){
-            research.addItems(item.item());
-        }
-        research.register();
-    }
+    private static void create(int id, String key, String name, int cost, SlimefunItemStack... stacks) {
+        var research = new Research(InfinityExpansion.createKey(key), FIRST_RESEARCH_ID + id, name, cost);
 
+        List<SlimefunItem> items = new ArrayList<>();
+        for (SlimefunItemStack s : stacks) {
+            var it = s.getItem();
+            if (it != null) {
+                items.add(it);
+            }
+        }
+
+        research.addItems(items.toArray(new SlimefunItem[0]));
+    }
 }
