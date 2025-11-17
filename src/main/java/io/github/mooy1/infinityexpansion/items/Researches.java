@@ -139,17 +139,11 @@ public final class Researches {
         );
     }
 
-    private static void create(int id, String key, String name, int cost, SlimefunItemStack... stacks) {
-        var research = new Research(InfinityExpansion.createKey(key), FIRST_RESEARCH_ID + id, name, cost);
-
-        List<SlimefunItem> items = new ArrayList<>();
-        for (SlimefunItemStack s : stacks) {
-            var it = s.getItem();
-            if (it != null) {
-                items.add(it);
-            }
+    private static void create(int id, String key, String name, int cost, SlimefunItemStack... items) {
+        Research research = new Research(InfinityExpansion.createKey(key), FIRST_RESEARCH_ID + id, name, cost);
+        for (SlimefunItemStack item : items) {
+            research.addItems(item.item());
         }
-
-        research.addItems(items.toArray(new SlimefunItem[0]));
+        research.register();
     }
 }
