@@ -18,6 +18,8 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.persistence.PersistentDataType;
 
 @UtilityClass
 public final class Materials {
@@ -337,21 +339,27 @@ public final class Materials {
                 SlimefunItems.COPPER_INGOT.item().clone(), SlimefunItems.SILICON.item().clone(), SlimefunItems.COPPER_INGOT.item().clone(),
                 SlimefunItems.COPPER_INGOT.item().clone(), SlimefunItems.ELECTRO_MAGNET.item().clone(), SlimefunItems.COPPER_INGOT.item().clone()
         });
-        new Strainer(BASIC_STRAINER, new ItemStack[] {
+
+        Strainer.create(BASIC_STRAINER, new ItemStack[] {
                 new ItemStack(Material.STICK), new ItemStack(Material.STRING), new ItemStack(Material.STICK),
                 new ItemStack(Material.STRING), new ItemStack(Material.STICK), new ItemStack(Material.STRING),
                 new ItemStack(Material.STICK), new ItemStack(Material.STRING), new ItemStack(Material.STICK),
         }, 1).register(plugin);
-        new Strainer(ADVANCED_STRAINER, new ItemStack[] {
+
+
+        Strainer.create(ADVANCED_STRAINER, new ItemStack[] {
                 Materials.MAGSTEEL.item().clone(), new ItemStack(Material.STRING), Materials.MAGSTEEL.item().clone(),
                 new ItemStack(Material.STRING), BASIC_STRAINER.item().clone(), new ItemStack(Material.STRING),
                 Materials.MAGSTEEL.item().clone(), new ItemStack(Material.STRING), Materials.MAGSTEEL.item().clone()
         }, 4).register(plugin);
-        new Strainer(REINFORCED_STRAINER, new ItemStack[] {
+
+
+        Strainer.create(REINFORCED_STRAINER, new ItemStack[] {
                 SlimefunItems.REINFORCED_ALLOY_INGOT.item().clone(), new ItemStack(Material.STRING), SlimefunItems.REINFORCED_ALLOY_INGOT.item().clone(),
                 new ItemStack(Material.STRING), ADVANCED_STRAINER.item().clone(), new ItemStack(Material.STRING),
                 SlimefunItems.REINFORCED_ALLOY_INGOT.item().clone(), new ItemStack(Material.STRING), SlimefunItems.REINFORCED_ALLOY_INGOT.item().clone()
         }, 20).register(plugin);
+
         registerEnhanced(MACHINE_CORE, new ItemStack[] {
                 TITANIUM.item().clone(), MACHINE_CIRCUIT.item().clone(), TITANIUM.item().clone(),
                 MACHINE_CIRCUIT.item().clone(), MACHINE_PLATE.item().clone(), MACHINE_CIRCUIT.item().clone(),

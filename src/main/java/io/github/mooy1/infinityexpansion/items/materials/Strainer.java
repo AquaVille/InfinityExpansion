@@ -19,27 +19,34 @@ import io.github.thebusybiscuit.slimefun4.core.attributes.NotPlaceable;
  *
  * @author Mooy1
  */
-public final class Strainer extends SlimefunItem implements NotPlaceable {
+public final class Strainer {
 
     private static final NamespacedKey KEY = InfinityExpansion.createKey("strainer_speed");
 
-    public Strainer(SlimefunItemStack item, ItemStack[] recipe, int speed) {
-        super(Groups.BASIC_MACHINES, item, RecipeType.ENHANCED_CRAFTING_TABLE, recipe);
+    public static StrainerItem create(SlimefunItemStack item, ItemStack[] recipe, int speed) {
         ItemMeta meta = item.getItemMeta();
-        meta.getPersistentDataContainer().set(KEY, PersistentDataType.INTEGER, speed);
+        meta.getPersistentDataContainer().set(Strainer.KEY, PersistentDataType.INTEGER, speed);
         item.setItemMeta(meta);
+        return new StrainerItem(item, recipe);
     }
+
 
     /**
      * This method gets the speed of strainer from an item
      *
      * @return speed
      */
-    public static int getStrainer(@Nullable ItemStack item) {
+    public static int getSpeed(@Nullable ItemStack item) {
         if (item != null && item.hasItemMeta()) {
-            return item.getItemMeta().getPersistentDataContainer().getOrDefault(Strainer.KEY, PersistentDataType.INTEGER, 0);
+            return item.getItemMeta().getPersistentDataContainer().getOrDefault(KEY, PersistentDataType.INTEGER, 0);
         }
         return 0;
+    }
+
+    static class StrainerItem extends SlimefunItem implements NotPlaceable {
+        public StrainerItem(SlimefunItemStack item, ItemStack[] recipe){
+            super(Groups.BASIC_MACHINES, item, RecipeType.ENHANCED_CRAFTING_TABLE, recipe);
+        }
     }
 
 }

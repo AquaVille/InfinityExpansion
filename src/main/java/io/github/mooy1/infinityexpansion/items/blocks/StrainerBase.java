@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.logging.Level;
 
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
 
+import io.github.mooy1.infinityexpansion.InfinityExpansion;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.enchantments.Enchantment;
@@ -99,7 +101,7 @@ public final class StrainerBase extends TickingMenuBlock implements RecipeDispla
     @Nonnull
     @Override
     public int[] getInputSlots(@Nonnull DirtyChestMenu menu, @Nonnull ItemStack item) {
-        if (Strainer.getStrainer(item) > 0) {
+        if (Strainer.getSpeed(item) > 0) {
             return INPUT_SLOTS;
         }
         else {
@@ -147,7 +149,7 @@ public final class StrainerBase extends TickingMenuBlock implements RecipeDispla
         //check input
 
         ItemStack strainer = inv.getItemInSlot(INPUT_SLOTS[0]);
-        int speed = Strainer.getStrainer(strainer);
+        int speed = Strainer.getSpeed(strainer);
 
         if (speed == 0) {
 
