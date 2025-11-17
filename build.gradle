@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'maven-publish'
+    id 'com.gradleup.shadow' version '9.2.2'
 }
 
 java {
@@ -16,15 +16,26 @@ repositories {
     maven { url 'https://jitpack.io' }
 }
 
+tasks {
+    build {
+        dependsOn(tasks.named("shadowJar"))
+    }
+
+    compileJava {
+        options.encoding = "UTF-8"
+        options.fork = true
+    }
+}
+
 dependencies {
     // Spigot
     compileOnly 'org.spigotmc:spigot-api:1.21.4-R0.1-SNAPSHOT'
 
     // Slimefun
-    compileOnly files('libs/Slimefun v4.9-UNOFFICIAL.jar')
+    compileOnly 'com.github.SlimeFun-Lab:Slimefun4:experimental-SNAPSHOT'
 
-    // Cloud command framework
-    implementation 'org.incendo:cloud-paper:2.0.0-beta.10'
+    // Dough
+    implementation 'com.github.StarWishsama:dough:0a06f6fcaef863c97e3c036ef2406e15691bae16'
 
     // IDE extras
     compileOnly 'com.google.code.findbugs:jsr305:3.0.2'
@@ -34,4 +45,8 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+}
+
+tasks.shadowJar {
+    relocate("io.github.bakedlibs.dough", "io.github.mooy1.infinityexpansion.libs.dough")
 }

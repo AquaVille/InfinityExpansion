@@ -28,7 +28,7 @@ public final class StorageForge extends CraftingBlock {
 
     @Override
     protected void onSuccessfulCraft(BlockMenu menu, ItemStack toOutput) {
-        StorageUnit.transferToStack(menu.getItemInSlot(layout.inputSlots()[4]), toOutput);
+        StorageUnit.transferToStack(menu.getItemInSlot(layout.getInputSlots()[4]), toOutput);
     }
 
 }

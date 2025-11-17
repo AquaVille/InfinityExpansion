@@ -265,7 +265,7 @@ public final class Machines {
                 Materials.TITANIUM.item(), Materials.TITANIUM.item(), Materials.TITANIUM.item(),
                 Materials.MACHINE_PLATE.item(), SlimefunItems.GEO_MINER.item(), Materials.MACHINE_PLATE.item(),
                 Materials.MACHINE_CIRCUIT.item(), Materials.MACHINE_CORE.item(), Materials.MACHINE_CIRCUIT.item()
-        }, 1).energyPerTick(120).register(plugin);
+        }, 1).setEnergyPerTick(120).register(plugin);
         new VoidHarvester(Groups.INFINITY_CHEAT, INFINITE_VOID_HARVESTER, InfinityWorkbench.TYPE, new ItemStack[] {
                 Materials.MACHINE_PLATE.item(), Materials.MACHINE_PLATE.item(), Materials.MACHINE_PLATE.item(), Materials.MACHINE_PLATE.item(), Materials.MACHINE_PLATE.item(), Materials.MACHINE_PLATE.item(),
                 Materials.MAGNONIUM.item(), Materials.VOID_INGOT.item(), Materials.VOID_INGOT.item(), Materials.VOID_INGOT.item(), Materials.VOID_INGOT.item(), Materials.MAGNONIUM.item(),
@@ -273,18 +273,18 @@ public final class Machines {
                 Materials.MAGNONIUM.item(), Materials.VOID_INGOT.item(), VOID_HARVESTER.item(), VOID_HARVESTER.item(), Materials.VOID_INGOT.item(), Materials.MAGNONIUM.item(),
                 Materials.MAGNONIUM.item(), Materials.VOID_INGOT.item(), Materials.VOID_INGOT.item(), Materials.VOID_INGOT.item(), Materials.VOID_INGOT.item(), Materials.MAGNONIUM.item(),
                 Materials.MACHINE_PLATE.item(), Materials.MACHINE_PLATE.item(), Materials.MACHINE_PLATE.item(), Materials.MACHINE_PLATE.item(), Materials.MACHINE_PLATE.item(), Materials.MACHINE_PLATE.item()
-        }, 64).energyPerTick(12000).register(plugin);
+        }, 64).setEnergyPerTick(12000).register(plugin);
         new StoneworksFactory(Groups.ADVANCED_MACHINES, STONEWORKS_FACTORY, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
                 Materials.MAGSTEEL_PLATE.item(), BASIC_COBBLE.item(), Materials.MAGSTEEL_PLATE.item(),
                 SlimefunItems.ELECTRIC_FURNACE_3.item(), Materials.MACHINE_CIRCUIT.item(), SlimefunItems.ELECTRIC_ORE_GRINDER.item(),
                 Materials.MAGSTEEL_PLATE.item(), SlimefunItems.ELECTRIC_PRESS.item(), Materials.MAGSTEEL_PLATE.item()
-        }).energyPerTick(240).register(plugin);
+        }).setEnergyPerTick(240).register(plugin);
 
         new SingularityConstructor(Groups.ADVANCED_MACHINES, SINGULARITY_CONSTRUCTOR, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
                 Materials.MAGSTEEL.item(), Materials.MAGSTEEL.item(), Materials.MAGSTEEL.item(),
                 Materials.MACHINE_PLATE.item(), SlimefunItems.CARBON_PRESS_3.item(), Materials.MACHINE_PLATE.item(),
                 Materials.MACHINE_CIRCUIT.item(), Materials.MACHINE_CORE.item(), Materials.MACHINE_CIRCUIT.item()
-        }).speed(1).energyPerTick(120).register(plugin);
+        }).setSpeed(1).setEnergyPerTick(120).register(plugin);
         new SingularityConstructor(Groups.INFINITY_CHEAT, INFINITY_CONSTRUCTOR, InfinityWorkbench.TYPE, new ItemStack[] {
                 null, Materials.MACHINE_PLATE.item(), Materials.MACHINE_PLATE.item(), Materials.MACHINE_PLATE.item(), Materials.MACHINE_PLATE.item(), null,
                 null, Materials.VOID_INGOT.item(), Materials.INFINITE_CIRCUIT.item(), Materials.INFINITE_CIRCUIT.item(), Materials.VOID_INGOT.item(), null,
@@ -292,14 +292,14 @@ public final class Machines {
                 null, Materials.VOID_INGOT.item(), SINGULARITY_CONSTRUCTOR.item(), SINGULARITY_CONSTRUCTOR.item(), Materials.VOID_INGOT.item(), null,
                 null, Materials.INFINITE_INGOT.item(), Materials.INFINITE_CORE.item(), Materials.INFINITE_CORE.item(), Materials.INFINITE_INGOT.item(), null,
                 Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item(), Materials.INFINITE_INGOT.item()
-        }).speed(64).energyPerTick(1200).register(plugin);
+        }).setSpeed(64).setEnergyPerTick(1200).register(plugin);
 
         ResourceSynthesizer rf = new ResourceSynthesizer(Groups.ADVANCED_MACHINES, RESOURCE_SYNTHESIZER, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
                 Materials.ADAMANTITE.item(), Materials.ADAMANTITE.item(), Materials.ADAMANTITE.item(),
                 Materials.MACHINE_PLATE.item(), SlimefunItems.REINFORCED_FURNACE.item(), Materials.MACHINE_PLATE.item(),
                 Materials.MACHINE_PLATE.item(), Materials.MACHINE_CORE.item(), Materials.MACHINE_PLATE.item()
         });
-        rf.energyPerTick(1_000_000);
+        rf.setEnergyPerTick(1_000_000);
         rf.setRecipes(new SlimefunItemStack[] {
                 Materials.IRON_SINGULARITY, Materials.COAL_SINGULARITY, new SlimefunItemStack(SlimefunItems.REINFORCED_ALLOY_INGOT, 32),
                 Materials.IRON_SINGULARITY, Materials.REDSTONE_SINGULARITY, new SlimefunItemStack(SlimefunItems.REDSTONE_ALLOY, 32),
@@ -326,7 +326,7 @@ public final class Machines {
         });
         mg.setMaterial(Material.COBBLESTONE);
         mg.setSpeed(1);
-        mg.energyPerTick(24);
+        mg.setEnergyPerTick(24);
         mg.register(plugin);
 
         MaterialGenerator mg2 =new MaterialGenerator(Groups.ADVANCED_MACHINES, ADVANCED_COBBLE, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
@@ -336,7 +336,7 @@ public final class Machines {
         });
         mg2.setMaterial(Material.COBBLESTONE);
         mg2.setSpeed(4);
-        mg2.energyPerTick(75);
+        mg2.setEnergyPerTick(75);
         mg2.register(plugin);
 
         MaterialGenerator mg3 = new MaterialGenerator(Groups.INFINITY_CHEAT, INFINITY_COBBLE, InfinityWorkbench.TYPE, new ItemStack[] {
@@ -349,7 +349,7 @@ public final class Machines {
         });
         mg3.setMaterial(Material.COBBLESTONE);
         mg3.setSpeed(64);
-        mg3.energyPerTick(800);
+        mg3.setEnergyPerTick(800);
         mg3.register(plugin);
 
         MaterialGenerator mg4 = new MaterialGenerator(Groups.ADVANCED_MACHINES, BASIC_OBSIDIAN, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
@@ -359,7 +359,7 @@ public final class Machines {
         });
         mg4.setMaterial(Material.OBSIDIAN);
         mg4.setSpeed(1);
-        mg4.energyPerTick(240);
+        mg4.setEnergyPerTick(240);
         mg4.register(plugin);
 
         EnumMap<Material, ItemStack[]> crops = new EnumMap<>(Material.class);
@@ -383,7 +383,7 @@ public final class Machines {
         });
         gm.setRecipes(crops);
         gm.setTicksPerOutput(300);
-        gm.energyPerTick(18);
+        gm.setEnergyPerTick(18);
         gm.register(plugin);
 
         GrowingMachine gm2 = new GrowingMachine(Groups.ADVANCED_MACHINES, ADVANCED_GROWER, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
@@ -393,7 +393,7 @@ public final class Machines {
         });
         gm2.setRecipes(crops);
         gm2.setTicksPerOutput(60);
-        gm2.energyPerTick(90);
+        gm2.setEnergyPerTick(90);
         gm2.register(plugin);
 
         GrowingMachine gm3 = new GrowingMachine(Groups.INFINITY_CHEAT, INFINITY_GROWER, InfinityWorkbench.TYPE, new ItemStack[] {
@@ -406,7 +406,7 @@ public final class Machines {
         });
         gm3.setRecipes(crops);
         gm3.setTicksPerOutput(12);
-        gm3.energyPerTick(900);
+        gm3.setEnergyPerTick(900);
         gm3.register(plugin);
 
         EnumMap<Material, ItemStack[]> trees = new EnumMap<>(Material.class);
@@ -451,7 +451,7 @@ public final class Machines {
         });
         gm4.setRecipes(trees);
         gm4.setTicksPerOutput(600);
-        gm4.energyPerTick(36);
+        gm4.setEnergyPerTick(36);
         gm4.register(plugin);
 
         GrowingMachine gm5 = new GrowingMachine(Groups.ADVANCED_MACHINES, ADVANCED_TREE, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
@@ -461,7 +461,7 @@ public final class Machines {
         });
         gm5.setRecipes(trees);
         gm5.setTicksPerOutput(120);
-        gm5.energyPerTick(180);
+        gm5.setEnergyPerTick(180);
         gm5.register(plugin);
 
         GrowingMachine gm6 = new GrowingMachine(Groups.INFINITY_CHEAT, INFINITY_TREE, InfinityWorkbench.TYPE, new ItemStack[] {
@@ -474,7 +474,7 @@ public final class Machines {
         });
         gm6.setRecipes(trees);
         gm6.setTicksPerOutput(24);
-        gm6.energyPerTick(1800);
+        gm6.setEnergyPerTick(1800);
         gm6.register(plugin);
 
 
@@ -485,7 +485,7 @@ public final class Machines {
         }).addRecipe(SlimefunItems.NETHER_ICE_COOLANT_CELL.item(), new ItemStack(Material.MAGMA_BLOCK, 2))
                 .ticksPerOutput(1)
                 .addRecipe(SlimefunItems.REACTOR_COOLANT_CELL.item(), new ItemStack(Material.ICE, 2))
-                .energyPerTick(90).register(plugin);
+                .setEnergyPerTick(90).register(plugin);
 
         RandomizedItemStack twoDust = new RandomizedItemStack(
                 new SlimefunItemStack(SlimefunItems.COPPER_DUST, 2).item(),
@@ -507,7 +507,7 @@ public final class Machines {
                 .addRecipe(twoDust, new ItemStack(Material.STONE, 4))
                 .addRecipe(twoDust, new ItemStack(Material.DIORITE, 4))
                 .addRecipe(twoDust, new ItemStack(Material.GRANITE, 4))
-                .energyPerTick(240).register(plugin);
+                .setEnergyPerTick(240).register(plugin);
 
         RandomizedItemStack sixtyFourDust = new RandomizedItemStack(
                 new SlimefunItemStack(SlimefunItems.COPPER_DUST, 64).item(),
@@ -532,7 +532,7 @@ public final class Machines {
                 .addRecipe(sixtyFourDust, new ItemStack(Material.STONE, 64))
                 .addRecipe(sixtyFourDust, new ItemStack(Material.DIORITE, 64))
                 .addRecipe(sixtyFourDust, new ItemStack(Material.GRANITE, 64))
-                .ticksPerOutput(1).energyPerTick(7200).register(plugin);
+                .ticksPerOutput(1).setEnergyPerTick(7200).register(plugin);
 
         new MachineBlock(Groups.ADVANCED_MACHINES, COBBLE_PRESS, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
                 Materials.MACHINE_PLATE.item(), Materials.COBBLE_3.item(), Materials.MACHINE_PLATE.item(),
@@ -543,7 +543,7 @@ public final class Machines {
                 .addRecipe(new SlimefunItemStack(Materials.COBBLE_3, 8).item(), new SlimefunItemStack(Materials.COBBLE_2, 64).item())
                 .addRecipe(new SlimefunItemStack(Materials.COBBLE_4, 8).item(), new SlimefunItemStack(Materials.COBBLE_3,64).item())
                 .addRecipe(new SlimefunItemStack(Materials.COBBLE_5, 8).item(), new SlimefunItemStack(Materials.COBBLE_4, 64).item())
-                .ticksPerOutput(1).energyPerTick(120).register(plugin);
+                .ticksPerOutput(1).setEnergyPerTick(120).register(plugin);
 
         new MachineBlock(Groups.ADVANCED_MACHINES, INGOT_FORMER, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
                 SlimefunItems.ELECTRIC_INGOT_FACTORY_2.item(), SlimefunItems.ELECTRIC_INGOT_FACTORY_2.item(), SlimefunItems.ELECTRIC_INGOT_FACTORY_2.item(),
@@ -558,7 +558,7 @@ public final class Machines {
                 .addRecipe(new SlimefunItemStack(SlimefunItems.GOLD_24K, 1).item(), new SlimefunItemStack(SlimefunItems.GOLD_DUST, 8).item())
                 .addRecipe(new ItemStack(Material.IRON_INGOT, 4), new SlimefunItemStack(SlimefunItems.IRON_DUST, 8).item())
                 .addRecipe(new SlimefunItemStack(SlimefunItems.MAGNESIUM_INGOT, 4).item(), new SlimefunItemStack(SlimefunItems.MAGNESIUM_DUST, 8).item())
-                .ticksPerOutput(1).energyPerTick(240).register(plugin);
+                .ticksPerOutput(1).setEnergyPerTick(240).register(plugin);
 
         new MachineBlock(Groups.INFINITY_CHEAT, INFINITY_INGOT_FORMER, InfinityWorkbench.TYPE, new ItemStack[] {
                 Materials.VOID_INGOT.item(), Materials.VOID_INGOT.item(), Materials.VOID_INGOT.item(), Materials.VOID_INGOT.item(), Materials.VOID_INGOT.item(), Materials.VOID_INGOT.item(),
@@ -576,7 +576,7 @@ public final class Machines {
                 .addRecipe(new SlimefunItemStack(SlimefunItems.GOLD_24K, 10).item(), new SlimefunItemStack(SlimefunItems.GOLD_DUST, 64).item())
                 .addRecipe(new ItemStack(Material.IRON_INGOT, 32), new SlimefunItemStack(SlimefunItems.IRON_DUST, 64).item())
                 .addRecipe(new SlimefunItemStack(SlimefunItems.MAGNESIUM_INGOT, 32).item(), new SlimefunItemStack(SlimefunItems.MAGNESIUM_DUST, 64).item())
-                .ticksPerOutput(1).energyPerTick(7200).register(plugin);
+                .ticksPerOutput(1).setEnergyPerTick(7200).register(plugin);
 
         new MachineBlock(Groups.ADVANCED_MACHINES, URANIUM_EXTRACTOR, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
                 SlimefunItems.ELECTRIC_ORE_GRINDER_2.item(), SlimefunItems.ELECTRIC_ORE_GRINDER_2.item(), SlimefunItems.ELECTRIC_ORE_GRINDER_2.item(),
@@ -587,7 +587,7 @@ public final class Machines {
                 .addRecipe(SlimefunItems.SMALL_URANIUM.item(), new ItemStack(Material.STONE, 4))
                 .addRecipe(SlimefunItems.SMALL_URANIUM.item(), new ItemStack(Material.DIORITE, 4))
                 .addRecipe(SlimefunItems.SMALL_URANIUM.item(), new ItemStack(Material.GRANITE, 4))
-                .ticksPerOutput(1).energyPerTick(240).register(plugin);
+                .ticksPerOutput(1).setEnergyPerTick(240).register(plugin);
 
         new MachineBlock(Groups.ADVANCED_MACHINES, DECOMPRESSOR, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
                 Materials.MAGSTEEL_PLATE.item(), Materials.MAGSTEEL_PLATE.item(), Materials.MAGSTEEL_PLATE.item(),
@@ -607,7 +607,7 @@ public final class Machines {
                 .addRecipe(new SlimefunItemStack(Materials.COBBLE_2, 8).item(), Materials.COBBLE_3.item())
                 .addRecipe(new SlimefunItemStack(Materials.COBBLE_1, 8).item(), Materials.COBBLE_2.item())
                 .addRecipe(new ItemStack(Material.COBBLESTONE, 8), Materials.COBBLE_1.item())
-                .ticksPerOutput(1).energyPerTick(60).register(plugin);
+                .ticksPerOutput(1).setEnergyPerTick(60).register(plugin);
 
         new GearTransformer(Groups.ADVANCED_MACHINES, GEAR_TRANSFORMER, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
                 Materials.MAGSTEEL_PLATE.item(), Materials.MACHINE_CIRCUIT.item(), Materials.MAGSTEEL_PLATE.item(),
@@ -619,7 +619,7 @@ public final class Machines {
                 Materials.MACHINE_PLATE.item(), Materials.VOID_INGOT.item(), Materials.MACHINE_PLATE.item(),
                 Materials.VOID_INGOT.item(), SlimefunExtension.ADVANCED_GEO_MINER.item(), Materials.VOID_INGOT.item(),
                 Materials.MACHINE_PLATE.item(), Materials.VOID_INGOT.item(), Materials.MACHINE_PLATE.item(),
-        }).energyPerTick(GEO_QUARRY_INTERVAL).energyPerTick(GEO_QUARRY_ENERGY).register(plugin);
+        }).setEnergyPerTick(GEO_QUARRY_INTERVAL).setEnergyPerTick(GEO_QUARRY_ENERGY).register(plugin);
     }
 
     private static final class RandomizedItemStack extends ItemStack {

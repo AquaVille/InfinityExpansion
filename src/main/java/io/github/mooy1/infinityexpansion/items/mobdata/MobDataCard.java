@@ -19,7 +19,7 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.core.attributes.NotPlaceable;
 import io.github.thebusybiscuit.slimefun4.core.attributes.RecipeDisplayItem;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.collections.RandomizedSet;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
+import io.github.bakedlibs.dough.items.CustomItemStack;
 
 /**
  * A mob data card which will be able to be used in the {@link MobSimulationChamber}
@@ -61,7 +61,7 @@ public final class MobDataCard extends SlimefunItem implements RecipeDisplayItem
     }
 
     public MobDataCard addDrop(ItemStack drop, int amount, float chance) {
-        return addDrop(CustomItemStack.create(drop, amount), chance);
+        return addDrop(new CustomItemStack(drop, amount), chance);
     }
 
     public MobDataCard addDrop(Material drop, float chance) {

@@ -12,7 +12,7 @@ import java.util.UUID;
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
 
-import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
+import io.github.bakedlibs.dough.items.CustomItemStack;
 import lombok.AllArgsConstructor;
 
 import org.bukkit.ChatColor;
@@ -81,12 +81,12 @@ public final class InfinityGroup extends FlexItemGroup {
     private static final int[] WORKBENCH_BORDER = {
             7, 16, 17
     };
-    private static final ItemStack BENCH = CustomItemStack.create(Material.NETHER_STAR,
+    private static final ItemStack BENCH = new CustomItemStack(Material.NETHER_STAR,
             "&bCreate the recipe from items in your inventory: ",
             "&aLeft-Click to move 1 set",
             "&aRight-Click to move as many sets as possible"
     );
-    private static final ItemStack INFO = CustomItemStack.create(Material.CYAN_STAINED_GLASS_PANE, "&3Info");
+    private static final ItemStack INFO = new CustomItemStack(Material.CYAN_STAINED_GLASS_PANE, "&3Info");
     private static final SlimefunGuideImplementation GUIDE = Slimefun.getRegistry().getSlimefunGuide(SlimefunGuideMode.SURVIVAL_MODE);
     private static final Map<UUID, String> HISTORY = new HashMap<>();
     private static final LinkedHashMap<String, Pair<SlimefunItem, ItemStack[]>> ITEMS = new LinkedHashMap<>();
@@ -171,7 +171,7 @@ public final class InfinityGroup extends FlexItemGroup {
 
             Research research = sfItem.getResearch();
             if (research != null && !entry.profile.hasUnlocked(research)) {
-                ItemStack resItem = CustomItemStack.create(
+                ItemStack resItem = new CustomItemStack(
                         ChestMenuUtils.getNotResearchedItem(),
                         "&4&l" + Slimefun.getLocalization().getMessage(player, "guide.locked"),
                         "",

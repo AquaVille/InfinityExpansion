@@ -26,10 +26,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.incendo.cloud.SenderMapper;
-import org.incendo.cloud.bukkit.CloudBukkitCapabilities;
-import org.incendo.cloud.execution.ExecutionCoordinator;
-import org.incendo.cloud.paper.LegacyPaperCommandManager;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
@@ -43,8 +39,6 @@ public final class InfinityExpansion extends JavaPlugin implements SlimefunAddon
     @Getter
     private static InfinityExpansion instance;
     private CommandManager command;
-    @Getter
-    private LegacyPaperCommandManager<CommandSender> commandManager;
 
     @Getter
     private ConfigManager config;
@@ -99,16 +93,6 @@ public final class InfinityExpansion extends JavaPlugin implements SlimefunAddon
     public void onEnable() {
         // Set static getInstance
         instance = this;
-
-        commandManager = new LegacyPaperCommandManager<>(
-                this, ExecutionCoordinator.simpleCoordinator(), SenderMapper.identity()
-        );
-
-        if (commandManager.hasCapability(CloudBukkitCapabilities.NATIVE_BRIGADIER)) {
-            commandManager.registerBrigadier();
-        } else if (commandManager.hasCapability(CloudBukkitCapabilities.ASYNCHRONOUS_COMPLETION)) {
-            commandManager.registerAsynchronousCompletions();
-        }
 
         // Create Config
         try {

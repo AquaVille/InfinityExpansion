@@ -17,7 +17,7 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.EnergyNetComponent;
 import io.github.thebusybiscuit.slimefun4.core.networks.energy.EnergyNetComponentType;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
+import io.github.bakedlibs.dough.items.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
@@ -35,7 +35,7 @@ public final class InfinityWorkbench extends io.github.mooy1.infinityexpansion.m
     };
     private static final int RECIPE_SLOT = 7;
     public static final MachineRecipeType TYPE = new MachineRecipeType("infinity_forge",
-            CustomItemStack.create(Blocks.INFINITY_FORGE.item(), Blocks.INFINITY_FORGE.getDisplayName(),
+            new CustomItemStack(Blocks.INFINITY_FORGE.item(), Blocks.INFINITY_FORGE.getDisplayName(),
                     "", "&cUse the infinity recipes category to see the correct recipe!"));
 
     private final int energy;
@@ -43,16 +43,16 @@ public final class InfinityWorkbench extends io.github.mooy1.infinityexpansion.m
     public InfinityWorkbench(ItemGroup category, SlimefunItemStack item, RecipeType type, ItemStack[] recipe, int energy) {
         super(category, item, type, recipe);
         addRecipesFrom(TYPE);
-        layout(new MachineLayout()
-                .inputSlots(INPUT_SLOTS)
-                .outputSlots(new int[] { 43 })
-                .statusSlot(16)
-                .inputBorder(new int[0])
-                .outputBorder(new int[] {
+        setLayout(new MachineLayout()
+                .setInputSlots(INPUT_SLOTS)
+                .setOutputSlots(new int[] { 43 })
+                .setStatusSlot(16)
+                .setInputBorder(new int[0])
+                .setOutputBorder(new int[] {
                         33, 34, 35,
                         42, 44,
                         51, 52, 53
-                }).background(new int[] {
+                }).setBackground(new int[] {
                         6, 8, 15, 17, 24, 25, 26
                 })
         );
@@ -62,7 +62,7 @@ public final class InfinityWorkbench extends io.github.mooy1.infinityexpansion.m
     @Override
     protected void setup(BlockMenuPreset preset) {
         super.setup(preset);
-        preset.addItem(RECIPE_SLOT, CustomItemStack.create(Material.BOOK, "&6Recipes"), ChestMenuUtils.getEmptyClickHandler());
+        preset.addItem(RECIPE_SLOT, new CustomItemStack(Material.BOOK, "&6Recipes"), ChestMenuUtils.getEmptyClickHandler());
     }
 
     @Override

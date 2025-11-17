@@ -62,20 +62,20 @@ public final class MachineBlock extends AbstractMachineBlock {
 
     @Override
     protected void setup(BlockMenuPreset preset) {
-        preset.drawBackground(OUTPUT_BORDER, layout.outputBorder());
-        preset.drawBackground(INPUT_BORDER, layout.inputBorder());
-        preset.drawBackground(BACKGROUND_ITEM, layout.background());
-        preset.addItem(layout.statusSlot(), IDLE_ITEM, ChestMenuUtils.getEmptyClickHandler());
+        preset.drawBackground(OUTPUT_BORDER, layout.getOutputBorder());
+        preset.drawBackground(INPUT_BORDER, layout.getInputBorder());
+        preset.drawBackground(BACKGROUND_ITEM, layout.getBackground());
+        preset.addItem(layout.getStatusSlot(), IDLE_ITEM, ChestMenuUtils.getEmptyClickHandler());
     }
 
     @Override
     protected int[] getInputSlots() {
-        return layout.inputSlots();
+        return layout.getInputSlots();
     }
 
     @Override
     protected int[] getOutputSlots() {
-        return layout.outputSlots();
+        return layout.getOutputSlots();
     }
 
     @Override
@@ -92,7 +92,7 @@ public final class MachineBlock extends AbstractMachineBlock {
             return true;
         }
 
-        int[] slots = layout.inputSlots();
+        int[] slots = layout.getInputSlots();
         ItemStack[] input = new ItemStack[slots.length];
         for (int i = 0; i < slots.length; i++) {
             input[i] = menu.getItemInSlot(slots[i]);
@@ -100,7 +100,7 @@ public final class MachineBlock extends AbstractMachineBlock {
 
         MachineBlockRecipe recipe = getOutput(input);
         if (recipe != null) {
-            ItemStack rem = menu.pushItem(recipe.output.clone(), layout.outputSlots());
+            ItemStack rem = menu.pushItem(recipe.output.clone(), layout.getOutputSlots());
             if (rem == null || rem.getAmount() < recipe.output.getAmount()) {
                 recipe.consume();
                 if (menu.hasViewer()) {
@@ -145,7 +145,7 @@ public final class MachineBlock extends AbstractMachineBlock {
 
     @Override
     protected int getStatusSlot() {
-        return layout.statusSlot();
+        return layout.getStatusSlot();
     }
 
 }

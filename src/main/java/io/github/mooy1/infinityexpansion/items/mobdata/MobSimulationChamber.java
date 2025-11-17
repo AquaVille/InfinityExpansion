@@ -20,7 +20,7 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.EnergyNetComponent;
 import io.github.thebusybiscuit.slimefun4.core.networks.energy.EnergyNetComponentType;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
+import io.github.bakedlibs.dough.items.CustomItemStack;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
@@ -28,9 +28,9 @@ import me.mrCookieSlime.Slimefun.api.inventory.DirtyChestMenu;
 
 public final class MobSimulationChamber extends TickingMenuBlock implements EnergyNetComponent {
 
-    static final double XP_MULTIPLIER = InfinityExpansion.config().getDouble("mob-simulation-options.xp-multiplier", 0, 1000);
+    static final double XP_MULTIPLIER = InfinityExpansion.getInstance().getConfig().getDouble("mob-simulation-options.xp-multiplier", 0, 1000);
 
-    private static final ItemStack NO_CARD = CustomItemStack.create(Material.BARRIER, "&cInput a Mob Data Card!");
+    private static final ItemStack NO_CARD = new CustomItemStack(Material.BARRIER, "&cInput a Mob Data Card!");
     private static final int CARD_SLOT = 37;
     private static final int STATUS_SLOT = 10;
     private static final int[] OUTPUT_SLOTS = {
@@ -127,7 +127,7 @@ public final class MobSimulationChamber extends TickingMenuBlock implements Ener
     }
 
     private static ItemStack makeXpItem(int stored) {
-        return CustomItemStack.create(Material.LIME_STAINED_GLASS_PANE, "&aStored xp: " + stored, "", "&a> Click to claim");
+        return new CustomItemStack(Material.LIME_STAINED_GLASS_PANE, "&aStored xp: " + stored, "", "&a> Click to claim");
     }
 
     @Override
@@ -161,7 +161,7 @@ public final class MobSimulationChamber extends TickingMenuBlock implements Ener
         int xp = BlockUtils.getIntData("xp", b.getLocation());
 
         if (inv.hasViewer()) {
-            inv.replaceExistingItem(STATUS_SLOT, CustomItemStack.create(Material.LIME_STAINED_GLASS_PANE,
+            inv.replaceExistingItem(STATUS_SLOT, new CustomItemStack(Material.LIME_STAINED_GLASS_PANE,
                     "&aSimulating... (" + MachineLore.formatEnergy(energy) + " J/s)")
             );
             inv.replaceExistingItem(XP_SLOT, makeXpItem(xp));

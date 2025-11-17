@@ -25,7 +25,7 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.RecipeDisplayItem;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
+import io.github.bakedlibs.dough.items.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
@@ -40,7 +40,7 @@ import me.mrCookieSlime.Slimefun.api.inventory.DirtyChestMenu;
 public final class StrainerBase extends TickingMenuBlock implements RecipeDisplayItem {
 
 
-    private static final ItemStack POTATO = CustomItemStack.create(Material.POTATO, "&7:&6Potatofish&7:", "&eLucky");
+    private static final ItemStack POTATO = new CustomItemStack(Material.POTATO, "&7:&6Potatofish&7:", "&eLucky");
     private static final int STATUS_SLOT = 10;
     private static final int[] OUTPUT_SLOTS = {
             13, 14, 15, 16,
@@ -153,7 +153,7 @@ public final class StrainerBase extends TickingMenuBlock implements RecipeDispla
         if (speed == 0) {
 
             if (inv.hasViewer()) {
-                inv.replaceExistingItem(STATUS_SLOT, CustomItemStack.create(Material.BARRIER, "&cInput a Strainer!"));
+                inv.replaceExistingItem(STATUS_SLOT, new CustomItemStack(Material.BARRIER, "&cInput a Strainer!"));
             }
 
             return;
@@ -166,7 +166,7 @@ public final class StrainerBase extends TickingMenuBlock implements RecipeDispla
         if (random.nextInt(this.time / speed) != 0) {
 
             if (inv.hasViewer()) {
-                inv.replaceExistingItem(STATUS_SLOT, CustomItemStack.create(Material.LIME_STAINED_GLASS_PANE, "&aCollecting..."));
+                inv.replaceExistingItem(STATUS_SLOT, new CustomItemStack(Material.LIME_STAINED_GLASS_PANE, "&aCollecting..."));
             }
 
             return;
@@ -196,7 +196,7 @@ public final class StrainerBase extends TickingMenuBlock implements RecipeDispla
         inv.pushItem(output.clone(), OUTPUT_SLOTS);
 
         if (inv.hasViewer()) {
-            inv.replaceExistingItem(STATUS_SLOT, CustomItemStack.create(Material.LIME_STAINED_GLASS_PANE, "&aMaterial Collected!"));
+            inv.replaceExistingItem(STATUS_SLOT, new CustomItemStack(Material.LIME_STAINED_GLASS_PANE, "&aMaterial Collected!"));
         }
 
         //reduce durability

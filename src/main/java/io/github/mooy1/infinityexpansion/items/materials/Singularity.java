@@ -14,7 +14,7 @@ import io.github.mooy1.infinityexpansion.categories.Groups;
 import io.github.mooy1.infinityexpansion.items.machines.SingularityConstructor;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.implementation.items.blocks.UnplaceableBlock;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
+import io.github.bakedlibs.dough.items.CustomItemStack;
 
 /**
  * Singularities and there recipe displays
@@ -24,7 +24,7 @@ import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 public final class Singularity extends UnplaceableBlock {
 
     private static final double COST_MULTIPLIER =
-            InfinityExpansion.config().getDouble("balance-options.singularity-cost-multiplier", 0.1, 100);
+            InfinityExpansion.getInstance().getConfig().getDouble("balance-options.singularity-cost-multiplier", 0.1, 100);
 
     public Singularity(SlimefunItemStack item, ItemStack recipe, int amount) {
         super(Groups.INFINITY_MATERIALS, item, SingularityConstructor.TYPE,
@@ -46,10 +46,10 @@ public final class Singularity extends UnplaceableBlock {
         int extra = amount % 64;
 
         for (int i = 0 ; i < stacks ; i++) {
-            recipe.add(CustomItemStack.create(item, 64));
+            recipe.add(new CustomItemStack(item, 64));
         }
 
-        recipe.add(CustomItemStack.create(item, extra));
+        recipe.add(new CustomItemStack(item, extra));
 
         while (recipe.size() < 9) {
             recipe.add(null);

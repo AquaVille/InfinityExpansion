@@ -18,7 +18,7 @@ import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 public final class MobData {
 
     private static final int CHAMBER_INTERVAL =
-            InfinityExpansion.config().getInt("mob-simulation-options.ticks-per-output", 1, 1000);
+            InfinityExpansion.getInstance().getConfig().getInt("mob-simulation-options.ticks-per-output", 1, 1000);
     private static final int CHAMBER_BUFFER = 15000;
     private static final int CHAMBER_ENERGY = 150;
     private static final int INFUSER_ENERGY = 20000;

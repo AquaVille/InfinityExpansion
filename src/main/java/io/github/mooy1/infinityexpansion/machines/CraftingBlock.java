@@ -18,7 +18,7 @@ import org.bukkit.inventory.ItemStack;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
+import io.github.bakedlibs.dough.items.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.ItemStackSnapshot;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.ItemUtils;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
@@ -29,7 +29,7 @@ import me.mrCookieSlime.Slimefun.api.inventory.DirtyChestMenu;
 @ParametersAreNonnullByDefault
 public class CraftingBlock extends MenuBlock {
 
-    public static final ItemStack CLICK_TO_CRAFT = CustomItemStack.create(Material.LIME_STAINED_GLASS_PANE, "&aClick To Craft!");
+    public static final ItemStack CLICK_TO_CRAFT = new CustomItemStack(Material.LIME_STAINED_GLASS_PANE, "&aClick To Craft!");
 
     @Setter
     protected MachineLayout layout = MachineLayout.CRAFTING_DEFAULT;
@@ -40,7 +40,7 @@ public class CraftingBlock extends MenuBlock {
     }
 
     protected void craft(Block b, BlockMenu menu, Player p) {
-        int[] slots = layout.inputSlots();
+        int[] slots = layout.getInputSlots();
         ItemStack[] input = new ItemStack[slots.length];
         for (int i = 0; i < slots.length; i++) {
             input[i] = menu.getItemInSlot(slots[i]);
@@ -50,10 +50,10 @@ public class CraftingBlock extends MenuBlock {
 
         if (recipe != null) {
             if (recipe.check(p)) {
-                if (menu.fits(recipe.output, layout.outputSlots())) {
+                if (menu.fits(recipe.output, layout.getOutputSlots())) {
                     ItemStack output = recipe.output.clone();
                     onSuccessfulCraft(menu, output);
-                    menu.pushItem(output, layout.outputSlots());
+                    menu.pushItem(output, layout.getOutputSlots());
                     recipe.consume(input);
                     p.sendMessage(ChatColor.GREEN + "Successfully Crafted: " + ItemUtils.getItemName(output));
                 } else {
@@ -71,15 +71,15 @@ public class CraftingBlock extends MenuBlock {
 
     @Override
     protected void setup(BlockMenuPreset preset) {
-        preset.drawBackground(OUTPUT_BORDER, layout.outputBorder());
-        preset.drawBackground(INPUT_BORDER, layout.inputBorder());
-        preset.drawBackground(BACKGROUND_ITEM, layout.background());
-        preset.addItem(layout.statusSlot(), CLICK_TO_CRAFT, ChestMenuUtils.getEmptyClickHandler());
+        preset.drawBackground(OUTPUT_BORDER, layout.getOutputBorder());
+        preset.drawBackground(INPUT_BORDER, layout.getInputBorder());
+        preset.drawBackground(BACKGROUND_ITEM, layout.getBackground());
+        preset.addItem(layout.getStatusSlot(), CLICK_TO_CRAFT, ChestMenuUtils.getEmptyClickHandler());
     }
 
     @Override
     protected void onNewInstance(BlockMenu menu, Block b) {
-        menu.addMenuClickHandler(layout.statusSlot(), (player, i, itemStack, clickAction) -> {
+        menu.addMenuClickHandler(layout.getStatusSlot(), (player, i, itemStack, clickAction) -> {
             craft(b, menu, player);
             return false;
         });
@@ -119,12 +119,12 @@ public class CraftingBlock extends MenuBlock {
 
     @Override
     protected final int[] getInputSlots() {
-        return layout.inputSlots();
+        return layout.getInputSlots();
     }
 
     @Override
     protected final int[] getOutputSlots() {
-        return layout.outputSlots();
+        return layout.getOutputSlots();
     }
 
 }
