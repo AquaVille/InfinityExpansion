@@ -19,12 +19,12 @@ import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 public final class Generators {
 
     private static final int HYDRO_ENERGY = 1;
-    private static final int ADVANCED_HYDRO_ENERGY = 45;
+    private static final int ADVANCED_HYDRO_ENERGY = 30;
     private static final int GEO_ENERGY = 35;
     private static final int ADVANCED_GEO_ENERGY = 210;
-    private static final int BASIC_SOLAR_ENERGY = 60;
-    private static final int ADVANCED_SOLAR_ENERGY = 150;
-    private static final int CELESTIAL_ENERGY = 750;
+    private static final int BASIC_SOLAR_ENERGY = 100;
+    private static final int ADVANCED_SOLAR_ENERGY = 315;
+    private static final int CELESTIAL_ENERGY = 945;
     private static final int VOID_ENERGY = 3000;
     private static final int INFINITY_ENERGY = 60_000;
     private static final int INFINITY_REACTOR_ENERGY = 120_000;
@@ -45,7 +45,7 @@ public final class Generators {
             "&9Hydro Generator",
             "&7Generates energy from the movement of water",
             "",
-            MachineLore.energyBuffer(HYDRO_ENERGY * 100),
+            MachineLore.energyBuffer(100),
             MachineLore.energyPerSecond(HYDRO_ENERGY)
     );
     public static final SlimefunItemStack REINFORCED_HYDRO = new SlimefunItemStack(
@@ -55,7 +55,7 @@ public final class Generators {
             "&7Generates large amounts of energy",
             "&7from the movement of water",
             "",
-            MachineLore.energyBuffer(ADVANCED_HYDRO_ENERGY * 100),
+            MachineLore.energyBuffer(450),
             MachineLore.energyPerSecond(ADVANCED_HYDRO_ENERGY)
     );
     public static final SlimefunItemStack GEOTHERMAL = new SlimefunItemStack(
