@@ -78,7 +78,7 @@ public final class MobData {
 
         new MobSimulationChamber(Groups.MOB_SIMULATION, CHAMBER, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
                 Materials.MAGSTEEL_PLATE.item().clone(), Materials.MACHINE_PLATE.item().clone(), Materials.MAGSTEEL_PLATE.item().clone(),
-                Materials.MACHINE_CIRCUIT.item().clone(), SlimefunItems.PROGRAMMABLE_ANDROID_BUTCHER.item().clone(), Materials.MACHINE_CIRCUIT.item().clone(),
+                Materials.MACHINE_CIRCUIT.item().clone(), SlimefunItems.PROGRAMMABLE_ANDROID_3.item().clone(), Materials.MACHINE_CIRCUIT.item().clone(),
                 Materials.MAGSTEEL_PLATE.item().clone(), Materials.MACHINE_PLATE.item().clone(), Materials.MAGSTEEL_PLATE.item().clone(),
         }, CHAMBER_ENERGY, CHAMBER_INTERVAL).register(plugin);
 

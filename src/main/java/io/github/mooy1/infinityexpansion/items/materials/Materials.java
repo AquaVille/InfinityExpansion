@@ -319,7 +319,7 @@ public final class Materials {
                 VOID_DUST.item().clone(), VOID_DUST.item().clone(), VOID_DUST.item().clone()
         });
         registerSmeltery(INFINITE_INGOT, EARTH_SINGULARITY.item().clone(), MYTHRIL.item().clone(), FORTUNE_SINGULARITY.item().clone(), MAGIC_SINGULARITY.item().clone(), VOID_INGOT.item().clone(), METAL_SINGULARITY.item().clone());
-        registerSmeltery(FORTUNE_SINGULARITY, GOLD_SINGULARITY.item().clone(), DIAMOND_SINGULARITY.item().clone(), EMERALD_SINGULARITY.item().clone(), NETHERITE_SINGULARITY.item().clone(), ADAMANTITE.item().clone());
+        registerSmeltery(FORTUNE_SINGULARITY, GOLD_SINGULARITY.item().clone(), DIAMOND_SINGULARITY.item().clone(), EMERALD_SINGULARITY.item().clone(), COBBLE_5.item().clone(), ADAMANTITE.item().clone());
         registerSmeltery(MAGIC_SINGULARITY, REDSTONE_SINGULARITY.item().clone(), LAPIS_SINGULARITY.item().clone(), QUARTZ_SINGULARITY.item().clone(), MAGNESIUM_SINGULARITY.item().clone(), MAGNONIUM.item().clone());
         registerSmeltery(EARTH_SINGULARITY, COBBLE_4.item().clone(), COAL_SINGULARITY.item().clone(), IRON_SINGULARITY.item().clone(), COPPER_SINGULARITY.item().clone(), LEAD_SINGULARITY.item().clone());
         registerSmeltery(METAL_SINGULARITY, SILVER_SINGULARITY.item().clone(), ALUMINUM_SINGULARITY.item().clone(), TIN_SINGULARITY.item().clone(), ZINC_SINGULARITY.item().clone(), TITANIUM.item().clone());

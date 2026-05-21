@@ -17,7 +17,6 @@ import io.github.mooy1.infinityexpansion.items.blocks.InfinityWorkbench;
 import io.github.mooy1.infinityexpansion.items.gear.Gear;
 import io.github.mooy1.infinityexpansion.items.materials.Materials;
 import io.github.mooy1.infinitylib.machines.MachineLore;
-import io.github.thebusybiscuit.slimefun4.api.MinecraftVersion;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
@@ -112,9 +111,7 @@ public final class Quarries {
             outputs.add(Material.GOLD_INGOT);
         }
 
-        if (Slimefun.getMinecraftVersion().isAtLeast(MinecraftVersion.MINECRAFT_1_17)
-                && section.getBoolean("copper")) {
-
+        if (section.getBoolean("copper")) {
             SlimefunItemStack COPPER_OSCILLATOR =
                     Oscillator.create(Material.COPPER_INGOT, COPPER_CHANCE);
 

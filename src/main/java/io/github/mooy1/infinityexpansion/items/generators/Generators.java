@@ -135,7 +135,7 @@ public final class Generators {
 
         new EnergyGenerator(Groups.BASIC_MACHINES, HYDRO, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
                 Materials.MAGSTEEL.item().clone(), Materials.MACHINE_CIRCUIT.item().clone(), Materials.MAGSTEEL.item().clone(),
-                new ItemStack(Material.BUCKET), SlimefunItems.ELECTRO_MAGNET.item().clone(), new ItemStack(Material.BUCKET),
+                SlimefunItems.HEATING_COIL.item().clone(), SlimefunItems.POWER_CRYSTAL.item().clone(), SlimefunItems.WATER_RUNE.item().clone(),
                 Materials.MAGSTEEL.item().clone(), Materials.MACHINE_CIRCUIT.item().clone(), Materials.MAGSTEEL.item().clone()
         }, HYDRO_ENERGY, GenerationType.HYDROELECTRIC).register(plugin);
         new EnergyGenerator(Groups.ADVANCED_MACHINES, REINFORCED_HYDRO, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
@@ -157,7 +157,7 @@ public final class Generators {
 
         new EnergyGenerator(Groups.BASIC_MACHINES, BASIC_PANEL, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
                 Materials.MAGSTEEL.item().clone(), Materials.MAGSTEEL_PLATE.item().clone(), Materials.MAGSTEEL.item().clone(),
-                SlimefunItems.SOLAR_PANEL.item().clone(), SlimefunItems.SOLAR_PANEL.item().clone(), SlimefunItems.SOLAR_PANEL.item().clone(),
+                SlimefunItems.SOLAR_GENERATOR_3.item().clone(), SlimefunItems.SOLAR_GENERATOR_3.item().clone(), SlimefunItems.SOLAR_GENERATOR_3.item().clone(),
                 Materials.MACHINE_CIRCUIT.item().clone(), Materials.MACHINE_CIRCUIT.item().clone(), Materials.MACHINE_CIRCUIT.item().clone()
         }, BASIC_SOLAR_ENERGY, GenerationType.SOLAR).register(plugin);
         new EnergyGenerator(Groups.ADVANCED_MACHINES, ADVANCED_PANEL, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {

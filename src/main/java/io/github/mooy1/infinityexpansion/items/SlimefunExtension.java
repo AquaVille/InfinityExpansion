@@ -182,7 +182,7 @@ public final class SlimefunExtension {
                 Materials.VOID_INGOT.item().clone(), Materials.REDSTONE_SINGULARITY.item().clone(), Materials.VOID_INGOT.item().clone(),
                 Materials.VOID_INGOT.item().clone(), SlimefunItems.ENERGIZED_CAPACITOR.item().clone(), Materials.VOID_INGOT.item().clone(),
                 Materials.VOID_INGOT.item().clone(), Materials.REDSTONE_SINGULARITY.item().clone(), Materials.VOID_INGOT.item().clone()
-        }).register(plugin);
+    }).register(plugin);
 
         new AutoEnchanter(Groups.ADVANCED_MACHINES, ADVANCED_ENCHANTER, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
                 Materials.MAGSTEEL.item().clone(), Materials.MAGSTEEL.item().clone(), Materials.MAGSTEEL.item().clone(),
@@ -251,7 +251,7 @@ public final class SlimefunExtension {
 
         new GEOMiner(Groups.ADVANCED_MACHINES, ADVANCED_GEO_MINER, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
                 Materials.MAGSTEEL_PLATE.item().clone(), Materials.MAGSTEEL_PLATE.item().clone(), Materials.MAGSTEEL_PLATE.item().clone(),
-                SlimefunItems.COBALT_PICKAXE.item().clone(), SlimefunItems.GEO_MINER.item().clone(), SlimefunItems.COBALT_PICKAXE.item().clone(),
+                SlimefunItems.REINFORCED_PLATE.item().clone(), SlimefunItems.GEO_MINER.item().clone(), SlimefunItems.REINFORCED_PLATE.item().clone(),
                 Materials.MACHINE_CIRCUIT.item().clone(), Materials.MACHINE_CORE.item().clone(), Materials.MACHINE_CIRCUIT.item().clone()
         }).setCapacity(ADVANCED_GEO_ENERGY).setProcessingSpeed(ADVANCED_GEO_SPEED).setEnergyConsumption(ADVANCED_GEO_ENERGY).register(plugin);
 

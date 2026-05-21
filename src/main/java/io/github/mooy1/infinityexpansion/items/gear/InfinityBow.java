@@ -10,7 +10,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import io.github.thebusybiscuit.slimefun4.api.MinecraftVersion;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
@@ -42,10 +41,7 @@ public final class InfinityBow extends ExplosiveBow implements NotPlaceable, Sou
                 if (p.isBlocking() && e.getFinalDamage() <= 0) {
                     return;
                 }
-
-                if (Slimefun.getMinecraftVersion().isAtLeast(MinecraftVersion.MINECRAFT_1_17)) {
-                    p.setFreezeTicks(60);
-                }
+                p.setFreezeTicks(60);
             }
 
             target.getWorld().playEffect(target.getLocation(), Effect.STEP_SOUND, Material.ICE);
